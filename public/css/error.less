@@ -1,0 +1,153 @@
+/******  
+ * Styles for the three different field help messages:
+ * Information, notification, Error
+ * Information is similar to a tooltip on a form (blue)
+ * Notification is an error caught on client side validation (yellow)
+ * Error is a backend caught error (red)
+ ******
+ * Page level error is same in style as an Error but no carret
+ * and it sits below the form's main header
+*/
+@keyframes showHide{
+  from {
+    display: none;
+    max-height: 0;
+  }
+  to {
+    display: block;
+    max-height: 20em;
+  }
+}
+@-moz-keyframes showHide{
+  from {
+    display: none;
+    max-height: 0;
+  }
+  to {
+    display: block;
+    max-height: 20em;
+  }
+}
+@-webkit-keyframes showHide{
+  0% {
+    display: none;
+    max-height: 0;
+  }
+  100% {
+    display: block;
+    max-height: 20em;
+  }
+}
+@-ms-keyframes showHide{
+  0% {
+    display: none;
+    max-height: 0;
+  }
+  100% {
+    display: block;
+    max-height: 20em;
+  }
+}
+@-o-keyframes showHide{
+  0% {
+    display: none;
+    max-height: 0;
+  }
+  100% {
+    display: block;
+    max-height: 20em;
+  }
+}
+/* Default state is closed, we add class "open" to a message when we want to open it */
+.help-information, 
+.help-error,
+.help-error:before, 
+.help-error:after, 
+.help-information:before, 
+.help-information:after,
+.page-error,
+.no-js .error-submit  {
+  max-height: 0;
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  max-height: 0;
+  font-size: 0;
+  display: none;
+}
+
+/* information bubble (blue) */
+.help-information.open, .no-js .help-information {
+  .bubble-with-caret();
+  .animation(showHide);
+  max-height: 10em;
+  display: block;
+}
+
+/* notification bubble (yellow) */
+/* showing non js bubbles as yellow since it is the very end of release and I am not sure why POS team has the checks on div.textInput to show
+* as .hasError only (instead of .hasError.submitted). Will fix this for Oct 22
+*/
+.hasError .help-error.open,
+.passwordSection .hasError .help-information.open,
+.no-js .hasError .error-submit  {
+  .bubble-with-caret(1px solid #f7ebeb, 0 1px #fff, #f7ebeb, transparent transparent #f7ebeb, transparent transparent #f7ebeb);
+  .animation(showHide);
+  max-height: 20em;
+  display: block;
+}
+
+/* error bubble (red) */
+.hasError.submitted .help-error.open,
+.passwordSection .hasError.submitted .help-information.open,
+.no-js .hasError .error-submit {
+  .bubble-with-caret(1px solid #efcaca, 0 1px #fff, #f7ebeb, transparent transparent #efcaca, transparent transparent #f7ebeb);
+  .animation(showHide);
+  max-height: 20em;
+  display: block;
+}
+
+.help-error:before, 
+.help-error:after, 
+.help-information:before, 
+.help-information:after,
+.help-information.open, .no-js .help-information {
+  display: block;
+}
+
+/* Hide multiple error messages */
+.hasError .help-error.open ~ .help-error.open,
+.passwordSection .hasError .open ~ .help-error.open,
+.hasError.submitted .help-error.open ~ .help-error.open,
+.passwordSection .hasError.submitted .open ~ .help-error.open {
+  display:none !important;
+}
+
+/* multi field error messages */
+.multiFields .help-error.open,
+.multiFields .help-information.open,
+.multiFields .submitted .help-error.open,
+.multiFields .submitted .help-information.open {
+  margin:7px 0 10px;
+}
+
+/* password bubble interaction  */
+.help-information > ul,
+.help-error > ul {
+  margin: 0;
+}
+
+.help-information > ul li,
+.help-error > ul li {
+  margin: 5px 0;
+  list-style: none;
+}
+
+/* page error styles*/
+.page-error.open {
+  .bubble(1px solid #efcaca, 0 1px #fff, #f7ebeb);
+  margin: 0 0 10px;
+  max-height: 500px;
+  display: block;
+}

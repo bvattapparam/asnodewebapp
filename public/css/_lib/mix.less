@@ -1,0 +1,533 @@
+// variables 
+@baseFont: 15;
+@androidBaseFont: 16;
+
+@radius: 7px;
+@white: #fff;
+@whiteSmoke: #f5f5f5;
+@black: #000;
+
+@grayDark: #333; // gray20 
+@grayDim: #ddd;
+@gray40: #666;
+@gray60: #999;
+@grayLighter: #ccc; // gray80 
+@gray94: #eee;
+
+@errorBgColor: #c72f38;
+@noiseColor: #f8f8f8;
+@linkColor: #0079c1;
+@LinkColorMobile: #33669a;
+@palBlueColor: #009CDE;
+@inputBorderColor: #aaa;
+@inputFocusColor: #0079c1;
+@inputErrorColor: #9d2c36;
+@androidInputBorderColor: #bec0c2;
+@callOutBorder: #278ccd;
+
+@footerLightGray: #777;
+
+// Variable for responsive breakpoints
+@mobileMaxSize: 767px;
+
+@defaultPath : "";
+@localPath : "../images/";
+@formSprite : "sprite_form";
+
+// TODO: Change the image path once getting pixel spec from UED team
+@closeIcon: "https://www.paypalobjects.com/webstatic/mktg/2014design/close_default.png";
+
+// TODO: notification sprite should be global. Get from UED
+@notificationsIcon: "https://www.paypalobjects.com/images/shared/icon_alert_sprite-2x";
+@defaultImageSize : 50px;
+
+// font family 
+.arial () {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/** method responsible for loading the background image set in CSS **/
+.imageLoader (@image: @formSprite, @imageSize: @defaultImageSize, @extn: ".png", @imagePath: @defaultPath) {
+  background: url("@{imagePath}@{image}@{extn}") no-repeat;
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: ~"2/1"), only screen and (min-device-pixel-ratio: 2) {
+    background: url("@{imagePath}@{image}_2x@{extn}") no-repeat;
+    background-size: @imageSize;
+  }
+}
+
+.imageNotifications (@image:@notificationsIcon){
+  background: url("@{image}.png") no-repeat;
+  background-size: 20px;
+}
+
+.helvetica () {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.helveticaNeue () {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.helveticaNeueLight () {
+  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.roboto () {
+  font-family: "Roboto", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+
+}
+
+.trebuchet () {
+  font-family: Trebuchet, Arial, sans-serif;
+}
+
+.font-size (@target: @baseFont, @baseFont: @baseFont) {
+  font-size: (@target / @baseFont) + 0em;
+}
+
+.animation(@name, @duration: 300ms, @delay: 0, @ease: ease) {
+  -webkit-animation: @name @duration @delay @ease;
+  -moz-animation: @name @duration @delay @ease;
+  -ms-animation: @name @duration @delay @ease;
+  animation: @name @duration @delay @ease;
+}
+// Backface visibility
+//
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+.backface-visibility (@visibility){
+  -webkit-backface-visibility: @visibility;
+  -moz-backface-visibility: @visibility;
+  backface-visibility: @visibility;
+}
+
+.background-clip (@padding-box: padding-box) {
+  -webkit-background-clip: @padding-box;
+  -moz-background-clip: @padding-box;
+  background-clip: @padding-box;
+}
+
+.background-size (@size) {
+  -webkit-background-size: @size; // Safari 3-4
+  -moz-background-size: @size;
+  -o-background-size: @size;
+  -ms-background-size: @size;
+  background-size: @size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
+}
+
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius; //Android ≤ 1.6, iOS 1-3.2, Safari 3-4
+  -moz-border-radius: @radius;
+  -khtml-border-radius: @radius;
+  border-radius: @radius; // Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+
+}
+
+.border-radius-custom (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+  -webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+  -moz-border-radius: @topleft @topright @bottomright @bottomleft;
+  border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
+.box-display () {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+}
+
+.box-align (@value) {
+  -webkit-box-align: @value;
+  -moz-box-align: @value;
+  -ms-box-align: @value;
+  box-align: @value;
+  .box-display;
+}
+
+.box-direction (@value) {
+  -webkit-box-align: @value;
+  -moz-box-align: @value;
+  -ms-box-align: @value;
+  box-align: @value;
+  .box-display;
+}
+
+.box-orient (@value) {
+  -webkit-box-align: @value;
+  -moz-box-align: @value;
+  -ms-box-align: @value;
+  box-align: @value;
+  .box-display;
+}
+
+.box-pack (@value) {
+  -webkit-box-align: @value;
+  -moz-box-align: @value;
+  -ms-box-align: @value;
+  box-align: @value;
+  .box-display;
+}
+
+
+
+.box-sizing (@type: border-box) {
+  -webkit-box-sizing: @type; // Android ≤ 2.3, iOS ≤ 4 
+  -moz-box-sizing: @type; // Firefox 1+
+  box-sizing: @type; //Chrome, IE 8+, Opera, Safari 5.1
+}
+
+
+.positionLeftTop (@left: 10px, @top: -15px, @zIndex: 1) {
+  left: @left;
+  top: @top;
+  z-index: @zIndex;
+}
+
+
+.bubble (@borderString: 1px solid #cee0eb, @textShadow: 0 1px @white, @background: #f4f8fb) {
+  margin: 7px 0 0;
+  padding: 8px 12px;
+  border: @borderString;
+
+  position: absolute;
+
+  background: @background;
+  .font-size();
+  .helvetica();
+  color: @gray40;
+  text-shadow: @textShadow;
+  .border-radius();
+  .background-clip();
+}
+
+
+.bubble-with-caret (@borderString: 1px solid #cee0eb, @textShadow: 0 1px @white, @background: #f4f8fb, @caretColorBefore:transparent transparent #cee0eb, @caretColorAfter: transparent transparent #f4f8fb, @leftPosBefore: 10px, @topPosBefore: -14px, @zIdxBefore: 1, @leftPosAfter: 10px, @topPosAfter: -12px, @zIdxAfter: 2) {
+
+  .bubble(@borderString, @textShadow, @background);
+
+  &:before {
+    .caret(@caretColorBefore);
+
+    position: absolute;
+    .positionLeftTop(@leftPosBefore, @topPosBefore, @zIdxBefore);
+
+    content: "";
+  }
+
+  &:after {
+    .caret(@caretColorAfter);
+
+    position: absolute;
+    .positionLeftTop(@leftPosAfter, @topPosAfter, @zIdxAfter);
+
+    content: "";
+  }
+}
+
+.caret (@borderColorString: transparent transparent #cee0eb) {
+  border-color: @borderColorString;
+  border-style: dashed solid;
+  border-width: 7px;
+}
+
+// Center-align a block level element
+.center-block () {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// CSS3 Content Columns
+.content-columns (@width, @count, @gap) {
+  -webkit-column-width: @width;
+  -moz-column-width: @width;
+  column-width: @width;
+  -webkit-column-count: @count;
+  -moz-column-count: @count;
+  column-count: @count;
+  -webkit-column-gap: @gap;
+  -moz-column-gap: @gap;
+  column-gap: @gap;
+}
+
+.font (@style: normal, @variant: normal, @weight: normal, @size: medium, @line-height: normal, @family: ""Lucida Grande", Helvetica, Arial, Verdana, sans-serif") {
+  font-style: @style;
+  font-variant: @variant;
+  font-weight: @weight;
+  font-size: @size;
+  line-height: @line-height;
+  font-family: e(@family);
+}
+
+
+.gradient (@origin: left, @start: @white, @stop: @black) {
+  background-color: @start;
+  background-image: -webkit-linear-gradient(@origin, @start, @stop);
+  background-image: -moz-linear-gradient(@origin, @start, @stop);
+  background-image: -o-linear-gradient(@origin, @start, @stop);
+  background-image: -ms-linear-gradient(@origin, @start, @stop);
+  background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.gradient-custom (@background-color: @white, @origin: left, @start: @white, @stop: @black, @start-percentage: 0, @stop-percentage: 50%) {
+  background: @background-color;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@start-percentage, @start), color-stop(@stop-percentage, @stop));
+  background: -webkit-linear-gradient(@origin, @start @start-percentage, @stop @stop-percentage);
+  background: -moz-linear-gradient(@origin, @start @start-percentage, @stop @stop-percentage);
+  background: -o-linear-gradient(@origin, @start @start-percentage, @stop @stop-percentage);
+  background: -ms-linear-gradient(@origin, @start @start-percentage, @stop @stop-percentage);
+  background: linear-gradient(@origin, @start @start-percentage, @stop @stop-percentage);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start,@stop));
+}
+
+.gradient-three-custom (@background-color: @white, @origin: left, @start: @white, @middle: @white, @stop: @black, @start-percentage: 0, @middle-percentage: 49%, @stop-percentage: 100%) {
+  background: @background-color;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@start-percentage, @start), color-stop(@middle-percentage, @middle), color-stop(@stop-percentage, @stop));
+  background: -webkit-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @stop @stop-percentage);
+  background: -moz-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @stop @stop-percentage);
+  background: -o-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @stop @stop-percentage);
+  background: -ms-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @stop @stop-percentage);
+  background: linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @stop @stop-percentage);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start,@stop));
+}
+
+.gradient-four-custom (@background-color: @white, @origin: left, @start: @white, @middle: @white, @middle-after: @white, @stop: @black, @start-percentage: 0, @middle-percentage: 49%, @middle-after-percentage: 50%, @stop-percentage: 100%) {
+  background: @background-color;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@start-percentage, @start), color-stop(@middle-percentage, @middle), color-stop(@middle-after-percentage, @middle-after), color-stop(@stop-percentage, @stop));
+  background: -webkit-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @middle-after @middle-after-percentage, @stop @stop-percentage);
+  background: -moz-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @middle-after @middle-after-percentage, @stop @stop-percentage);
+  background: -o-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @middle-after @middle-after-percentage, @stop @stop-percentage);
+  background: -ms-linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @middle-after @middle-after-percentage, @stop @stop-percentage);
+  background: linear-gradient(@origin, @start @start-percentage, @middle @middle-percentage, @middle-after @middle-after-percentage, @stop @stop-percentage);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start,@stop));
+}
+
+.gradient-radial (@innerColor: #eee, @outerColor: @white) {
+  background-color: @outerColor;
+  background-image: -webkit-gradient(radial, 50% 50%, 200, 50% 50%, 20, from(@outerColor), to(@innerColor));
+  background-image: -webkit-radial-gradient(50% 50%, @innerColor, @outerColor);
+  background-image: -moz-radial-gradient(50% 50%, @innerColor, @outerColor);
+  background-image: -o-radial-gradient(50% 50%, @innerColor, @outerColor);
+  background-image: radial-gradient(50% 50%, @innerColor, @outerColor);
+}
+
+.gradient-direction (@startColor: #555, @endColor: @grayDark, @degrees: 45) {
+  background: @endColor;
+  background-image: -webkit-gradient(linear, ~"@{degrees}deg", from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+  background-image: -moz-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+  background-image: -o-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+  background-image: linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+}
+
+.hide-text () {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.highlight_fix () {
+  -webkit-appearance: none;
+  -moz-webkit-appearance: none;
+  -ms-webkit-appearance: none;
+  -o-webkit-appearance: none;
+  webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Optional hyphenation
+.hyphens (@mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+  -moz-hyphens: @mode;
+  -ms-hyphens: @mode;
+  -o-hyphens: @mode;
+  hyphens: @mode;
+}
+
+.multiBackgrounds (@bg1, @startColor, @endColor) {
+  background: @bg1, -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)) 0 0;
+  background: @bg1, -webkit-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, -moz-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, -ms-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, -o-linear-gradient(top, @startColor, @endColor) 0 0;
+  background-color: @startColor;
+}
+
+
+.quick-gradient (@origin: left, @alpha: .2) {
+  background-image: -webkit-linear-gradient(@origin, rgba(0, 0, 0, .0), rgba(0, 0, 0, @alpha));
+  background-image: -moz-linear-gradient(@origin, rgba(0, 0, 0, .0), rgba(0, 0, 0, @alpha));
+  background-image: -o-linear-gradient(@origin, rgba(0, 0, 0, .0), rgba(0, 0, 0, @alpha));
+  background-image: -ms-linear-gradient(@origin, rgba(0, 0, 0, .0), rgba(0, 0, 0, @alpha));
+  background-image: linear-gradient(@origin, rgba(0, 0, 0, .0), rgba(0, 0, 0, @alpha));
+}
+
+// Opacity
+// Android 2.1+, Chrome 4+, Firefox 2+, IE 9+, iOS 3.2+, Opera 9+, Safari 3.1+
+.opacity (@opacity: .5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+  @opperc: @opacity * 100;
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+  filter: ~"alpha(opacity=@{opperc})"; // IE8
+}
+
+.outline-radius (@radius: 3px) {
+  -webkit-outline-radius: @radius;
+  -moz-outline-radius: @radius;
+  outline-radius: @radius;
+}
+
+// Placeholder text
+.placeholder (@color: #999) {
+  &:-moz-placeholder            { color: @color; } // Firefox 4-18
+  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+.reflect (@length: 50%, @opacity: .2) {
+  -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255, 255, 255, @opacity)));
+}
+
+// Reset filters for IE
+// Useful for when you want to remove a gradient from an element.
+.reset-filter () {
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+
+// Sizing shortcuts
+.size (@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+.square (@size) {
+  .size(@size, @size);
+}
+
+// Chrome, Firefox 3.5+, IE 10+, Opera 9+, Safari 1+
+.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, .25)) {
+  text-shadow: @string;
+}
+
+.transition (@value: 1s) {
+  -webkit-transition: @value; // Chrome 1-25, Safari 3.2+
+  -moz-transition: @value; // Firefox 4-15
+  -o-transition: @value; // Opera 10.50–12.00
+  -ms-transition: @value;
+  transition: @value; // Chrome 26, Firefox 16+, IE 10+, Opera 12.50+
+}
+
+.transition-double (@value1, @value2) {
+  @value: @value1, @value2;
+  -webkit-transition: @value; // Chrome 1-25, Safari 3.2+
+  -moz-transition: @value; // Firefox 4-15
+  -o-transition: @value; // Opera 10.50–12.00
+  -ms-transition: @value;
+  transition: @value; // Chrome 26, Firefox 16+, IE 10+, Opera 12.50+
+}
+
+.transition-custom (@prop: all, @time: 1s, @ease: linear) {
+  -webkit-transition: @prop @time @ease;
+  -moz-transition: @prop @time @ease;
+  -o-transition: @prop @time @ease;
+  -ms-transition: @prop @time @ease;
+  transition: @prop @time @ease;
+}
+
+.transform (@value: translate(41px, 0) scale(1) translateZ(0px)) {
+  -webkit-transform: @value;
+  -moz-transform: @value;
+  -o-transform: @value;
+  -ms-transform: @value;
+  transform: @value;
+}
+
+.transform-custom (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+  -webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -moz-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -o-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -ms-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+
+// User select
+// For selecting text on the page
+.user-select (@select) {
+  -webkit-user-select: @select;
+  -moz-user-select: @select;
+  -ms-user-select: @select;
+  -o-user-select: @select;
+  user-select: @select;
+}
+
+.multiBackgrounds2(@bg1, @bg2, @startColor, @endColor) {
+  background: @bg1, @bg2, -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)) 0 0;
+  background: @bg1, @bg2, -webkit-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, @bg2, -moz-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, @bg2, -ms-linear-gradient(top, @startColor, @endColor) 0 0;
+  background: @bg1, @bg2, -o-linear-gradient(top, @startColor, @endColor) 0 0;
+  background-color: @startColor;
+}
+
+.spinner() {
+  content: "";
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  margin: -15px auto auto -15px;
+  -webkit-animation: rotation .7s infinite linear;
+  -moz-animation: rotation .7s infinite linear;
+  -o-animation: rotation .7s infinite linear;
+  animation: rotation .7s infinite linear;
+  border-left: 8px solid rgba(0, 0, 0, 0.2);
+  border-right: 8px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+  border-top: 8px solid #2180c0;
+  border-radius: 100%;
+}
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

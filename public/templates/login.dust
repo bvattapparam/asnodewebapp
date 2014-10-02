@@ -1,0 +1,81 @@
+{>"layouts/logintemplate" /}
+
+{<pageTitle}
+    {@pre type="content" key="login.title" /}
+{/pageTitle}
+
+{<mainBlock}
+                <!--->
+                <div  id="loginPage" class="panel panel-gray loginpanel">
+                                <div class="login-head">
+                                                <figure class="round-outline">
+                                                                <img class="round-photo img-responsive" src="images/src/login_face.jpg" alt="" width=100>
+                                                </figure>
+                                </div>
+                                {?messages}
+                    <ul>
+                        {#messages}
+                            <li>{.}</li>
+                        {/messages}
+                        {#messages1}
+                            <li>{.}</li>
+                        {/messages1}
+
+                    </ul>
+                {/messages}
+                                
+                                <div class="panel-body">
+                                                <div class="alert alert-danger col-sm-12" id="login-alert" style="display:none"></div>
+                                                               
+                                                               <!--- place for component-->
+                                                                {>"inc/form" /}
+
+                                                                {<formAttr}
+                                                                    name="login"
+                                                                    autocomplete="off"
+                                                                    id="frm"
+                                                                {/formAttr}
+                                                               {<formBody}
+                                                               <div id="emaildiv" class="textInput">
+                                                                                <div class="input-group fieldWrapper">
+                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                                                                                <input type="text" placeholder="email needed" value="" name="email" class="hasHelp validate form-control" id="email">    
+                                 
+                                                                                </div>
+                                                                                <div id="emailErrorMessage" class="errorMessage caret">
+                                                                                                <p class="emptyError hide">{@pre type="content" key="login.emailEmpty" /}</p>
+                                                                                                <p class="invalidError hide">{@pre type="content" key="login.emailInvalid" /}</p>
+                                                                                </div>
+                                                                </div>
+                                                                <div id="passworddiv" class="textInput">
+                                                                                <div class="input-group fieldWrapper">
+                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                                                                                <input type="password" placeholder="password" name="password" class="hasHelp validate form-control" id="password">
+                                                                                </div>
+                                                                                <div id="passwordErrorMessage" class="errorMessage caret">
+                                                                                                <p class="emptyError hide">{@pre type="content" key="login.passwordEmpty" /}</p>
+                                                                                </div>
+                                                                </div>
+
+                                                               <div class="form-group">
+                                                                                <input type="submit" class="btn btn-primary"  id="btn-login" value="Login">
+                                                                </div>
+                                                                {/formBody}
+                                                               <!-- close here -->
+
+                                                                
+                                                  
+                                </div>   
+                                  <div class="bs-callout  bs-callout-warning">
+                                                Sign In
+                                </div>                     
+                </div>
+                    <!----->
+
+
+         
+
+
+{/mainBlock}
+
+

@@ -1,0 +1,110 @@
+// COLORS
+// -------------------------
+
+@white:					#fff;
+@gray-dim:				#6e6d71;
+@green:					#3ea134;
+@red:					#b32317;
+@link-color:			#0079c1;
+@link-hover-color:		darken(@link-color, 15%);
+@palBlue:               #0079c1;
+@gray:					#666;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@grayDarker:            #333;
+@grayDark:              #444;
+@orange:      			#d7ae0a;
+@black:       			#000;
+
+// font colors
+@textColor:              @grayDark;
+@textColorDefault:       #555;
+@textColorBlue:          @palBlue;
+@textColorGreen:         #329e47;
+@textColorRed:           #b32317;
+@textColorWhite:         @white;
+
+@textColorOrangeOnGrey:  #d1834a;
+@textColorOrangeOnWhite: #dca500;
+
+@textColorLargeBold:     #717074;
+@textColorSmallLight:    @grayLight;
+@textColorRegular:       @gray;
+
+@headingsColor:          @grayDark;
+@headingsColorLight:     lighten(@grayDark, 3.5);
+@tapHighlightColor:      rgba(0, 0, 0, 0.2);
+
+//Scaffolding
+@bodyBackground:         #f8f8f8;
+
+// TYPOGRAPHY
+// -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamilySans:       "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontFamily:           @fontFamilySans;
+@fontFamilyLight:      "HelveticaNeue-Light", "Helvetica Neue Light", @fontFamilySans;
+@fontFamilyUltraLight: "HelveticaNeueUltraLight", "HelveticaNeue-UltraLight", "HelveticaNeue-Ultra-Light", "Helvetica Neue Ultra Light", @fontFamilySans;
+@fontFamilySerif:      Georgia, "Times New Roman", Times, serif;
+@fontFamilyMonospace:  Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:   14px;
+@baseFontFamily: @fontFamilySans;
+@baseLineHeight: 1.5em; // 20px
+
+// Default font for buttons is arial for readability
+@buttonFamily:     Arial, Helvetica, sans-serif;
+// temporary px dimension
+@tmp-buttonFontSize:   16px;
+@tmp-buttonLineHeight: 44px;
+@buttonFontSize:       unit(@tmp-buttonFontSize / @baseFontSize, em);
+@buttonLineHeight:     unit(@tmp-buttonLineHeight / @tmp-buttonFontSize, em);  // 44/16
+@inputHeight:          unit(@tmp-buttonLineHeight / @baseFontSize, em);  // 44/14
+
+@buttonFontSize:   1.14285714285714em; // 16px
+@buttonLineHeight: 2.75em; // 44/16
+@inputHeight:      3.14285714285714em; //44/14
+
+@headingsFontFamily: @fontFamilyLight;
+@headingsFontWeight: 300;    // instead of browser default, 300
+
+@fontSizeLarge: (round(@baseFontSize * 1.25)); // ~18px
+@fontSizeSmall: (round(@baseFontSize * 0.85)); // ~12px
+@fontSizeMini:  (round(@baseFontSize * 0.75)); // ~11px
+
+@fontSizeH1: round(@baseFontSize * 4.3); // 60px
+@fontSizeH2: round(@baseFontSize * 2.85); // 40px
+@fontSizeH3: round(@baseFontSize * 2.0); // 28px
+@fontSizeH4: round(@baseFontSize * 1.4); // 20px
+@fontSizeH5:       @baseFontSize;
+@fontSizeH6: round(@baseFontSize * 0.85); // ~12px
+
+
+@baseBorderRadius:  4px;
+@borderRadiusLarge: 6px;
+@borderRadiusSmall: 3px;
+
+
+// Buttons
+// -------------------------
+@btnBackground:                     @white;
+@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBorder:                         #bbb;
+
+@btnPrimaryBackground:              @link-color;
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              #444;
+@btnInverseBackgroundHighlight:     @grayDarker;

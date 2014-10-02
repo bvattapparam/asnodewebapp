@@ -1,0 +1,31 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    s
+{/pageTitle}
+
+
+
+{<header}
+    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+{/header}
+{<mainBlock}
+
+                <div id="dashBoard" class="section row">
+                                <div class="heading">
+                                                <h1>Travel</h1>
+                                 </div>
+                              
+                                
+                </div>
+ <span class="visible-lg">Large</dspaniv>
+<span class="visible-md">medium</span>
+<span class="visible-sm">small</span>
+<span class="visible-xs">mobile</span>
+
+
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}

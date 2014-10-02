@@ -1,0 +1,44 @@
+<div data-explore="{@pre type="content" key="setting.help" editable="false" /}" class="settingsWrapper">
+	<a role="button" aria-owns="settings" class="button secondary small" id="settingsBttn" href="#">
+		<span class="settings-icon"></span>
+		{?data.notificationCollection.notifications.todos}
+			<span class="todosTopCount">{data.notificationCollection.notifications.todos.length}</span>
+		{/data.notificationCollection.notifications.todos}
+		<span class="accessAid">{@pre type="content" key="setting.iconAlt"/}</span>
+	</a>
+	<div id="settingsBox" tabindex="-1" aria-labelledby="{@pre type="content" key="settings.heading.content" editable="false" /}" role="dialog" class="popover settingsBox">
+		<div class="popover-content">
+			<div class="popover-head">
+				<h2><a href="{@pre type="content" key="settings.heading.link" editable="false" /}">{@pre type="content" key="settings.heading.content"  /}</a></h2>
+				<a role="button" class="closeSettings" href="#"><span class="accessAid">{@pre type="content" key="settings.closeAlt"  /}</span></a>
+			</div>
+			<div class="popover-body">
+				<div class="merchantInfo">
+					<h3 class="userInfo">{@pre type="content" key="settings.userName"  /}</h3>
+					{?data.user.businessName}
+						<span class="businessInfo"><span class="businessLabel">{@pre type="content" key="settings.businessNameLabel"  /}</span>
+						<a href="{@pre type="content" key="settings.settings.link" editable="false" /}">{user.businessName}</a></span>
+					{/data.user.businessName}
+				</div>
+
+				<ul class="topNavLinks">
+					<li><a class="businiessSetupIcon" href="{@pre type="content" key="settings.businessSetup.link" editable="false" /}">{@pre type="content" key="settings.businessSetup.content"  /}</a></li>
+					<li><a class="settingsIcon" href="{@pre type="content" key="settings.settings.link" editable="false" /}">{@pre type="content" key="settings.settings.content"  /}</a></li>
+				</ul>
+
+				{?data.notificationCollection.notifications.todos}
+					<h3>{@pre type="content" key="settings.todosHeading"/} <span class="todosCount">{data.notificationCollection.notifications.todos.length}</span></h3>
+					<div class="subMenuWrapper">
+						<ul class="toDosList">
+							{#data.notificationCollection.notifications.todos}
+								<li>
+									<a href="{commandUrl}">{message}</a>
+								</li>
+							{/data.notificationCollection.notifications.todos}
+						</ul>
+					</div>
+				{/data.notificationCollection.notifications.todos}
+			</div>
+		</div>
+	</div>
+</div>

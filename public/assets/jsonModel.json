@@ -1,0 +1,85 @@
+            {"viewModel":{
+
+                "username":"Bijeshkumar",
+                "test":"value",
+        		"gallerySection":[
+                                                		{
+                                                			"Image":"images/dboard/free-60-icons-01.png",
+                                                			"description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                			"filterShow":"annaprasam"
+                                                		},
+                                                                                {
+                                                                                                "Image":"images/dboard/free-60-icons-02.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                {
+                                                                                                "Image":"images/dboard/free-60-icons-03.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-04.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-05.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-06.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-07.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-08.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-09.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-10.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                },
+                                                                                 {
+                                                                                                "Image":"images/dboard/free-60-icons-11.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                }, {
+                                                                                                "Image":"images/dboard/free-60-icons-12.png",
+                                                                                                "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
+                                                                                                "filterShow":"annaprasam"
+                                                                                }
+    		                                  ],
+                                              "donutcol" :  {
+                                                                      "d1" : {
+                                                                            "label" : "Travel",
+                                                                            "value" : "45"
+                                                                             },
+                                                                      "d2" : {
+                                                                            "label" : "Shopping",
+                                                                            "value" : "20"
+                                                                              },
+                                                                      "d3" : {
+                                                                            "label" : "Rent",
+                                                                            "value" : "15"
+                                                                             },
+                                                                      "d4" : {
+                                                                            "label" : "Credit Card",
+                                                                            "value" : "6"
+                                                                             }   
+                                                                    }
+            }
+        }

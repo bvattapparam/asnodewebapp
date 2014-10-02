@@ -1,0 +1,24 @@
+{! Temporary dust template until we get design from UED !}
+{>"layouts/template" /}
+
+{<pageTitle}
+	{@pre type="content" key="error400.pageTitle"/}
+{/pageTitle}
+
+{<header}
+	{>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+{/header}
+
+{<mainBlock}
+    <div class="row error400">
+        <div class="content-wrapper">
+            <h2>{@pre type="content" key="error400.headline"/}</h2>
+
+            <p>{@pre type="content" key="error400.errorBodyText"/}</p>
+        </div>
+    </div>
+{/mainBlock}
+
+{<footer}
+	{>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="false" /}
+{/footer}
