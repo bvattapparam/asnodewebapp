@@ -1,0 +1,18 @@
+{
+  "view engines": {
+    "dust": {
+      "settings": {
+        "helpers": [
+          "dusthelpers-supplement"
+        ]
+      }
+    }
+  },
+  "logger": {
+    "type": "cal"
+  },
+  "requestURI": "/hostedpaynodeweb",
+  "servicecore": {
+    "rejectUnauthorized": false
+  }
+}

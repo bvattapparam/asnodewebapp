@@ -1,0 +1,21 @@
+{
+    "middleware": {
+"csrf": {
+            "enabled": true,
+            "priority": 111,
+            "route": "/((?!api))*",
+            "module": {
+                "name": "lusca",
+                "method": "csrf",
+                "arguments": [ {} ]
+            }
+        },
+        "session": {
+            /*"module": "connect-mayfly",*/
+            "secret": "something"
+        },
+        "wurfl": {
+            "capabilities": ["is_wireless_device", "is_tablet"]
+        }
+    }
+}
