@@ -15,7 +15,37 @@
                                 <div class="heading">
                                                 <h1>Travel</h1>
                                  </div>
-                              
+                              	<div class="table-responsive">
+	  		<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Booked Date</th>
+						<th>Travel Date</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Mode</th>
+						<th>PNR</th>
+						<th>Travel Status</th>
+						<th>Travel Count</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{#data.viewModel}
+						<tr  class="{@if cond="'{travel_status}' === 'CANCELLED'"}danger{:else}{/if}">
+							<td>{@formatDate date="{booked_date}" format="MM / DD / YY"/}</td>
+							<td>{@formatDate date="{travel_date}" format="dddd MMM Do YYYY"/}</td>
+							<td>{travel_from}</td>
+							<td>{travel_to}</td>
+							<td><span class="fa fa-{travel_mode}"></span></td>
+							<td>{travel_pnr}</td>
+							<td>{travel_status}</td>
+							<td>{travel_count}</td>
+						</tr>
+					{/data.viewModel}
+				</tbody>
+			</table> 
+		</div>
                                 
                 </div>
  <span class="visible-lg">Large</dspaniv>

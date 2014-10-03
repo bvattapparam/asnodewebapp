@@ -2,12 +2,14 @@
 
 
 var kraken = require('kraken-js'),
-flash = require('connect-flash'),
- baseURI = require('./config/app.json').requestURI,
- auth = require('./lib/auth'),
-   passport = require('passport'),
-   mysqlDB = require('mysql'),
-    app = {};
+        flash = require('connect-flash'),
+        baseURI = require('./config/app.json').requestURI,
+        auth = require('./lib/auth'),
+        passport = require('passport'),
+        mysqlDB = require('mysql'),
+        app = {};
+        require('./lib/helper-dateFormat');
+     //   console.log("BASE" + baseURI);
 
 
 app.configure = function configure(nconf, next) {

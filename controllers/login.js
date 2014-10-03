@@ -21,10 +21,11 @@ module.exports = function (app) {
 
         //Include any error messages that come from the login process.
       //  { message: req.flash('loginMessage') }
-        model.messages = req.flash('error');
-        model.messages1 = req.flash('message');
+        //model.messages = req.flash('error');
+      //  model.messages1 = req.flash('message');
 
-        console.log("redirected");
+        console.log("redirected to login");
+         console.log("LOGIN PAGE " + rootURI);
         
         res.render('index', model);
     });
@@ -37,9 +38,10 @@ module.exports = function (app) {
      * Failed authentications will go back to the login page with a helpful error message to be displayed.
      */
     app.post('/login', function (req, res) {
-        console.log("ok : " + req.session.goingTo);
+
+        //console.log("ok : " + req.session.goingTo);
         passport.authenticate('local', {
-            successRedirect: rootURI + req.session.goingTo || rootURI + "/dashboard",
+            successRedirect:  rootURI + "/dashboard",
             failureRedirect:  rootURI+ "/login",
             failureFlash: true
         })(req, res);

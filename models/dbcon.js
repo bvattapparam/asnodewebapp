@@ -55,6 +55,28 @@ dbCon.prototype={
                                                                 });
                                                 }
                                 });
+                },
+                showRowFields:function(oTable,finalCallback){
+                                this.dbConnection.getConnection(function(err,connection){
+                                                if(err){
+                                                                console.log("get Connection ERROR : " + err);
+                                                }
+                                                else
+                                                {
+                                                                //console.log("MySQL CONNECTED");
+                                                               var oRowFetch= connection.query('SELECT * FROM ' +  oTable, function(err,result){
+                                                                                if(err){
+                                                                                             console.log("query ERROR in SELECT : " + err);  
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                               console.log("QUERY : "+ oRowFetch.sql);
+                                                                                                console.log("here" + JSON.stringify(result));
+                                                                                                finalCallback(result);
+                                                                                }
+                                                                });
+                                                }
+                                });
                 }
 
 

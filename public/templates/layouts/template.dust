@@ -9,7 +9,7 @@
         document.documentElement.className = "js";
 </script>
 </head>
-<body data-view-name="{viewName}" data-template-path="/hostedpaynodeweb/templates/%s.js">
+<body data-view-name="{viewName}" data-template-path="/asnodewebapp/templates/%s.js">
    
     <noscript>
         <p class="nonjsAlert" role="alert">
@@ -26,6 +26,6 @@
 
     {+footer /}
 
-    <script data-main="/hostedpaynodeweb/js/app" src="/hostedpaynodeweb/js/lib/require.js"></script>
+    <script data-main="/asnodewebapp/js/app" src="/asnodewebapp/js/lib/require.js"></script>
 </body>
 </html>

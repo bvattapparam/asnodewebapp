@@ -1,4 +1,4 @@
-<form action="/hostedpaynodeweb/login" method="post" {?id}id="{id|ha|s}"{/id} class="{^proceed}proceed{/proceed}" {+formAttr/} novalidate>
+<form action="/asnodewebapp/login" method="post" {?id}id="{id|ha|s}"{/id} class="{^proceed}proceed{/proceed}" {+formAttr/} novalidate>
     <input type="hidden" id="token" name="_csrf" value="{_csrf}">
     {+formBody /}
 </form>
