@@ -13,6 +13,8 @@ requirejs.config({
         "dust-helpers" :            "lib/dust-helpers-1.1.1",
         "dust-helpers-supplement" : "lib/dust-helpers-supplement",
         "bootstrap" :               "lib/bootstrap.min",
+          "bootstrap-cal":"lib/bootstrap-datetimepicker",
+       "moment" :  "lib/moment",
          "raphael" :               "lib/raphael-min",
           "morris" :               "lib/morris.min",
         "lap"       :               "lib/lap",
@@ -20,9 +22,6 @@ requirejs.config({
         "popUp":                    "lib/popUp",
         "cookie":                   "lib/jquery.cookie",
         "viewUtil":                 "util/view",
-        "dashboard":     "view/dashboard",
-        "travel":     "view/travel",
-        "login":     "view/login",
         "footer":                   "bower_components/merchant-footer/merchant-footer",
         "header":                   "bower_components/merchant-header/merchant-header",
         "opinionLabComponent":      "bower_components/merchant-opinion-lab/opinionLabComponent",
@@ -32,7 +31,11 @@ requirejs.config({
 
         //Widgets
         "validation":               'validation',
-        "errorDisplay":             'errorDisplay'
+        "errorDisplay":             'errorDisplay',
+        "datatables":"lib/jquery.dataTables.min",
+        "dt":"lib/jquery-DT-pagination",
+        'login' : 'view/login'
+       
     },
     useStrict: true,
     shim: {

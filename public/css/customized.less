@@ -1,6 +1,8 @@
 #loginpage{
      background-color: transparent !important;
       background-image: none;
+      margin:200px auto;
+
 }
 #loginbody {
     background:url("../images/src/login_bg1.jpg") no-repeat;
@@ -45,6 +47,7 @@
         margin:auto;
         margin-top:150px;
         border-radius:0;
+        background:none repeat scroll 0 0 rgba(213, 215, 222, 0.8)
     }
     .form-group {
         margin-bottom: 0;
@@ -74,7 +77,8 @@
     margin: 4px;
     }
     .login-head{
-    margin: -70px 0  0 90px;  
+    text-align:center;
+    margin:25px  0 0;
     }
     .panel-heading{
       border-radius:0;
@@ -84,6 +88,27 @@
     margin: 0;
     padding: 5px;
     font-size:12px
+    }
+    .panel-header {
+        height:80px; 
+        background-color:#fff;
+        position:fixed;
+        top:0px;
+        font-size:45px;
+         font-weight:bold; 
+         color:#0099FF;
+         box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.25);
+         background-color:#eee;
+         border-bottom:1px solid #eee;
+    }
+    .panel-gray{
+    border:2px solid #ccc;
+}
+    .panel-gray .panel-heading{
+         background-color: #fff;
+        border-color: #ccc;
+        color: #999;
+        font-weight:bold;
     }
 }
 
@@ -118,16 +143,7 @@
     font-size: 22px;
     font-weight:bold;
 }
-.panel-gray{
-    background-color: rgba(245, 245, 245, 0.4);
-    border-color:#eee;
-}
-.panel-gray .panel-heading{
-     background-color: #fff;
-    border-color: #ccc;
-    color: #999;
-    font-weight:bold;
-}
+
 .section-box{padding:15px 0 !important}
 .section-donutpanel{min-height:250px !important}
 .section-statuspanel{min-height:400px !important}
@@ -165,4 +181,111 @@ border-color: #f1e7bc;
 .bs-callout-info {
 background-color: #f0f7fd;
 border-color: #d0e3f0;
+}
+#travel{
+    .pagination{
+    margin:0;
+    }
+    .pagination-topliner{
+        border-top:2px solid #ccc;
+        padding-top:10px;
+    }
+    .pagination-topliner label{
+    font-weight:normal;
+    }
+    .form-control{
+    font-size:14px;
+    }
+    
+}
+
+// generic styles added here----------------------
+.modal-title{
+    font-weight:bold;
+}
+
+ .textInput input { 
+      height:36px;
+      border:1px solid #cccccc;
+    }
+    .textInput {
+    margin: 0 ;
+    }
+    .textInput input:focus{
+    border-color: #66afe9;
+    }
+    .textInput.hasError input {
+       // background-image: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprite_form_2x.png");
+        background-position: right 10px top -309px;
+        border-color:#c72f38;
+        background-size:19px auto;
+    }
+    .textInput input, .textInput textarea  {
+    font-size:14px;
+    }
+
+
+    // Dropdown select box css overwrite here
+   .selectDropdown  {
+   background: url("../images/sprite/sprite_ui.png") no-repeat scroll right -1686px,;
+    float:left;
+    width:auto;
+    border-left:1px solid;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-color:#ccc;
+    padding-top:2px;
+}
+   .selectDropdown select {
+   clear:left;
+   float:left;
+   margin-top:-2.1em;
+   opacity:0;
+    padding: 0.2em 0.8em 0.2em 0.2em;
+    width:auto;
+    height:34px;
+}
+select {
+    background-color: #ffffff;
+    border: 1px solid #bbb;
+}
+.selectDropdown span {
+    float: left;
+    line-height: 2.07em;
+    padding: 0 2em 0 0.55em;
+}
+.success{
+    color:green
+}
+.info{
+    color:blue;
+}
+.success, .info{
+    float:left;
+    display:inline-block;
+}
+.alert-box-content{
+    font-size:14px;
+    display:inline-block;
+    margin-left:10px;
+}
+// model overwrite
+.modal-dialog {
+    width: 500px;
+}
+.modal-body {
+    padding: 1px 15px;
+}
+.modal-header {
+    border-bottom: 0 none;
+    }
+    .modal-footer {
+    border-top: 0 none;
+}
+.note {
+    font-size: 12px;
+}
+// close it here
+.modal-btn{
+    width:100%;
 }

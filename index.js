@@ -9,9 +9,7 @@ var kraken = require('kraken-js'),
         mysqlDB = require('mysql'),
         app = {};
         require('./lib/helper-dateFormat');
-     //   console.log("BASE" + baseURI);
-
-
+        
 app.configure = function configure(nconf, next) {
     var connection = mysqlDB.createConnection({
   host     : 'localhost',
@@ -26,9 +24,6 @@ app.configure = function configure(nconf, next) {
     });
 
     passport.deserializeUser(function (userid, done) {
-       /* User.findOne({_id: userid}, function (err, user) {
-            done(null, user);
-        });*/
      connection.query("select * from tbl_user where userid = "+ userid, function(err, rows){
             done(err, rows[0]);
         });

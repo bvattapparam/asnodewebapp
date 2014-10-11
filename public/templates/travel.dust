@@ -1,7 +1,7 @@
 {>"layouts/template" /}
 
 {<pageTitle}
-    s
+    	{@pre type="content" key="travel.title" /}
 {/pageTitle}
 
 
@@ -10,13 +10,12 @@
     {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
 {/header}
 {<mainBlock}
-
-                <div id="dashBoard" class="section row">
+                <div id="travel" class="section row">
                                 <div class="heading">
-                                                <h1>Travel</h1>
+                                                <h1>{@pre type="content" key="travel.title" /}</h1>
                                  </div>
                               	<div class="table-responsive">
-	  		<table class="table table-hover">
+	  		<table  id="travelData" class="table table-hover table-condensed">
 				<thead>
 					<tr>
 						<th>Booked Date</th>
@@ -26,7 +25,8 @@
 						<th>Mode</th>
 						<th>PNR</th>
 						<th>Travel Status</th>
-						<th>Travel Count</th>
+						<th>Travel Amount</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 
@@ -40,19 +40,27 @@
 							<td><span class="fa fa-{travel_mode}"></span></td>
 							<td>{travel_pnr}</td>
 							<td>{travel_status}</td>
-							<td>{travel_count}</td>
+							<td>{travel_amount}</td>
+							<td><span class="fa fa-edit" data-toggle="modal" data-target="#myModal"></span> | <span class="fa fa-remove"></span></td>
 						</tr>
 					{/data.viewModel}
 				</tbody>
 			</table> 
 		</div>
-                                
-                </div>
- <span class="visible-lg">Large</dspaniv>
-<span class="visible-md">medium</span>
-<span class="visible-sm">small</span>
-<span class="visible-xs">mobile</span>
+		<div class="row">
+		<div class="col-lg-12">
+		<a href="/asnodewebapp/traveladd"><span class="fa fa-bus fa-1x"></span><strong> &nbsp;{@pre type="content" key="travel.addnewtravel" /}</strong></a>
+		</div>
+		</div>
 
+
+                                      
+
+                                         {>"inc/modeledit_travel" /}
+                </div>
+
+                 
+{>"inc/modal" /}
 
 {/mainBlock}
 

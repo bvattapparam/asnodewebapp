@@ -6,11 +6,12 @@
 
 {<mainBlock}
                 <!--->
+                <div class="col-lg-12 panel-header">
+                        <div><img src="images/src/asna.gif" height=70></div>
+                </div>
                 <div  id="loginPage" class="panel panel-gray loginpanel">
                                 <div class="login-head">
-                                                <figure class="round-outline">
-                                                                <img class="round-photo img-responsive" src="images/src/login_face.jpg" alt="" width=100>
-                                                </figure>
+                                                <span class="fa fa-user fa-5x"></span>
                                 </div>
                                 {?messages}
                     <ul>
@@ -23,18 +24,13 @@
 
                     </ul>
                 {/messages}
-                                
                                 <div class="panel-body">
                                                 <div class="alert alert-danger col-sm-12" id="login-alert" style="display:none"></div>
                                                                
                                                                <!--- place for component-->
                                                                 {>"inc/form" /}
 
-                                                                {<formAttr}
-                                                                    name="login"
-                                                                    autocomplete="off"
-                                                                    id="frm"
-                                                                {/formAttr}
+                                                                {<formAttr} name="login"  autocomplete="off" id="frm" action="login" {/formAttr}
                                                                {<formBody}
                                                                <div id="emaildiv" class="textInput">
                                                                                 <div class="input-group fieldWrapper">
@@ -66,9 +62,7 @@
                                                                 
                                                   
                                 </div>   
-                                  <div class="bs-callout  bs-callout-warning">
-                                                Sign In
-                                </div>                     
+                                                
                 </div>
                     <!----->
 

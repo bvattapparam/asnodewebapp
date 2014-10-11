@@ -1,7 +1,5 @@
   "use strict";
 /* global define:true */
-
-
 define([
     'nougat',
     'underscore',
@@ -41,8 +39,8 @@ function (nougat, _, $, Backbone, BaseView, ViewUtil,Validation, ErrorDisplay) {
                 }, this);
 
                 Validation.init(this);
-        },
+        }
         });
 
-        return new loginView();
+        return  new loginView();
     }); 

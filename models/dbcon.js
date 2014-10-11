@@ -41,16 +41,27 @@ dbCon.prototype={
                                                 }
                                                 else
                                                 {
-                                                                //console.log("MySQL CONNECTED");
+                                                                
+                                                                var message={};//console.log("MySQL CONNECTED");
                                                                var insertquery= connection.query('insert into  ' +  oTable + ' set ?' ,  oParams, function(err,result){
                                                                                 if(err){
                                                                                              console.log("query ERROR : " + err);  
+                                                                                              var message,messagecontent;
+                                                                                              message="info";
+                                                                                              messagecontent=err+"There is some error"
+                                                                                            finalCallback(err,message);
                                                                                 }
                                                                                 else
                                                                                 {
                                                                                                console.log("QUERY : "+ insertquery.sql);
                                                                                                 console.log("here" + JSON.stringify(result));
-                                                                                                finalCallback(result);
+                                                                                               
+                                                                                              message={
+                                                                                                        messagetype:"success",
+                                                                                                        messagecontent:"Data has been added successfully!"
+                                                                                              };
+                                                                                            
+                                                                                                finalCallback(result,message);
                                                                                 }
                                                                 });
                                                 }

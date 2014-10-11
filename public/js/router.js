@@ -5,15 +5,17 @@ define([ 'nougat',
         'BaseView',
         'business/pageView',
         'bootstrap',
+        'moment',
+        'bootstrap-cal',
         'lap',
         'businessHelper',
         'raphael',
         'morris',
         'header',
         'footer',
-        'login',
-        'dashboard',
-        'travel'
+        'datatables',
+        'dt',
+        'login'
     ],
     function (nougat, $, Backbone, BaseView, ContentView) {
 
@@ -84,7 +86,7 @@ define([ 'nougat',
             Backbone.history.start({
                 pushState: true, // Use HTML5 Push State
                 hashChange: false, // Do full page refresh if Push State isn't supported
-                root: "/settlementprefsnodeweb/" //Initial path for app
+                root: "/asnodewebapp/" //Initial path for app
             });
         });
     });

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}">
 <head>
+<link href="images/src/favicon.gif" rel="shortcut icon">
+<link href="images/src/favicon.gif" rel="apple-touch-icon">
 {>"bower_components/UVLPageInfo/templates/pageInfo" /}
 <title>{+pageTitle /} - {@pre type="content" key="template.browserTitle" editable="false"/}</title>
 <link rel="stylesheet" href="css/app.css" />

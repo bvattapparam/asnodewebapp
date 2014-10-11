@@ -17,6 +17,11 @@ module.exports = function (app) {
     /**
      * Display the login page. We also want to display any error messages that result from a failed login attempt.
      */
+
+     app.get('/', function (req, res){
+        res.render('index',model);
+     });
+
     app.get('/login', function (req, res) {
 
         //Include any error messages that come from the login process.
@@ -41,7 +46,7 @@ module.exports = function (app) {
 
         //console.log("ok : " + req.session.goingTo);
         passport.authenticate('local', {
-            successRedirect:  rootURI + "/dashboard",
+            successRedirect:   req.session.goingTo || rootURI + "/dashboard",
             failureRedirect:  rootURI+ "/login",
             failureFlash: true
         })(req, res);

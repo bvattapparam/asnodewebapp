@@ -10,7 +10,7 @@
 			<a href="#contents" class="skip">{@pre type="content" key="merchant-header.skipToMain"/}</a>
 
 			<a href="/" class="logo">
-				<img alt="{@pre type="content" key="merchant-header.logoIconAlt" editable="false" /}" src="https://www.paypalobjects.com/webstatic/i/ex_ce2/logo/logo_paypal_106x28.png">
+				<img alt="{@pre type="content" key="merchant-header.logoIconAlt" editable="false" /}" src="images/src/asna.gif" height=50>
 			</a>
 
 			<nav role="navigation" id="navMenu">
