@@ -22,14 +22,13 @@ var Travel = {
                     console.log("getTravelTransactionData");
                                 var helper = new Helper();
                                  var dbconnection = new dbConModel();
-                                 var oTable = "tbl_travel";
+                                // var oTable = "tbl_travel";
 
                                 var oParams = {
-                                                "username": "USPS_Domestic",
-                                                "password": "US"
+                                                oTable:'tbl_travel'
                                 };
                                 
-                                dbconnection.showRowFields(oTable,
+                                dbconnection.getRowFields(oParams,
                                 function (model) {
                                                        var  serviceResponse = (model) ? model : {};
                                                         console.log("TRAVEL RESPONSE DATA : " + JSON.stringify(serviceResponse));

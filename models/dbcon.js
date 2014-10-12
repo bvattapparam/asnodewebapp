@@ -12,29 +12,29 @@ var dbCon= function(){
 };
 
 dbCon.prototype={
-                showFields:function(oTable,oParams,finalCallback){
-                                this.dbConnection.getConnection(function(err,connection){
-                                                if(err){
-                                                                console.log("get Connection ERROR : " + err);
-                                                }
-                                                else
-                                                {
-                                                                //console.log("MySQL CONNECTED");
-                                                                connection.query('select  * from  ' +  oTable ,  function(err,result){
-                                                                                if(err){
-                                                                                             console.log("query ERROR : " + err);  
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                              //  console.log("here" + JSON.stringify(rv));
-                                                                                                finalCallback(result);
-                                                                                }
-                                                                });
-                                                }
-                                });
-                },
+                // showFields:function(oTable,oParams,finalCallback){
+                //                 this.dbConnection.getConnection(function(err,connection){
+                //                                 if(err){
+                //                                                 console.log("get Connection ERROR : " + err);
+                //                                 }
+                //                                 else
+                //                                 {
+                //                                                 //console.log("MySQL CONNECTED");
+                //                                                 connection.query('select  * from  ' +  oTable ,  function(err,result){
+                //                                                                 if(err){
+                //                                                                              console.log("query ERROR : " + err);  
+                //                                                                 }
+                //                                                                 else
+                //                                                                 {
+                //                                                                               //  console.log("here" + JSON.stringify(rv));
+                //                                                                                 finalCallback(result);
+                //                                                                 }
+                //                                                 });
+                //                                 }
+                //                 });
+                // },
 
-                 insertFields:function(oTable,oParams,finalCallback){
+                 getInsertFields:function(oParams,finalCallback){
                                 this.dbConnection.getConnection(function(err,connection){
                                                 if(err){
                                                                 console.log("get Connection ERROR : " + err);
@@ -43,7 +43,7 @@ dbCon.prototype={
                                                 {
                                                                 
                                                                 var message={};//console.log("MySQL CONNECTED");
-                                                               var insertquery= connection.query('insert into  ' +  oTable + ' set ?' ,  oParams, function(err,result){
+                                                               var insertquery= connection.query('insert into  ' +  oParams.oTable + ' set ?' ,  oParams.params, function(err,result){
                                                                                 if(err){
                                                                                              console.log("query ERROR : " + err);  
                                                                                               var message,messagecontent;
@@ -67,7 +67,7 @@ dbCon.prototype={
                                                 }
                                 });
                 },
-                showRowFields:function(oTable,finalCallback){
+                getRowFields:function(oParams,finalCallback){
                                 this.dbConnection.getConnection(function(err,connection){
                                                 if(err){
                                                                 console.log("get Connection ERROR : " + err);
@@ -75,7 +75,7 @@ dbCon.prototype={
                                                 else
                                                 {
                                                                 //console.log("MySQL CONNECTED");
-                                                               var oRowFetch= connection.query('SELECT * FROM ' +  oTable, function(err,result){
+                                                               var oRowFetch= connection.query('SELECT * FROM ' +  oParams.oTable, function(err,result){
                                                                                 if(err){
                                                                                              console.log("query ERROR in SELECT : " + err);  
                                                                                 }
@@ -89,7 +89,7 @@ dbCon.prototype={
                                                 }
                                 });
                 },
-                   showSearchFields_Travel:function(oParams,finalCallback){
+                getUpdateDataonID:function(oParams,finalCallback){
                                 this.dbConnection.getConnection(function(err,connection){
                                                 if(err){
                                                                 console.log("get Connection ERROR : " + err);
@@ -97,7 +97,34 @@ dbCon.prototype={
                                                 else
                                                 {
                                                                 //console.log("MySQL CONNECTED" + oParams.param);
-                                                               var oRowFetch= connection.query('SELECT * FROM tbl_travel where travel_id='+oParams.travel_id, function(err,result){
+                                                               var oRowFetch= connection.query('UPDATE '+oParams.oTable+' set ? where '+oParams.oField+'='+oParams.oId, oParams.param, function(err,result){
+                                                               
+                                                               console.log("QUERY" + oRowFetch.sql);// ('insert into  ' +  oTable + ' set ?' ,  oParams, function(err,result){
+                                                                                if(err){
+                                                                                             console.log("query ERROR in SELECT : " + err);  
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                                var message={
+                                                                                                        messagetype:"success",
+                                                                                                        messagecontent:"Data has been edited successfully!"
+                                                                                                };
+                                                                                                finalCallback(result,message);
+                                                                                }
+                                                                });
+                                                }
+                                });
+                },
+
+                getDataonID:function(oParams,finalCallback){
+                                this.dbConnection.getConnection(function(err,connection){
+                                                if(err){
+                                                                console.log("get Connection ERROR : " + err);
+                                                }
+                                                else
+                                                {
+                                                                //console.log("MySQL CONNECTED" + oParams.param);
+                                                               var oRowFetch= connection.query('SELECT * FROM '+oParams.oTable+' where '+oParams.oField+'='+oParams.oId, function(err,result){
                                                                                 if(err){
                                                                                              console.log("query ERROR in SELECT : " + err);  
                                                                                 }
@@ -111,37 +138,8 @@ dbCon.prototype={
                                                                 });
                                                 }
                                 });
-                },
-                    getUpdateTravelData:function(oTravelID,oParams,finalCallback){
-                                this.dbConnection.getConnection(function(err,connection){
-                                                if(err){
-                                                                console.log("get Connection ERROR : " + err);
-                                                }
-                                                else
-                                                {
-                                                                //console.log("MySQL CONNECTED" + oParams.param);
-                                                               var oRowFetch= connection.query('UPDATE tbl_travel set ? where travel_id='+oTravelID, oParams, function(err,result){
-                                                               
-                                                               console.log("QUERY" + oRowFetch.sql);// ('insert into  ' +  oTable + ' set ?' ,  oParams, function(err,result){
-                                                                                if(err){
-                                                                                             console.log("query ERROR in SELECT : " + err);  
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                               // console.log("QUERY : "+ oRowFetch.sql);
-                                                                                               //  console.log("here" + JSON.stringify(result));
-                                                                                               //  console.log("ROW DATA" + JSON.stringify(result));
-
-                                                                                                var message={
-                                                                                                        messagetype:"success",
-                                                                                                        messagecontent:"Data has been edited successfully!"
-                                                                                                };
-                                                                                                finalCallback(result,message);
-                                                                                }
-                                                                });
-                                                }
-                                });
                 }
+                
 
 
 };

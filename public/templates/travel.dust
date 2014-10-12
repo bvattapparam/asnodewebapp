@@ -12,7 +12,10 @@
                                 <div class="heading">
                                                 <h1>{@pre type="content" key="travel.title" /}</h1>
                                  </div>
-                                 
+                                 <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li class="active">Travel</li>
+                                 </ul>
                                  <span id="loadingspan" class="hide"></span>
                               	<div class="table-responsive">
 	  		<table  id="travelData" class="table table-hover table-condensed">
@@ -32,7 +35,7 @@
 
 				<tbody>
 					{#data.viewModel}
-						<tr  class="{@if cond="'{travel_status}' === 'CANCELLED'"}danger{:else}{/if}">
+						<tr  class="{@if cond="'{travel_status}' === 'CANCELLED'"}warning{:else}{/if}">
 							<td>{@formatDate date="{travel_bookeddate}" format="dddd MMM Do YYYY"/}</td>
 							<td>{@formatDate date="{travel_date}" format="dddd MMM Do YYYY"/}</td>
 							<td>{travel_from}</td>
