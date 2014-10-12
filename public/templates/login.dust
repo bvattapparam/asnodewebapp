@@ -35,7 +35,7 @@
                                                                <div id="emaildiv" class="textInput">
                                                                                 <div class="input-group fieldWrapper">
                                                                                                  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                                                                <input type="text" placeholder="email needed" value="" name="email" class="hasHelp validate form-control" id="email">    
+                                                                                                <input type="text" placeholder="email needed" value="bvattapparam@paypal.com" name="email" class="hasHelp validate form-control" id="email">    
                                  
                                                                                 </div>
                                                                                 <div id="emailErrorMessage" class="errorMessage caret">
@@ -46,7 +46,7 @@
                                                                 <div id="passworddiv" class="textInput">
                                                                                 <div class="input-group fieldWrapper">
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                                                                <input type="password" placeholder="password" name="password" class="hasHelp validate form-control" id="password">
+                                                                                                <input type="password" placeholder="password" name="password" class="hasHelp validate form-control" id="password" value="releaseMe">
                                                                                 </div>
                                                                                 <div id="passwordErrorMessage" class="errorMessage caret">
                                                                                                 <p class="emptyError hide">{@pre type="content" key="login.passwordEmpty" /}</p>

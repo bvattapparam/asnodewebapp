@@ -214,6 +214,50 @@
 	}
 }
 
+ #contents{
+	.loadingTransp {
+		min-height: 147px;
+		display: block;
+		background: @white url(https://www.paypalobjects.com/webstatic/i/ex_ce2/icon/icon_loadingGraphic_42x42_2011_10_24.gif) no-repeat center center;
+		.hide-text;
+		background-color:  rgba(213, 215, 222, 0.9);
+	}
+
+	.fetching {
+		.loading-icon-renderer.fetchLoading{
+			display: table;
+			margin:  20px auto;
+		}
+	}
+
+	.loading-icon-renderer, .loading-icon-renderer.fetchLoading{
+		display: none;
+	}
+}
+
+#contents{
+	.loading {
+		min-height: 147px;
+		display: block;
+		background: @white url(https://www.paypalobjects.com/webstatic/i/ex_ce2/icon/icon_loadingGraphic_42x42_2011_10_24.gif) no-repeat center center;
+		.hide-text;
+		background-color:  rgba(213, 215, 222, 0.9);
+	}
+
+	.fetching {
+		.loading-icon-renderer.fetchLoading{
+			display: table;
+			margin:  20px auto;
+		}
+	}
+
+	.loading-icon-renderer, .loading-icon-renderer.fetchLoading{
+		display: none;
+	}
+}
+
+
+
 .loading-icon-renderer{
 	display: none;
 	height:300px;

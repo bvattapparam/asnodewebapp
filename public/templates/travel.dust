@@ -4,8 +4,6 @@
     	{@pre type="content" key="travel.title" /}
 {/pageTitle}
 
-
-
 {<header}
     {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
 {/header}
@@ -14,6 +12,8 @@
                                 <div class="heading">
                                                 <h1>{@pre type="content" key="travel.title" /}</h1>
                                  </div>
+                                 
+                                 <span id="loadingspan" class="hide"></span>
                               	<div class="table-responsive">
 	  		<table  id="travelData" class="table table-hover table-condensed">
 				<thead>
@@ -33,7 +33,7 @@
 				<tbody>
 					{#data.viewModel}
 						<tr  class="{@if cond="'{travel_status}' === 'CANCELLED'"}danger{:else}{/if}">
-							<td>{@formatDate date="{booked_date}" format="MM / DD / YY"/}</td>
+							<td>{@formatDate date="{travel_bookeddate}" format="dddd MMM Do YYYY"/}</td>
 							<td>{@formatDate date="{travel_date}" format="dddd MMM Do YYYY"/}</td>
 							<td>{travel_from}</td>
 							<td>{travel_to}</td>
@@ -41,7 +41,7 @@
 							<td>{travel_pnr}</td>
 							<td>{travel_status}</td>
 							<td>{travel_amount}</td>
-							<td><span class="fa fa-edit" data-toggle="modal" data-target="#myModal"></span> | <span class="fa fa-remove"></span></td>
+							<td><span  class="fa fa-edit editTravelCall" data-toggle="modal" id="{travel_id}"></span> | <span class="fa fa-remove"></span></td>
 						</tr>
 					{/data.viewModel}
 				</tbody>
@@ -52,16 +52,11 @@
 		<a href="/asnodewebapp/traveladd"><span class="fa fa-bus fa-1x"></span><strong> &nbsp;{@pre type="content" key="travel.addnewtravel" /}</strong></a>
 		</div>
 		</div>
-
-
-                                      
-
-                                         {>"inc/modeledit_travel" /}
+		<div class="moduleContent" id="travelDataView"> <!--- where ajax call-->
+			<input type="hidden" name="_csrf" value="{_csrf}" />
+	    		{>"inc/modeledit_travel"/}
+		</div>
                 </div>
-
-                 
-{>"inc/modal" /}
-
 {/mainBlock}
 
 {<footer}

@@ -53,7 +53,9 @@ var Travel = {
                                 server.post("/travel",Travel.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);
                                 });
-                }
+
+                },
+              
 };
 module.exports=Travel.routes;
 
