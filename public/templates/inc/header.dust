@@ -1,0 +1,10 @@
+{!Template: header !}
+
+<div class="container">
+  <div class="row" style="background-color:white;">
+    <div class="col-md-12">
+        <br/>
+    </div>
+    <div class="col-md-12 col-sm-6"><p><img src="https://www.paypalobjects.com/webstatic/logo/logo_paypal_212x56.png" alt="PayPal" /> <h1>Welcome {login}</h1></p></div>
+  </div>
+</div>

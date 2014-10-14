@@ -1,0 +1,18 @@
+{!
+    Template: inc/footer
+    @param  pageName    The name of the page to pass to OpinionLab
+!}
+
+{! Adapted URLs !}
+
+
+<div class="container">
+  <div class="row" style="background-color:white;">
+    <div class="col-md-12 col-sm-6">
+        <p>
+            {@pre type="content" key="footer.copyright"/}{~s}
+            {@pre type="content" key="footer.copyrightText"/}
+        </p>
+    </div>
+  </div>
+</div>

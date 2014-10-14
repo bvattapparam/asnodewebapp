@@ -1,0 +1,23 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+	{@pre type="content" key="secondaryUserError.pageTitle"/}
+{/pageTitle}
+
+{<header}
+	{>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+{/header}
+
+{<mainBlock}
+	<div class="row section secondary-user-error">
+		<div class="content-wrapper">
+			<p>
+				<span class="vertical-align">{@pre type="content" key="secondaryUserError.BodyText"/}</span>
+			</p>
+		</div>
+	</div>
+{/mainBlock}
+
+{<footer}
+	{>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="false" /}
+{/footer}

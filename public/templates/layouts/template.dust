@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}">
+<head>
+<link href="images/src/favicon.gif" rel="shortcut icon">
+<link href="images/src/favicon.gif" rel="apple-touch-icon">
+{>"bower_components/UVLPageInfo/templates/pageInfo" /}
+<title>{+pageTitle /} - {@pre type="content" key="template.browserTitle" editable="false"/}</title>
+<link rel="stylesheet" href="css/app.css" />
+<script>
+        {! update the class on the page with class "js" instead of "no-js". We use that class to avoid flash of uninitialized JS !}
+        document.documentElement.className = "js";
+</script>
+</head>
+<body data-view-name="{viewName}" data-template-path="/asnodewebapp/templates/%s.js">
+   
+    <noscript>
+        <p class="nonjsAlert" role="alert">
+            {@pre type="content" key="template.nonJSNote"  /}
+        </p>
+    </noscript>
+
+    {+header /}
+
+    <div class="container contents" role="main" id="contents">
+        {+tileTabBlock /}
+        {+mainBlock /}
+    </div>
+
+    {+footer /}
+
+    <script data-main="/asnodewebapp/js/app" src="/asnodewebapp/js/lib/require.js"></script>
+</body>
+</html>

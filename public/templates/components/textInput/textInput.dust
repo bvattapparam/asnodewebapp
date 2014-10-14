@@ -1,0 +1,67 @@
+{!
+	Generic partial used for rendering a form input.
+	HTML5 Validation attributes
+	@param autocomplete 	Input autocomplete
+	@param autofocus		Input autofocus
+	@param name          	Input name (defaults to id value)
+	@param type          	Input type (defaults to 'text' value)
+	@param value         	Input value
+	@param label			Input label
+	@param labelKey			Input label key to use with content
+	@param id            	Input ID
+	@param divId            Containing div ID
+	@param errorMessageId   Error message div ID
+	@param emptyErrorMessage      Error message when input is empty
+	@param invalidErrorMessage    Error message when input is invalid
+	@param className        CSS class names to apply to the input's parent element
+	@param lap				Expected values "true"/"". Applies paypal specific placeholder behaviour
+	@param pattern       	Regex pattern
+	@param confidential  	Set to enable "confidential" behavior in Tea Leaf
+	@param required			Set HTML5 required field validation
+	@param restricted    	Set to enable "restricted"" behavior in Tea Leaf
+	@param autocapitalize	Input autocapitalize
+	@param placeholder		Placeholder for input
+	@param maxlength		Max length for input
+	@param autocorrect	 	Input autocorrect
+
+	@param helpTextKey		helptext key to use with content
+	@param errorTextKey		errortext key to use with content
+	@param tall				Boolean to indicate if 40px height is required. Default it 34px.
+	@param isErrors			Boolean to indicate if the field has error
+!}
+<div class="textInput{?className} {className}{/className}{?tall} tall{/tall}{?isErrors}
+hasError{/isErrors}{?confidential}
+confidential{/confidential}{?restricted} restricted{/restricted}" {?divId}id="{divId}"{/divId}>
+		<div class="fieldWrapper">
+		<label for="{?id}{id}{:else}{name}{/id}" class="fieldLabel">
+			{?labelKey}
+				{@content $key="{labelKey}" /}
+			{:else}
+				{label}
+			{/labelKey}
+		</label>
+		<input 
+			id="{id}"
+			name="{?name}{name}{:else}{id}{/name}"
+			type="{?type}{type}{:else}text{/type}"
+			class="hasHelp {?optional}optional{:else}validate{/optional}"
+			{?required}required="required" aria-required="true"{/required}
+			
+			value="{value}"
+			
+			{?autocomplete}		autocomplete=	"{autocomplete}"	{/autocomplete}
+			{?autofocus}		autofocus=		"{autofocus}"		{/autofocus}
+			{?placeholder}		placeholder=	"{placeholder}"		{/placeholder}
+			{?autocorrect}		autocorrect=	"{autocorrect}"		{/autocorrect}
+			{?autocapitalize}	autocapitalize=	"{autocapitalize}"	{/autocapitalize}
+			{?pattern}			pattern=		"{pattern}"			{/pattern}
+			{?maxlength}		maxlength=		"{maxlength}"		{/maxlength}
+		/>
+
+		</div>
+
+		<div class="errorMessage"{?errorMessageId}id="{errorMessageId}"{/errorMessageId}>
+		    {?emptyErrorMessage}<p class="emptyError hide">{emptyErrorMessage}</p>{/emptyErrorMessage}
+            {?invalidErrorMessage}<p class="invalidError hide">{invalidErrorMessage}</p>{/invalidErrorMessage}
+		</div>
+</div>

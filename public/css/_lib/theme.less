@@ -1,0 +1,37 @@
+//The theme color is set to the default which is the 'pal' blue. You can switch the 'pal' blue out with a different color.
+@themedColor: @palBlueColor;
+
+.themedPrimaryButton() {
+  background: @themedColor;
+}
+
+.themedPrimaryButtonFocus() {
+  background: darken(@themedColor, 5%);
+}
+
+.themedInputFocus() {
+  border: 1px solid @themedColor;
+}
+
+.themedAnchor() {
+  color: @themedColor;
+}
+
+.themedAnchorFocus() {
+  color: darken(@themedColor, 5%);
+}
+
+.themedButtonSecondary() {
+  background: #E1E7EB;
+  color: #2C2E2F;
+}
+
+.themedButtonSecondaryFocus() {
+  background: darken(#E1E7EB, 5%);
+}
+
+.themedLogo() {
+  background: url("https://www.paypalobjects.com/webstatic/mktg/Logos/paypal-logo1x.svg") top center no-repeat;
+  background-size: 150px;
+}
+
