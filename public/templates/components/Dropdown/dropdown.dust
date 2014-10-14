@@ -1,0 +1,55 @@
+{!
+	@param	fieldLabel		Label for dropdown
+	@param	labelKey		Label key to get label from content
+	@param 	id            	ID for select field
+	@param	fieldName		Name for select field
+	@param	className		css class to apply to dropdrown wrapper
+	@param	disabled		Select disabled
+	@param	lap				Enable Lab
+	@param	tall			Boolean to indicate if 40px height is required. Default it 34px.
+	@param	enhanced		Boolean to indicate if JS enhanced dropdown is required. Enhanced dropdown has better support for IE
+    @param  icon            PayPal icon class
+!}
+
+<div class="nativeDropdown {className}{?lap} lap{/lap}{?tall} tall{/tall}{?enhanced} enhanced{/enhanced}">
+    {^lap}
+        <label for="{?id}{id}{:else}{fieldName}{/id}" {?accessAidLabel}class="accessAid"{/accessAidLabel}>
+                {fieldLabel}
+                {?icon}  <span class="icon {icon}" data-toggle="tooltip" {?content} title="{content}" {/content} {?id} aria-describedby="{id}" {/id}>
+                </span> {/icon}
+        </label>
+        
+
+    {/lap}
+    <div class="selectDropdown  {?data.errors.fieldError[fieldName].msg} hasError{/data.errors.fieldError[fieldName].msg}">
+        {?lap}
+            <label for="{?id}{id}{:else}{fieldName}{/id}" {?accessAidLabel}class="accessAid"{/accessAidLabel}>
+                {fieldLabel}
+            </label>
+                    {/lap}
+
+                   
+                {! Set the default as per defaultOption attribute !}
+                
+
+                <span class="{id}"></span>
+          
+ 
+
+        <select id="{id}" name="{?fieldName}{fieldName}{:else}{id}{/fieldName}" class="validate" {?required}required="required"{/required} aria-required="true" {?disabled}{disabled}{/disabled}>
+            {?lap}
+                <option value="-1" class="default">
+                    {fieldLabel}
+                </option>
+            {/lap}
+            {#optionList}
+            {! Differentiate optionList from a ContentList from an Controller generated optionList passed !}
+                {?$elt}
+                    <option {@if cond="'{optionSelected}' == '{$id}'"}selected="selected"{/if} value="{@if cond="'{$id}' !== 'NONE'"}{$id}{/if}">{$elt}</option>
+                {:else}
+                    <option {@if cond="'{optionSelected}' == '{optionId}'"}selected="selected"{/if} value="{optionId}">{optionValue}</option>
+                {/$elt}
+            {/optionList}
+        </select>
+    </div>
+</div>

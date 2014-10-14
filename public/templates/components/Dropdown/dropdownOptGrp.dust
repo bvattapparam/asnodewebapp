@@ -1,0 +1,27 @@
+{!
+	@param	fieldLabel		Label for dropdown
+	@param	labelKey		Label key to get label from content
+	@param	fieldName		Name for select field
+	@param	className		css class to apply to dropdrown wrapper
+	@param	lap				Enable Lab
+	@param	tall			Boolean to indicate if 40px height is required. Default it 34px.
+	@param	enhanced		Boolean to indicate if JS enhanced dropdown is required. Enhanced dropdown has better support for IE
+!}
+
+<div class="nativeDropdown {className}{?lap} lap{/lap}{?tall} tall{/tall}{?enhanced} enhanced{/enhanced}">
+	<label for="{fieldName}">
+		{fieldLabel}
+	</label>
+	<div class="selectDropdown">
+		<select id="{fieldName}" name="{fieldName}" class="validate" required="required" aria-required="true">
+			{?lap}
+				<option value="-1" class="default">
+					{fieldLabel}
+				</option>
+			{/lap}
+			{#optionList}
+				{! TODO: To implement !}
+			{/optionList}
+		</select>
+	</div>
+</div>

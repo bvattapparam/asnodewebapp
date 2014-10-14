@@ -1,0 +1,11 @@
+
+<table class="table shippingCostTable">
+<tr>
+	<td class="amount">Herer --<span>result: {#viewmd}{travel_from}-{travel_date}{/viewmd}</span></td>
+</tr>	
+</table>
+
+{>"inc/modeledit_travel" /}
+
+
+

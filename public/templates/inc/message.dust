@@ -1,0 +1,6 @@
+<div class="bs-example">
+        <div id="alert" class="alert ">
+        <div id="alertcontentsuccess" class="alert-box-content hide">{@pre type="content" key="message.success" /}</div>
+        <div id="alertcontentwarning" class="alert-box-content hide">{@pre type="content" key="message.warning" /}</div>
+        </div>
+</div>

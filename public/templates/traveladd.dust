@@ -1,0 +1,154 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    {@pre type="content" key="traveladd.title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+{/header}
+{<mainBlock}
+                <div id="travelAdd" class="section row">
+                                <div class="heading">
+                                                <h1>{@pre type="content" key="traveladd.pageheading" /}</h1>
+                                 </div>
+                                     <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li><a href="/asnodewebapp/travel">Travel</a> </li>
+                                                <li class="active">Travel add</li>
+                                      </ul>
+
+                                  <!--- place for component-->
+                                                                  {?data.message}
+                                                                            <div class="bs-example">
+                                                                                      <div class="alert alert-{data.message.messagetype}"><div class="{data.message.messagetype}"></div><div class="alert-box-content">{data.message.messagecontent}</div></div>
+                                                                          </div>
+                                                                {/data.message}
+                                                                {>"inc/form" /}
+                                                              {<formAttr} name="travelfrm"  action="/asnodewebapp/traveladd" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                                                                          <div class="col-lg-4">
+                                                                                  <div id="travelbookeddatediv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <div class='input-group date' id='travel_bookeddate'>
+                                                                                                                          <input type='text' placeholder="{@pre type="content" key="traveladd.travelbookeddate" /}" name="travel_bookeddate" class="form-control" data-date-format="YYYY/MM/DD"/>
+                                                                                                                          <span class="input-group-addon">
+                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                          </span>
+                                                                                                                  </div>
+                                                                                                  </div>
+                                                                                                  <div id="travel_bookeddateErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div id="traveldatediv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <div class='input-group date' id='travel_date'>
+                                                                                                                          <input type='text' placeholder="{@pre type="content" key="traveladd.traveldate" /}" name="travel_date" class="form-control" data-date-format="YYYY/MM/DD"/>
+                                                                                                                          <span class="input-group-addon">
+                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                          </span>
+                                                                                                                  </div>
+                                                                                                  </div>
+                                                                                                  <div id="travel_dateErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                 <div id="fromdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-right"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelfrom" /}" value="" name="travel_from" class="hasHelp validate form-control" id="travel_from">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_fromErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div id="todiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-left"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelto" /}" value="" name="travel_to" class="hasHelp validate form-control" id="travel_to">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_toErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelToEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelToInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-file-text-o"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelpnr" /}" value="" name="travel_pnr" class="hasHelp validate form-control" id="travel_pnr">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                  <span class="input-group-addon"><span class="fa fa-bus"></span></span>   
+                                                                                                                   {@provide}
+                                                                                                                      {>"components/Dropdown/dropdown"
+                                                                                                                      fieldName="travel_mode"
+                                                                                                                      fieldLabel=""
+                                                                                                                      optionList=travelModeList
+                                                                                                                      id="travelMode" /}
+                                                                                                                          {:travelModeList}
+                                                                                                                           {@pre type="content" key="traveladd.travelModeList" mode="paired" /}
+                                                                                                                    {/provide}  
+                                                                                                  </div>
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                <span class="input-group-addon"><span class="fa fa-hand-o-right"></span></span>
+                                                                                                                   {@provide}
+                                                                                                                      {>"components/Dropdown/dropdown"
+                                                                                                                      fieldName="travel_status"
+                                                                                                                      fieldLabel=""
+                                                                                                                      optionList=travelStatusList
+                                                                                                                      id="travelStatus" /}
+                                                                                                                          {:travelStatusList}
+                                                                                                                           {@pre type="content" key="traveladd.travelStatusList" mode="paired" /}
+                                                                                                                    {/provide}  
+                                                                                                  </div>
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  <div id="travelamountdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-money"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelamount" /}" value="" name="travel_amount" class="hasHelp validate form-control" id="travel_amount">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_amountErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelAmountEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelAmountInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div class="form-group">
+                                                                                                  <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="traveladd.submit" /}">
+                                                                                  </div>
+                                                                          </div> 
+                                                        <div class="col-lg-8 text-right">
+                                                          <img src="images/src/travel.gif" height="500">
+                                                        </div>
+                                                               
+                                                                {/formBody}
+
+                                                               <!-- close here -->
+
+                                                              
+                                       
+ </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}
