@@ -7,7 +7,7 @@ var kraken = require('kraken-js'),
         auth = require('./lib/auth'),
         passport = require('passport'),
         mysqlDB = require('mysql'),
-        app = {};
+                app = {};
         require('./lib/helper-dateFormat');
         
 app.configure = function configure(nconf, next) {
@@ -49,6 +49,29 @@ app.requestBeforeRoute = function requestBeforeRoute(server) {
 
 app.requestAfterRoute = function requestAfterRoute(server) {
     // Run after all routes have been added.
+    server.use(function (req, res) {
+            /* TODO: need to block this page for unauthed users. */
+            res.status("404");
+            console.log("hrere is the status"+ res.status());
+
+            if(!req.model) {
+                req.model = {};
+            }
+            req.model.viewName =  "errors/error404";
+
+            res.render(req.model.viewName, req.model);
+        });
+
+     /* Handle 500 errors */
+        server.use(function (err, req, res, next) {
+            res.status(err.status || "500");
+        if (!req.model) {
+            req.model = {};
+        }
+        req.model.viewName = "errors/error500";
+        res.render(req.model.viewName, req.model);
+        });
+
 };
 
 

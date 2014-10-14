@@ -40,7 +40,7 @@
 							<td>{@formatDate date="{travel_date}" format="dddd MMM Do YYYY"/}</td>
 							<td>{travel_from}</td>
 							<td>{travel_to}</td>
-							<td><span class="fa fa-{travel_mode}"></span></td>
+							<td><span class="icon icon-{travel_mode} fa-1x"></span></td>
 							<td>{travel_pnr}</td>
 							<td>{travel_status}</td>
 							<td>{travel_amount}</td>

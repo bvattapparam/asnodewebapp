@@ -26,7 +26,6 @@
                 {/messages}
                                 <div class="panel-body">
                                                 <div class="alert alert-danger col-sm-12" id="login-alert" style="display:none"></div>
-                                                               
                                                                <!--- place for component-->
                                                                 {>"inc/form" /}
 
