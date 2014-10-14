@@ -3,12 +3,19 @@
 var mysqlDB = require('mysql');
 
 var dbCon= function(){
-                this.dbConnection=mysqlDB.createPool({
-                                host:'localhost',
-                                user:'root',
-                                password:'testuser',
-                                database:'as_nodeapp'
-                }); 
+                // this.dbConnection=mysqlDB.createPool({
+                //                 host:'localhost',
+                //                 user:'root',
+                //                 password:'testuser',
+                //                 database:'as_nodeapp'
+                // }); 
+// LIVE
+                  this.dbConnection=mysqlDB.createPool({
+                                host     : '127.3.39.129',
+                              user     : 'adminXFreqs7',
+                              password : 'XxAjSNGL5BAR',
+                              database:"asna"
+                                            }); 
 };
 
 dbCon.prototype={
