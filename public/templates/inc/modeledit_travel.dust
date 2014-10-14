@@ -1,0 +1,148 @@
+<!-- Modal -->
+        <div class="modal fade travel_edit_model" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            {>"inc/form" /}
+   			{<formAttr} name="travelfrm"  action="/asnodewebapp/traveladd.modaledit_travel" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <span class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
+                                    <h4 class="modal-title">{@pre type="content" key="modaledit_travel.travelheading" /}</h4>
+                                  </div>
+                                  <div class="modal-body" id="model-body">
+                                   <div class="header" id="header">
+                                                                          <div class="col-lg-12">
+                                                                          <div id="updateMessageShowView" class="hide">
+                                                                              {>"inc/message" /}
+                                                                          </div>
+                                                                          <div class="show-body">
+                                                                          <div class="loader"></div>
+                                                                                   <div id="travelbookeddatediv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <div class='input-group date' id='travel_bookeddate'>
+                                                                                                                          <input type='text' placeholder="{@pre type="content" key="modaledit_travel.travelbookeddate" /}" name="travel_bookeddate_edit" id="travel_bookeddate_edit" class="form-control" data-date-format="YYYY/MM/DD" value='{#viewmd}{travel_bookeddate}{/viewmd}'  />
+                                                                                                                          <span class="input-group-addon">
+                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                          </span>
+                                                                                                                  </div>
+                                                                                                  </div>
+                                                                                                  <div id="travel_bookeddateErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div id="traveldatediv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <div class='input-group date' id='travel_date'>
+                                                                                                                          <input type='text' placeholder="{@pre type="content" key="modaledit_travel.traveldate" /}" name="travel_date_edit"  id="travel_date_edit" class="form-control" data-date-format="YYYY/MM/DD" value="{#viewmd}{travel_date}{/viewmd}" />
+                                                                                                                          <span class="input-group-addon">
+                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                                                                          </span>
+                                                                                                                  </div>
+                                                                                                  </div>
+                                                                                                  <div id="travel_dateErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                 <div id="fromdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-right"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="modaledit_travel.travelfrom" /}" value="{#viewmd}{travel_from}{/viewmd}" name="travel_from" class="hasHelp validate form-control" id="travel_from_edit">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_fromErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelFromEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelFromInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                   <div id="todiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-left"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="modaledit_travel.travelto" /}" value="{#viewmd}{travel_to}{/viewmd}" name="travel_to" class="hasHelp validate form-control" id="travel_to_edit">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_toErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelToEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelToInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-file-text-o"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="modaledit_travel.travelpnr" /}" value="{#viewmd}{travel_pnr}{/viewmd}" name="travel_pnr" class="hasHelp validate form-control" id="travel_pnr_edit">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                 
+                                                                                  {#viewmd}
+                                                                                  <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                  <span class="input-group-addon"><span class="fa fa-bus"></span></span>   
+                                                                                                                   {@provide}
+                                                                                                                      {>"components/Dropdown/dropdown"
+                                                                                                                      fieldName="travel_mode"
+                                                                                                                      fieldLabel="" 
+                                                                                                                      optionSelected="{travel_mode}"
+                                                                                                                      optionList=travelModeList
+                                                                                                                      id="travel_mode_edit" /}
+                                                                                                                          {:travelModeList}
+                                                                                                                           {@pre type="content" key="modaledit_travel.travelModeList" mode="paired" /}
+                                                                                                                    {/provide}  
+                                                                                                  </div>
+                                                                                                  {/viewmd}
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  {#viewmd}
+                                                                                   <div id="pnrdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                <span class="input-group-addon"><span class="fa fa-hand-o-right"></span></span>
+                                                                                                                   {@provide}
+                                                                                                                      {>"components/Dropdown/dropdown"
+                                                                                                                      fieldName="travel_status"
+                                                                                                                      fieldLabel=""
+                                                                                                                      optionList=travelStatusList 
+                                                                                                                       optionSelected="{travel_status}" 
+                                                                                                                      id="travel_status_edit" /}
+                                                                                                                          {:travelStatusList}
+                                                                                                                           {@pre type="content" key="modaledit_travel.travelStatusList" mode="paired" /}
+                                                                                                                    {/provide}  
+                                                                                                  </div>
+                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelPNREmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelPNRInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                  {/viewmd}
+                                                                                  <div id="travelamountdiv" class="textInput">
+                                                                                                  <div class="input-group fieldWrapper">
+                                                                                                                   <span class="input-group-addon"><span class="fa fa-money"></span></span>
+                                                                                                                  <input type="text" placeholder="{@pre type="content" key="modaledit_travel.travelamount" /}" value="{#viewmd}{travel_amount}{/viewmd}" name="travel_amount" class="hasHelp validate form-control" id="travel_amount_edit">    
+                                                                                                  </div>
+                                                                                                  <div id="travel_amountErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="modaledit_travel.travelAmountEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="modaledit_travel.travelAmountInvalid" /}</p>
+                                                                                                  </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                  <!-- loading panel -->
+                                                                          </div> 
+
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                   <input type="hidden" id="travel_id_edit" value="{#viewmd}{travel_id}{/viewmd}" name="travel_id_edit" />
+                                  <input type="hidden" name="_csrf" value="{_csrf}" />
+                                   <span class="btn btn-primary modal-btn"  id="editTravelbtn" >Save</span>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                                {/formBody}
+        </div><!-- /.modal -->
+
+
+                                                           
