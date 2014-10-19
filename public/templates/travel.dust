@@ -16,6 +16,11 @@
                                                 <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
                                                 <li class="active">Travel</li>
                                  </ul>
+                                 {?data.messageType}
+                                            <div class="bs-example">
+                                                      <div class="alert alert-{data.messageType}"><div class="{data.messageType}"></div><div class="alert-box-content">{data.messageContent}</div></div>
+                                          </div>
+                                {/data.messageType}
                                  <span id="loadingspan" class="hide"></span>
                               	<div class="table-responsive">
 	  		<table  id="travelData" class="table table-hover table-condensed">
@@ -29,6 +34,7 @@
 						<th>PNR</th>
 						<th>Travel Status</th>
 						<th>Travel Amount</th>
+						<th>Travel Count</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -44,7 +50,11 @@
 							<td>{travel_pnr}</td>
 							<td>{travel_status}</td>
 							<td>{travel_amount}</td>
-							<td><span  class="fa fa-edit editTravelCall" data-toggle="modal" id="{travel_id}"></span> | <span class="fa fa-remove"></span></td>
+							<td>{travel_count}</td>
+							<td>
+								<span  class="fa fa-edit editTravelCall" data-toggle="modal" id="{travel_id}"></span> | 
+								<a href="/asnodewebapp/travelDataDelete/{travel_id}"><span class="fa fa-remove"></span></a> | <span  data-toggle="popover" data-content="{travel_comment}" class="fa fa-comment-o editTravelCall" data-toggle="modal" id="{travel_id}"></span> 
+							</td>
 						</tr>
 					{/data.viewModel}
 				</tbody>

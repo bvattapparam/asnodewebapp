@@ -1,0 +1,74 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    	{@pre type="content" key="cc.title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+{/header}
+{<mainBlock}
+                <div id="cc" class="section row">
+                                <div class="heading">
+                                                <h1>{@pre type="content" key="cc.title" /}</h1>
+                                 </div>
+                                 <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li class="active">Credit Card</li>
+                                 </ul>
+                                 {?data.messageType}
+                                            <div class="bs-example">
+                                                      <div class="alert alert-{data.messageType}"><div class="{data.messageType}"></div><div class="alert-box-content">{data.messageContent}</div></div>
+                                          </div>
+                                {/data.messageType}
+                                 <span id="loadingspan" class="hide"></span>
+                              	<div class="table-responsive">
+	  		<table  id="ccData" class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th>Transaction Date</th>
+						<th>Amount</th>
+						<th>Transactioin Item</th>
+						<th>Status</th>
+						<th>Card Type</th>
+						<th>4 Digits</th>
+						<th>Provider</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{#data.viewModel}
+						<tr  class="{@if cond="'{cc_status}' === 'OPEN'"}warning{:else}{/if}">
+							<td>{@formatDate date="{cc_date}" format="dddd MMM Do YYYY"/}</td>
+							
+							<td>{cc_amount}</td>
+							<td>{cc_item}</td>
+							<td>{cc_status}</td>
+							<td><span class="fa fa-cc-{cc_type} fa-1x"></span></td>
+							<td>{cc_fourdigit}</td>
+							<td>{cc_provider}</td>
+							<td>
+								<span  class="fa fa-edit editCCCall" data-toggle="modal" id="{cc_id}"></span> | 
+								<a href="/asnodewebapp/ccDataDelete/{cc_id}"><span class="fa fa-remove"></span></a> | <span  data-toggle="popover" data-content="{cc_comment}" class="fa fa-comment-o"></span> 
+							</td>
+						</tr>
+					{/data.viewModel}
+				</tbody>
+			</table> 
+		</div>
+		<div class="row">
+		<div class="col-lg-12">
+		<a href="/asnodewebapp/ccadd"><span class="fa fa-bus fa-1x"></span><strong> &nbsp;{@pre type="content" key="cc.addnewtravel" /}</strong></a>
+		</div>
+		</div>
+		<div class="moduleContent" id="ccDataView"> <!--- where ajax call-->
+			<input type="hidden" name="_csrf" value="{_csrf}" />
+	    		{>"inc/modeledit_travel"/}
+		</div>
+                </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}

@@ -16,7 +16,9 @@ function getResponse(req, next) {
                                 travel_mode:body.travel_mode,
                                 travel_status:body.travel_status,
                                 travel_pnr:body.travel_pnr,
-                                travel_amount:body.travel_amount
+                                travel_amount:body.travel_amount,
+                                travel_count:body.travel_count,
+                                travel_comment:body.travel_comment
                             },
                             oId:body.travelID,
                             oTable:'tbl_travel',
@@ -30,7 +32,7 @@ function getResponse(req, next) {
                                                         req.model = {
                                                                     data: {
                                                                             viewmd:serviceResponse,
-                                                                            messageView:message
+                                                                           // messageView:message
                                                                         }
                                                         };
                                                         //console.log("ROW DATA" + JSON.stringify(req.model))

@@ -25,9 +25,9 @@ module.exports = function (app) {
     app.get('/login', function (req, res) {
 
         //Include any error messages that come from the login process.
-      //  { message: req.flash('loginMessage') }
-        //model.messages = req.flash('error');
-      //  model.messages1 = req.flash('message');
+        { message: req.flash('loginMessage') }
+        model.messages = req.flash('error');
+      model.messages1 = req.flash('message');
 
         console.log("redirected to login");
          console.log("LOGIN PAGE " + rootURI);

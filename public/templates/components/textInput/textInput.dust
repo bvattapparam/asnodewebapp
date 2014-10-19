@@ -28,40 +28,51 @@
 	@param errorTextKey		errortext key to use with content
 	@param tall				Boolean to indicate if 40px height is required. Default it 34px.
 	@param isErrors			Boolean to indicate if the field has error
+	@param faIcon			fa-icon for span
+	@param fieldTypeCalID		needed for date picker only
+	@param spanID			needed only for credit card validatoin.c an use for other validation we need to show the icon dynamically
 !}
 <div class="textInput{?className} {className}{/className}{?tall} tall{/tall}{?isErrors}
 hasError{/isErrors}{?confidential}
 confidential{/confidential}{?restricted} restricted{/restricted}" {?divId}id="{divId}"{/divId}>
-		<div class="fieldWrapper">
-		<label for="{?id}{id}{:else}{name}{/id}" class="fieldLabel">
+		<div class="fieldWrapper input-group {?fieldTypeCalID}date{/fieldTypeCalID}"  {?fieldTypeCalID}id="{fieldTypeCalID}"{/fieldTypeCalID}>
+		<!--label for="{?id}{id}{:else}{name}{/id}" class="fieldLabel">
 			{?labelKey}
 				{@content $key="{labelKey}" /}
 			{:else}
 				{label}
 			{/labelKey}
-		</label>
+		</label //-->
+		{?faIcon}
+			<span class="input-group-addon"><span class="fa {faIcon}" {?spanID}id="{spanID}"{/spanID}></span></span>
+		{/faIcon}
 		<input 
 			id="{id}"
 			name="{?name}{name}{:else}{id}{/name}"
 			type="{?type}{type}{:else}text{/type}"
-			class="hasHelp {?optional}optional{:else}validate{/optional}"
+			class="hasHelp form-control {?optional}optional{:else}validate{/optional}"
 			{?required}required="required" aria-required="true"{/required}
 			
 			value="{value}"
 			
-			{?autocomplete}		autocomplete=	"{autocomplete}"	{/autocomplete}
+			{?autocomplete}	autocomplete=	"{autocomplete}"	{/autocomplete}
 			{?autofocus}		autofocus=		"{autofocus}"		{/autofocus}
-			{?placeholder}		placeholder=	"{placeholder}"		{/placeholder}
-			{?autocorrect}		autocorrect=	"{autocorrect}"		{/autocorrect}
+			{?placeholder}		placeholder=		"{placeholder}"	{/placeholder}
+			{?autocorrect}		autocorrect=		"{autocorrect}"	{/autocorrect}
 			{?autocapitalize}	autocapitalize=	"{autocapitalize}"	{/autocapitalize}
-			{?pattern}			pattern=		"{pattern}"			{/pattern}
+			{?pattern}		pattern=		"{pattern}"		{/pattern}
 			{?maxlength}		maxlength=		"{maxlength}"		{/maxlength}
+			{?format}		data-date-format=	"{format}"		{/format}
+			{?readonly}		readonly					{/readonly}
 		/>
 
+		{?fieldTypeCalID}
+			<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+		{/fieldTypeCalID}
 		</div>
 
 		<div class="errorMessage"{?errorMessageId}id="{errorMessageId}"{/errorMessageId}>
 		    {?emptyErrorMessage}<p class="emptyError hide">{emptyErrorMessage}</p>{/emptyErrorMessage}
-            {?invalidErrorMessage}<p class="invalidError hide">{invalidErrorMessage}</p>{/invalidErrorMessage}
+            			{?invalidErrorMessage}<p class="invalidError hide">{invalidErrorMessage}</p>{/invalidErrorMessage}
 		</div>
 </div>

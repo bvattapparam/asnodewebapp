@@ -1,0 +1,104 @@
+form .textArea {
+  position: relative; /*  */
+  //margin: 10px 0;
+  padding: 0;
+
+      width: 100%; /* IE7 Fix: Default Width */
+  
+  label { 
+    display: block;
+    margin: 0;
+    
+    line-height: 1.76923em;
+    font-weight: normal;
+    color: #666;
+  }
+  
+  textarea {
+    outline: 0;
+    height: 6.924em;
+    overflow: auto;
+    padding: 7px 7px 7px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #bec0c2 #bec0c2 #dbdfe2;
+    background-color: #fafafa;
+    text-overflow: ellipsis;
+    width: 100%;
+    .transitionMulti(border .2s ease-in-out, background-color .2s ease-in-out);
+    border-bottom-left-radius:0px;
+    border-top-left-radius:0px;
+    //.borderRadius();
+    
+    .boxSizing();
+    .boxShadow(0 2px 2px rgba(0,0,0,0.15) inset);
+    
+    color: #000;
+    font-size: 1em;
+    font-weight: normal;
+    
+    &.userText, &.completed {
+      border-color: #cee0eb;
+      background-color: #fff;
+      box-shadow: none;
+      color: #333;
+    }
+    
+    &:hover,
+    &.hovered {
+      .boxShadow(0 2px 2px rgba(0,0,0,0.15) inset);
+      border: 1px solid #57a9d9;  
+      //background-color: #fff;
+    }
+    
+    &:focus {
+      .boxShadowMulti(0 0 5px rgba(58,144,194,.6), 0 2px 2px rgba(0,0,0,.15) inset);
+      border: 1px solid #57a9d9;  
+      background-color: #fff;
+    }
+  }
+  
+  &.small {
+    width: 33%;
+  }
+  
+  &.medium {
+    width: 50%;
+  }
+  
+  &.large {
+    width: 67%;
+  }
+  
+  &.hasError {
+    textarea,
+    textarea:hover, 
+    textarea:focus {
+      border-color: #de746a;
+      .boxShadowMulti(0 0 5px rgba(220,99,88,.6), 0 2px 2px rgba(0,0,0,.15) inset);
+    /* TextArea can be expanded. Error Icon should be single image not sprite. */
+      //background: url('https://www.paypalobjects.com/webstatic/mktg/consumer/onboarding/ui-sprite.png') #fff right -2190px no-repeat;
+    }
+  }
+}
+
+form .lap.textArea {
+  margin: 15px 0;
+  label {
+    position: absolute;
+    left: 16px;
+    color: #666;
+    z-index: 1;
+    cursor: text;
+    text-shadow: 0 1px 0 #fff;
+    line-height: 2.61539em;
+    
+    &.focus {
+      color: #888;
+    }
+  }
+  
+  &.medium label{
+    left: 14px;
+  }
+}

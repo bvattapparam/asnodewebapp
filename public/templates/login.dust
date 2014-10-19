@@ -13,19 +13,16 @@
                                 <div class="login-head">
                                                 <span class="fa fa-user fa-5x"></span>
                                 </div>
-                                {?messages}
-                    <ul>
-                        {#messages}
-                            <li>{.}</li>
-                        {/messages}
-                        {#messages1}
-                            <li>{.}</li>
-                        {/messages1}
-
-                    </ul>
-                {/messages}
+                               
                                 <div class="panel-body">
-                                                <div class="alert alert-danger col-sm-12" id="login-alert" style="display:none"></div>
+                                                {?messages}
+                                                                <div class="alert alert-danger" id="login-alert">
+                                                                                <ul>
+                                                                                                {#messages}<li>{.}</li>{/messages}
+                                                                                </ul>
+                                                                </div>
+                                                {/messages}
+
                                                                <!--- place for component-->
                                                                 {>"inc/form" /}
 
@@ -37,7 +34,7 @@
                                                                                                 <input type="text" placeholder="email needed" value="bvattapparam@paypal.com" name="email" class="hasHelp validate form-control" id="email">    
                                  
                                                                                 </div>
-                                                                                <div id="emailErrorMessage" class="errorMessage caret">
+                                                                                <div id="eemailErrorMessage" class="errorMessage caret">
                                                                                                 <p class="emptyError hide">{@pre type="content" key="login.emailEmpty" /}</p>
                                                                                                 <p class="invalidError hide">{@pre type="content" key="login.emailInvalid" /}</p>
                                                                                 </div>
@@ -57,8 +54,6 @@
                                                                 </div>
                                                                 {/formBody}
                                                                <!-- close here -->
-
-                                                                
                                                   
                                 </div>   
                                                 

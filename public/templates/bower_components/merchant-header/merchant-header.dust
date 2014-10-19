@@ -26,13 +26,13 @@
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="merchant-header.transactions.link" editable="false" /}" class="{@if test="'{viewName}' == 'transactions/transactions'"}selected{/if}">
-							{@pre type="content" key="merchant-header.transactions.content"  /}
+						<a href="{@pre type="content" key="merchant-header.travel.link" editable="false" /}" class="{@if test="'{viewName}' == 'travel'"}selected{/if}">
+							{@pre type="content" key="merchant-header.travel.content"  /}
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="merchant-header.customers.link" editable="false" /}" class="{@if test="'{viewName}' == 'customers/customers'"}selected{/if}">
-							{@pre type="content" key="merchant-header.customers.content"  /}
+						<a href="{@pre type="content" key="merchant-header.cc.link" editable="false" /}" class="{@if test="'{viewName}' == 'cc'"}selected{/if}">
+							{@pre type="content" key="merchant-header.cc.content"  /}
 						</a>
 					</li>
 					<li class="hidden-sm">

@@ -7,33 +7,33 @@ var config = require('nconf'),
         auth = require('../lib/auth'),
         Helper = require('../lib/helper');
 
-        console.log("TRAVEL" + rootURI);
+        console.log("CC" + rootURI);
 
-var Travel = {
+var CreditCard = {
                 process: function(req,res,next){
                               //  Dashboard.getdashboardImages(req,next);
                               console.log("here is travel");
-                              Travel.getTravelTransactionData(req,next);
+                              CreditCard.getCCTransactionData(req,next);
                                 console.log("function called");
                                
                                // next();
                 },
-                 getTravelTransactionData: function(req,next){
-                    console.log("getTravelTransactionData");
+                 getCCTransactionData: function(req,next){
+                    console.log("getCCTransactionData");
                                 var helper = new Helper();
                                  var dbconnection = new dbConModel();
                                 // var oTable = "tbl_travel";
-console.log("sessionstart" + req.session.messageType)
+                                console.log("sessionstart" + req.session.messageType)
                                 var oParams = {
-                                                oTable:'tbl_travel'
+                                                oTable:'tbl_cc'
                                 };
                                 
                                 dbconnection.getRowFields(oParams,
                                 function (model) {
                                                        var  serviceResponse = (model) ? model : {};
-                                                        console.log("TRAVEL RESPONSE DATA : " + JSON.stringify(serviceResponse));
+                                                        console.log("CC RESPONSE DATA : " + JSON.stringify(serviceResponse));
                                                     req.model = {
-                                                                viewName : "travel",
+                                                                viewName : "cc",
                                                                 data : {
                                                                                 viewModel:serviceResponse,
                                                                                 messageType:req.session.messageType,
@@ -50,18 +50,18 @@ console.log("sessionstart" + req.session.messageType)
     },
 
                 routes: function(server){
-                                server.get("/travel", auth.isAuthenticated(),Travel.process,function(req,res){
+                                server.get("/cc", auth.isAuthenticated(),CreditCard.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);
-                                                console.log("reached to travel");
+                                                console.log("reached to CC");
                                 });
-                                server.post("/travel",Travel.process,function(req,res){
+                                server.post("/cc",CreditCard.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);
                                 });
 
                 },
               
 };
-module.exports=Travel.routes;
+module.exports=CreditCard.routes;
 
 
 

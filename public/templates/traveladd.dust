@@ -19,74 +19,96 @@
                                       </ul>
 
                                   <!--- place for component-->
-                                                                  {?data.message}
+                                                                  {?data.viewModel.message}
                                                                             <div class="bs-example">
-                                                                                      <div class="alert alert-{data.message.messagetype}"><div class="{data.message.messagetype}"></div><div class="alert-box-content">{data.message.messagecontent}</div></div>
+                                                                                      <div class="alert alert-{data.viewModel.message.messagetype}"><div class="{data.viewModel.message.messagetype}"></div><div class="alert-box-content">{data.viewModel.message.messagecontent}</div></div>
                                                                           </div>
-                                                                {/data.message}
+                                                                {/data.viewModel.message}
                                                                 {>"inc/form" /}
                                                               {<formAttr} name="travelfrm"  action="/asnodewebapp/traveladd" autocomplete="off" id="frm" {/formAttr}
                                                               {<formBody}
                                                                           <div class="col-lg-4">
-                                                                                  <div id="travelbookeddatediv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <div class='input-group date' id='travel_bookeddate'>
-                                                                                                                          <input type='text' placeholder="{@pre type="content" key="traveladd.travelbookeddate" /}" name="travel_bookeddate" class="form-control" data-date-format="YYYY/MM/DD"/>
-                                                                                                                          <span class="input-group-addon">
-                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                                                                                          </span>
-                                                                                                                  </div>
-                                                                                                  </div>
-                                                                                                  <div id="travel_bookeddateErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
-                                                                                   <div id="traveldatediv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <div class='input-group date' id='travel_date'>
-                                                                                                                          <input type='text' placeholder="{@pre type="content" key="traveladd.traveldate" /}" name="travel_date" class="form-control" data-date-format="YYYY/MM/DD"/>
-                                                                                                                          <span class="input-group-addon">
-                                                                                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                                                                                          </span>
-                                                                                                                  </div>
-                                                                                                  </div>
-                                                                                                  <div id="travel_dateErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
-                                                                                 <div id="fromdiv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-right"></span></span>
-                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelfrom" /}" value="" name="travel_from" class="hasHelp validate form-control" id="travel_from">    
-                                                                                                  </div>
-                                                                                                  <div id="travel_fromErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelFromEmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelFromInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
-                                                                                   <div id="todiv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <span class="input-group-addon"><span class="fa fa-arrow-left"></span></span>
-                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelto" /}" value="" name="travel_to" class="hasHelp validate form-control" id="travel_to">    
-                                                                                                  </div>
-                                                                                                  <div id="travel_toErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelToEmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelToInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
-                                                                                  <div id="pnrdiv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <span class="input-group-addon"><span class="fa fa-file-text-o"></span></span>
-                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelpnr" /}" value="" name="travel_pnr" class="hasHelp validate form-control" id="travel_pnr">    
-                                                                                                  </div>
-                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
-                                                                                  <div id="pnrdiv" class="textInput">
+                                                                                   {>"components/textInput/textInput" 
+                                                                                                                             name="travel_bookeddate" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_bookeddate" 
+                                                                                                                             divId="travel_bookeddatediv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelbookeddate"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelBookedDateEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelBookedDateInvalid"/}" 
+                                                                                                                             errorMessageId="travel_bookeddateErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_travel_bookeddate" 
+                                                                                                                             format="YYYY/MM/DD" /}
+
+                                                                                   {>"components/textInput/textInput" 
+                                                                                                                             name="travel_date" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_date" 
+                                                                                                                             divId="travel_datediv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.traveldate"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelDateEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelDateInvalid"/}" 
+                                                                                                                             errorMessageId="travel_dateErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_travel_date" 
+                                                                                                                             format="YYYY/MM/DD" /}
+                                                                             
+                                                                                  {>"components/textInput/textInput" 
+                                                                                                                             name="travel_from" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_from" 
+                                                                                                                             divId="travel_fromdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelfrom"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelFromEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelFromInvalid"/}" 
+                                                                                                                             errorMessageId="travel_fromErrorMessage" 
+                                                                                                                             faIcon="fa-arrow-right" 
+                                                                                                                             spanID="" /}
+
+                                                                                {>"components/textInput/textInput" 
+                                                                                                                             name="travel_to" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_to" 
+                                                                                                                             divId="travel_todiv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelto"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelToInvalid"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelToInvalid"/}" 
+                                                                                                                             errorMessageId="travel_toErrorMessage" 
+                                                                                                                             faIcon="fa-arrow-left" 
+                                                                                                                             spanID="" /}
+
+                                                                                 {>"components/textInput/textInput" 
+                                                                                                                             name="travel_pnr" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_pnr" 
+                                                                                                                             divId="travel_pnrdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelpnr"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelPNREmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelPNRInvalid"/}" 
+                                                                                                                             errorMessageId="travel_pnrErrorMessage" 
+                                                                                                                             faIcon="fa-file-text-o" 
+                                                                                                                             spanID="" /} 
+                                                                                {>"components/textInput/textInput" 
+                                                                                                                             name="travel_amount" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_amount" 
+                                                                                                                             divId="travel_amountdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelamount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelAmountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelAmountInvalid"/}" 
+                                                                                                                             errorMessageId="travel_amountErrorMessage" 
+                                                                                                                             faIcon="fa-money" 
+                                                                                                                             spanID="" /} 
+                                                                          </div> 
+
+                                                                          <!--- second--->
+                                                                          <div class="col-lg-4">
+                                                                                  
+                                                                                   
+                                                                                  <div id="travel_modediv" class="textInput">
                                                                                                   <div class="input-group fieldWrapper">
                                                                                                                   <span class="input-group-addon"><span class="fa fa-bus"></span></span>   
                                                                                                                    {@provide}
@@ -94,17 +116,17 @@
                                                                                                                       fieldName="travel_mode"
                                                                                                                       fieldLabel=""
                                                                                                                       optionList=travelModeList
-                                                                                                                      id="travelMode" /}
+                                                                                                                      id="travel_mode" /}
                                                                                                                           {:travelModeList}
                                                                                                                            {@pre type="content" key="traveladd.travelModeList" mode="paired" /}
                                                                                                                     {/provide}  
                                                                                                   </div>
-                                                                                                  <div id="travel_pnrErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
+                                                                                                  <div id="travel_modeErrorMessage" class="errorMessage caret">
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelModeEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelModeInvalid" /}</p>
                                                                                                   </div>
                                                                                   </div>
-                                                                                   <div id="pnrdiv" class="textInput">
+                                                                                   <div id="travel_statusdiv" class="textInput">
                                                                                                   <div class="input-group fieldWrapper">
                                                                                                                 <span class="input-group-addon"><span class="fa fa-hand-o-right"></span></span>
                                                                                                                    {@provide}
@@ -112,40 +134,49 @@
                                                                                                                       fieldName="travel_status"
                                                                                                                       fieldLabel=""
                                                                                                                       optionList=travelStatusList
-                                                                                                                      id="travelStatus" /}
+                                                                                                                      id="travel_status" /}
                                                                                                                           {:travelStatusList}
                                                                                                                            {@pre type="content" key="traveladd.travelStatusList" mode="paired" /}
                                                                                                                     {/provide}  
                                                                                                   </div>
                                                                                                   <div id="travel_pnrErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelPNREmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelPNRInvalid" /}</p>
+                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelStatusEmpty" /}</p>
+                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelStatusInvalid" /}</p>
                                                                                                   </div>
                                                                                   </div>
-                                                                                  <div id="travelamountdiv" class="textInput">
-                                                                                                  <div class="input-group fieldWrapper">
-                                                                                                                   <span class="input-group-addon"><span class="fa fa-money"></span></span>
-                                                                                                                  <input type="text" placeholder="{@pre type="content" key="traveladd.travelamount" /}" value="" name="travel_amount" class="hasHelp validate form-control" id="travel_amount">    
-                                                                                                  </div>
-                                                                                                  <div id="travel_amountErrorMessage" class="errorMessage caret">
-                                                                                                                  <p class="emptyError hide">{@pre type="content" key="traveladd.travelAmountEmpty" /}</p>
-                                                                                                                  <p class="invalidError hide">{@pre type="content" key="traveladd.travelAmountInvalid" /}</p>
-                                                                                                  </div>
-                                                                                  </div>
+                                                                                  {>"components/textInput/textInput" 
+                                                                                                                             name="travel_count" 
+                                                                                                                             type="text" 
+                                                                                                                             id="travel_count" 
+                                                                                                                             divId="travel_countdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="traveladd.travelcount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="traveladd.travelCountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="traveladd.travelCountInvalid"/}" 
+                                                                                                                             errorMessageId="travel_countErrorMessage" 
+                                                                                                                             faIcon="fa-users" 
+                                                                                                                             spanID="" /} 
+                                                                                  
+                                                                                  {>"components/textArea/textArea" 
+                                                                                                                                    divId="travel_commentdiv" 
+                                                                                                                                    id="travel_comment" 
+                                                                                                                                    maxlength="225" 
+                                                                                                                                    label="" 
+                                                                                                                                    faIcon="fa-comment-o" 
+                                                                                                                                    value="{@pre type="content" key="traveladd.traveladdcomment" /}"/}
+
                                                                                    <div class="form-group">
                                                                                                   <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="traveladd.submit" /}">
                                                                                   </div>
                                                                           </div> 
-                                                        <div class="col-lg-8 text-right">
-                                                          <img src="images/src/travel.gif" height="500">
-                                                        </div>
-                                                               
+                                                                          <!-- second close here-->
+                                                                          <!--  3rd open here -->
+                                                                          <div class="col-lg-4 text-right">
+                                                                                      <img src="images/src/travel.gif" height="320">
+                                                                          </div>
+                                                                          <!-- 3rd close here -->
                                                                 {/formBody}
-
                                                                <!-- close here -->
 
-                                                              
-                                       
  </div>
 {/mainBlock}
 

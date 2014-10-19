@@ -38,30 +38,64 @@ define(
              * @param {Object} target - event object
              */
             doValidation: function(target) {
+                
                 var targetElement = target,
                     targetType = target.type,
                     targetName = target.id,
                     targetValue= target.value,
                     trimmedValue = $.trim(targetValue),  // Trim leading and trailing whitespace
+
                     EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, // to be consistent with back end
-
                     //EMAIL_REGEX = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i,
-
-                    PASSWORD_REGEX = /([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]){8,}/i;
-                    //PASSWORD_REGEX = /^\s*$/;
+                    PASSWORD_REGEX = /([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]){8,}/i,   
+                    //CURRECY VALIDATION
+                    CURRENCY_REGEX = /^(?!0\.00)\d{1,3}(,\d{3})*(\.\d\d)?$/,
+                    //NUMBER VALIDATION
+                    NUMBER_REGEX = /^[0-9]+$/;
+                  //  alert(targetType + "and" + targetValue );
 
                 // If its type is a text input, email, or password field then first check for isEmpty
                 // If empty emit error event with the name attribute of the target element
                 // There might be a better way to do this, perhaps a switch statement?
-                if (targetType === 'text' || targetType === 'email' || targetType === 'password') {
+               // if (targetType === 'travel_bookeddate'  || targetType === 'travel_date'  || targetType === 'travel_to'  ||  targetType === 'travel_from'  || targetType === 'travel_pnr'  || targetType === 'travel_mode' || targetType === 'travel_amount'  || targetType === 'travel_count'  || targetType === 'text' || targetType === 'email' || targetType === 'password') {
+                 if ( targetType === 'select-one' || targetType === 'text' || targetType === 'email' || targetType === 'password') {
                     if (validation.isEmpty(targetElement)) {
                         validation.trigger('empty' + targetName);
                     } else {
+                    //     alert("targetValue " + targetValue);
+                    // alert("trimmedValue "+trimmedValue);
+                    // alert("tragetname  "+targetName);
 
                         // Then using the name attribute on a switch statement to route to the correct validation function after isEmpty check
                         switch (targetName) {
-                        case 'email':
-                            // Email validation here
+                            case 'travel_bookeddate':
+                                        validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_date':
+                                        validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_from':
+                                        validation.trigger('valid' + targetName);
+                            break;
+                             case 'travel_to':
+                                    validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_pnr':
+                                    validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_mode':
+                                    validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_status':
+                                    validation.trigger('valid' + targetName);
+                            break;
+                            case 'travel_amount':
+                                    validation.isValid(CURRENCY_REGEX, trimmedValue, targetName);
+                            break;
+                            case 'travel_count':
+                                    validation.isValid(NUMBER_REGEX, trimmedValue, targetName);
+                            break;
+                          case 'email':
                             validation.isValid(EMAIL_REGEX, trimmedValue, targetName);
                             break;
                         case 'password':
@@ -83,7 +117,11 @@ define(
              * @returns {Boolean}
              */
             isEmpty: function(targetElement) {
-                if (targetElement.value === '') {
+               // alert(targetElement.value);
+                if (targetElement.value === '' || targetElement.value === '0') {
+                    //alert("target");
+                    console.log("reac");
+                    console.log(targetElement.value);
                     return true;
                 } else {
                     return false;
@@ -98,6 +136,7 @@ define(
              * @param {String} target - the input name attribute
              */
             isValid: function(regex, value, target) {
+                
                 if (regex.test(value)) {
                     validation.trigger('valid' + target);
                 } else {

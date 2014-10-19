@@ -33,7 +33,7 @@ requirejs.config({
         "validation":               'validation',
         "errorDisplay":             'errorDisplay',
         "datatables":"lib/jquery.dataTables.min",
-        "dt":"lib/jquery-DT-pagination",
+        "dtpagination":"lib/jquery-DT-pagination",
         'login' : 'view/login'
        
     },

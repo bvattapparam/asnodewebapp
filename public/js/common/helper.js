@@ -11,6 +11,9 @@ define([
 		"use strict";
 
 		var Helper = {
+			testf:function(){
+				alert('tester');
+			},
 
 			simplePostAndRender: function (oParams) {
                 var jqxhr;

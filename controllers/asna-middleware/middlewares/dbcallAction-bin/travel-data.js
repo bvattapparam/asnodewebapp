@@ -21,7 +21,7 @@ function getResponse(req, next) {
                                                         req.model = {
                                                                     data: {viewmd:serviceResponse}
                                                         };
-                                                        //console.log("ROW DATA" + JSON.stringify(req.model))
+                                                        console.log("ROW DATA" + JSON.stringify(req.model))
                                                       next();                      
                 });
 }

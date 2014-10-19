@@ -52,7 +52,7 @@ app.requestAfterRoute = function requestAfterRoute(server) {
     server.use(function (req, res) {
             /* TODO: need to block this page for unauthed users. */
             res.status("404");
-            console.log("hrere is the status"+ res.status());
+           // console.log("hrere is the status"+ res.status());
 
             if(!req.model) {
                 req.model = {};
@@ -63,14 +63,14 @@ app.requestAfterRoute = function requestAfterRoute(server) {
         });
 
      /* Handle 500 errors */
-        server.use(function (err, req, res, next) {
-            res.status(err.status || "500");
-        if (!req.model) {
-            req.model = {};
-        }
-        req.model.viewName = "errors/error500";
-        res.render(req.model.viewName, req.model);
-        });
+        // server.use(function (err, req, res, next) {
+        //     res.status(err.status || "500");
+        // if (!req.model) {
+        //     req.model = {};
+        // }
+        // req.model.viewName = "errors/error500";
+        // res.render(req.model.viewName, req.model);
+        // });
 
 };
 

@@ -10,39 +10,38 @@ define([
     'viewUtil',
     'common/helper',
     'datatables',
-    'dtpagination',
-    'bootstrap-cal'
+    'dtpagination'
 ],
     function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper) {
         var TravelView = BaseView.extend({
         el:"#travel",
                 events: {
-                        'change #travel_mode_edit':'dropdownSpanUpdate',
-                         'change #travel_status_edit':'dropdownSpanUpdate',
-                         'click .editTravelCall':'travelDataShow',
-                         'click #editTravelbtn':'editTravelData',
-                         'click .close':'reloadParent'
+                        // 'change #travel_mode_edit':'dropdownSpanUpdate',
+                        //  'change #travel_status_edit':'dropdownSpanUpdate',
+                        //  'click .editTravelCall':'travelDataShow',
+                        //  'click #editTravelbtn':'editTravelData',
+                        //  'click .close':'reloadParent'
                        },
 
         initialize: function(){   
-                console.log("travel view loaded");
+                console.log("cc view loaded");
                 this.paginationSection();
-                this.showCalendar();
-                this.preFillSelectbox();
-                this.ajaxPrefilter();
+               // this.showCalendar();
+                //this.preFillSelectbox();
+                //this.ajaxPrefilter();
                 this.toolTipShow();
         },
         toolTipShow:function(){
             $('[data-toggle="popover"]').popover({
                   trigger: 'hover',
-                      'placement': 'left'
+                      'placement': 'top'
               });
         },
         reloadParent:function(){
               window.location.reload();
         },
         showCalendar:function(){
-              $('#cal_travel_bookeddate_edit, #cal_travel_date_edit').datetimepicker({pickTime: false});
+              $('#travel_bookeddate, #travel_bookeddate_edit, #travel_date, #travel_date_edit').datetimepicker({pickTime: false});
         },
     
         openModal:function(){
@@ -65,7 +64,7 @@ define([
         // function to call pagination 
         paginationSection:function(){
           console.log("REACHED pagination function");
-                $('#travelData').dataTable( {
+                $('#ccData').dataTable( {
                         "bSort": true,       // Disable sorting
                         "iDisplayLength": 10,   //records per page
                         "sPaginationType": "bootstrap",
