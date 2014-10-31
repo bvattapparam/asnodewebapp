@@ -2,7 +2,9 @@
 "use strict";
 
 var async = require('async'),
-      dbConModel = require("../../../../models/dbcon");
+        Helper = require('../../../../lib/helper'),
+      dbConModel = require("../../../../models/dbcon"),
+      helper=new Helper();
 
 function getResponse(req, next) {
   
@@ -13,15 +15,20 @@ function getResponse(req, next) {
                                   oTable:'tbl_travel',
                                   oField:'travel_id'
                 };
-                //console.log("LATEST" + JSON.stringify(oParams));
                 asnaMiddleware.getDataonID(oParams,
                                 function (model) {
                                                        var  serviceResponse = (model) ? model : {};
-                                                        console.log("TRAVEL RESPONSE DATA : " + JSON.stringify(serviceResponse));
+                                                          var locality='IN',
+                                                                culture = 'en_IN',
+                                                                currency='INR';
+                                                        helper.cFormatter(locality,culture,serviceResponse,currency,'travel_amount','travel_formated_amount');
+                                                        helper.dFormatter(locality,culture,serviceResponse,currency,'travel_date','m');
+                                                        helper.dFormatter(locality,culture,serviceResponse,currency,'travel_bookeddate','m');
+                                                        console.log("TRAVEL RESPONSE DATA AJAX : " + JSON.stringify(serviceResponse));
                                                         req.model = {
                                                                     data: {viewmd:serviceResponse}
                                                         };
-                                                        console.log("ROW DATA" + JSON.stringify(req.model))
+                                                        helper.sConsole("TRAVEL ROW DATA",  JSON.stringify(req.model));
                                                       next();                      
                 });
 }
@@ -32,7 +39,6 @@ exports.process = function (req, res) {
 				getResponse(req, cb);
 			}
 		], function (err, aResult) {
-                                           // console.log("RMODEL :" + JSON.stringify(req.model));
                                             res.json(req.model);
 		}
 	);

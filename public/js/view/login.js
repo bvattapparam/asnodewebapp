@@ -30,6 +30,7 @@ function (nougat, _, $, Backbone, BaseView, ViewUtil,Validation, ErrorDisplay) {
 
             initialize: function(){   
                 console.log("login test");
+                $('.s').append('span');
                
                 var formNames = ['email', 'password'];
                 ErrorDisplay.markError(formNames);
@@ -74,5 +75,5 @@ function (nougat, _, $, Backbone, BaseView, ViewUtil,Validation, ErrorDisplay) {
 
 });
 
-        return  new loginView();
+        return  loginView;
 }); 

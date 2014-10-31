@@ -42,11 +42,14 @@
 
 
     .loginpanel{
-        width:300px;
-        margin:auto;
-        margin-top:150px;
-        border-radius:0;
-        background:none repeat scroll 0 0 rgba(213, 215, 222, 0.8)
+    border-radius:0;
+    background:none repeat scroll 0 0 rgba(213, 215, 222, 0.8);
+    position: absolute;
+    min-height: 200px;
+    width: 300px;
+    margin: -100px 0 0 -150px;
+    top: 50%;
+    left: 50%;
     }
     .form-group {
         margin-bottom: 0;
@@ -181,7 +184,7 @@ border-color: #f1e7bc;
 background-color: #f0f7fd;
 border-color: #d0e3f0;
 }
-#travel, #cc{
+#travel, #cc, #shopping{
     .pagination{
     margin:0;
     }
@@ -294,9 +297,23 @@ select {
     position:absolute;
     z-index:233;
 }
-.editTravelCall{
-    cursor:pointer;
-}
 .popover{
     background-color:(@state-warning-bg);
+}
+.spanasanchor{
+    cursor: pointer;
+}
+.breadcrumb{
+    clear:both;
+}
+.padding-left-none{
+    padding-left:0px;
+}
+.padding-right-none{
+    padding-right:0px
+    }
+
+.totalamount{
+    color:#999;
+    font-weight:bold;
 }

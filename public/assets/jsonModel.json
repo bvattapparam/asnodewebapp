@@ -63,7 +63,7 @@
                                                                                                 "filterShow":"annaprasam"
                                                                                 }
     		                                  ],
-                                              "donutcol" :  {
+                                                "donutcol" :  {
                                                                       "d1" : {
                                                                             "label" : "Travel",
                                                                             "value" : "45"
@@ -81,5 +81,6 @@
                                                                             "value" : "6"
                                                                              }   
                                                                     }
+                                             
             }
         }

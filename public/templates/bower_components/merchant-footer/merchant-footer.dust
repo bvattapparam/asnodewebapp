@@ -5,7 +5,7 @@
 !}
 
 <footer role="navigation" class="merchantFooter">
-	{@if test="'{showMainNav}' == 'true'"}
+	{@if cond="'{showMainNav}' == 'true'"}
 		<div class="utility">
 			<div class="footerNav">
 				<nav>
@@ -35,7 +35,7 @@
 		<div class="footerNav">
 			<div class="legal">
 				<p class="copyright">{@pre type="content" key="merchant-footer.copyright"/}</p>
-				{@if test="'{showLegalNav}' == 'true'"}
+				{@if cond="'{showLegalNav}' == 'true'"}
 					<ul>
 						{@provide}
 							{#optionList}

@@ -9,11 +9,12 @@ define([
     'BaseView',
     'viewUtil',
     'common/helper',
+     'common/globalSpace',
     'datatables',
     'dtpagination',
     'bootstrap-cal'
 ],
-    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper) {
+    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper, globalSpace) {
         var TravelView = BaseView.extend({
         el:"#travel",
                 events: {
@@ -26,7 +27,7 @@ define([
 
         initialize: function(){   
                 console.log("travel view loaded");
-                this.paginationSection();
+                globalSpace.paginationSection('#travelData');
                 this.showCalendar();
                 this.preFillSelectbox();
                 this.ajaxPrefilter();
@@ -62,21 +63,7 @@ define([
                    $('span.'+spanClass).html(selectedItem);
                 },
 
-        // function to call pagination 
-        paginationSection:function(){
-          console.log("REACHED pagination function");
-                $('#travelData').dataTable( {
-                        "bSort": true,       // Disable sorting
-                        "iDisplayLength": 10,   //records per page
-                        "sPaginationType": "bootstrap",
-                        "sDom": "t<'row pagination-topliner'<'col-lg-3'f><'col-lg-9 text-right'p>>", 
-                       
-             } );
-              // making pagination more attractive using bootstrap form group and fa icon 
-            $('.pagination-topliner').find('input').addClass('form-control').attr('placeholder','search inside the report').wrap("<div class='input-group'></div>" ).before( " <div class='input-group-addon'><span class='fa fa-search'></span></div>" );
-        },
-        // this area used for ajax call
-
+      
           renderTravelData: function (data) {
             var oParams = this.getTravelDataRenderParams(),
             oSelf = this;
@@ -86,8 +73,8 @@ define([
                         oSelf.openModal();
                              $('#loadingspan').removeClass('loadingTransp');
                              $('#loadingspan').removeClass('show');
-                              $('#travel_date_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_date_edit').val())));
-                              $('#travel_bookeddate_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_bookeddate_edit').val())));
+                              //$('#travel_date_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_date_edit').val())));
+                              //$('#travel_bookeddate_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_bookeddate_edit').val())));
                               oSelf.showCalendar();
             };
             Helper.simpleRender(oParams);
@@ -111,6 +98,7 @@ define([
            var oSelf = this;
            //console.log("THIS IS TEST"); 
            var travelD=travelD;
+           //alert(travelID);
             return {
                 sUrl : '/asnodewebapp/travelData',
                 oForm : this.getFormData(travelID),
@@ -273,5 +261,5 @@ define([
     // close edit travel data ajax section
 
 }); 
-        return new TravelView();
+        return TravelView;
     }); 

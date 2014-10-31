@@ -29,7 +29,6 @@
                                                               {<formBody}
                                                                         <div class="col-lg-4">
                                                                                         <div class="col-lg-12">
-                                                                                           
                                                                                               {>"components/textInput/textInput" 
                                                                                                                              name="cc_date" 
                                                                                                                              type="text" 
@@ -100,15 +99,15 @@
                                                                                                                              type="text" 
                                                                                                                              id="cc_type" 
                                                                                                                              divId="cc_typediv" 
-                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccprovider"/}" 
-                                                                                                                             faIcon="fa-bank" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.cctype"/}" 
+                                                                                                                             faIcon="fa-credit-card" 
                                                                                                                              spanID="cc_type_icon"  
                                                                                                                              readonly="true" 
                                                                                                                              value="" 
                                                                                                                              /}
                                                                                                     <div id="cc_statusdiv" class="textInput">
                                                                                                                     <div class="input-group fieldWrapper">
-                                                                                                                                    <span class="input-group-addon"><span class="fa fa-bus"></span></span>   
+                                                                                                                                    <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
                                                                                                                                      {@provide}
                                                                                                                                         {>"components/Dropdown/dropdown"
                                                                                                                                         fieldName="cc_status"

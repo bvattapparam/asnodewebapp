@@ -9,6 +9,14 @@ module.exports = function (server) {
 	server.post("/travelData", AsnaMiddleWare.travelData);
 	server.post("/travelDataEdit", AsnaMiddleWare.travelDataEdit); 
 
+	server.post("/ccData", AsnaMiddleWare.ccData); 
+	server.post("/ccDataEdit", AsnaMiddleWare.ccDataEdit); 
+
+	server.post("/shoppingData", AsnaMiddleWare.shoppingData); 
+	server.post("/shoppingDataEdit", AsnaMiddleWare.shoppingDataEdit); 
+
 	// PARAM call node
 	server.get("/travelDataDelete/:id", AsnaMiddleWare.travelDataDelete); 
+	server.get("/ccDataDelete/:id", AsnaMiddleWare.ccDataDelete); 
+	server.get("/shoppingDataDelete/:id", AsnaMiddleWare.shoppingDataDelete); 
 };

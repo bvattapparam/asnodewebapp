@@ -1,4 +1,4 @@
-{?data.notificationCollection.notifications.alerts}
+
 <div class="notificationWrapper">
 	<a data-toggle="modal" role="button" aria-owns="Notifications" class="button secondary small" id="notificationBttn" href="#">
 		<span class="notification-icon"></span>
@@ -13,7 +13,7 @@
 			</div>
 			<div class="popover-body">
 				<ul class="notificationLinks">
-					{#data.notificationCollection.notifications.alerts}
+					
 						<li class="alertItem
 							{@if test="'{category}' == '0' && '{alertType}' == '0'"} alert-restriction {/if}
 							{@if test="'{category}' == '0' && '{alertType}' == '1'"} alert-warning {/if}
@@ -29,10 +29,8 @@
 								</a>
 							{/dismissable}
 						</li>
-					{/data.notificationCollection.notifications.alerts}
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-{/data.notificationCollection.notifications.alerts}

@@ -4,7 +4,6 @@
 !}
 
 <header>
- <img data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" style="position: fixed; top: 0; right: 0; border: 0; z-index: 100;">
 	<div class="merchantHeader">
 		<div class="contentWrapper">
 			<a href="#contents" class="skip">{@pre type="content" key="merchant-header.skipToMain"/}</a>
@@ -16,33 +15,33 @@
 			<nav role="navigation" id="navMenu">
 				<ul class="primaryNav">
 					<li class="homeIcon hidden-sm" data-explore="{@pre type="content" key="merchant-header.helpHome" editable="false" /}">
-						<a href="{@pre type="content" key="merchant-header.home.link" editable="false" /}" class="{@if test="'{viewName}' == 'summary/index'"}selected{/if}">
+						<a href="{@pre type="content" key="merchant-header.home.link" editable="false" /}" class="{@if cond="'{viewName}' == 'summary/index'"}selected{/if}">
 							<span class="accessAid">{@pre type="content" key="merchant-header.homeIconAlt"  /}</span>
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="merchant-header.money.link" editable="false" /}" class="{@if test="'{viewName}' == 'money/index'"}selected{/if}">
+						<a href="{@pre type="content" key="merchant-header.money.link" editable="false" /}" class="{@if cond="'{viewName}' == 'money/index'"}selected{/if}">
 							{@pre type="content" key="merchant-header.money.content"  /}
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="merchant-header.travel.link" editable="false" /}" class="{@if test="'{viewName}' == 'travel'"}selected{/if}">
+						<a href="{@pre type="content" key="merchant-header.travel.link" editable="false" /}" class="{@if cond="'{viewName}' == 'travel'"}selected{/if}">
 							{@pre type="content" key="merchant-header.travel.content"  /}
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="merchant-header.cc.link" editable="false" /}" class="{@if test="'{viewName}' == 'cc'"}selected{/if}">
+						<a href="{@pre type="content" key="merchant-header.cc.link" editable="false" /}" class="{@if cond="'{viewName}' == 'cc'"}selected{/if}">
 							{@pre type="content" key="merchant-header.cc.content"  /}
 						</a>
 					</li>
 					<li class="hidden-sm">
-						<a href="{@pre type="content" key="merchant-header.tools.link" editable="false" /}" class="{@if test="'{viewName}' == 'merchant/tools'"}selected{/if}">{@pre type="content" key="merchant-header.tools.content"  /}</a>
+						<a href="{@pre type="content" key="merchant-header.shopping.link" editable="false" /}" class="{@if cond="'{viewName}' == 'shopping'"}selected{/if}">{@pre type="content" key="merchant-header.shopping.content"  /}</a>
 					</li>
 					<li class="moreMenu">
 						<a href="#" class="moreLink">{@pre type="content" key="merchant-header.more"  /}</a>
 						<ul>
 							<li class="visible-sm">
-								<a href="{@pre type="content" key="merchant-header.tools.link" editable="false" /}" class="{@if test="'{viewName}' == 'merchant/tools'"}selected{/if}">{@pre type="content" key="merchant-header.tools.content"  /}</a>
+								<a href="{@pre type="content" key="merchant-header.tools.link" editable="false" /}" class="{@if cond="'{viewName}' == 'merchant/tools'"}selected{/if}">{@pre type="content" key="merchant-header.tools.content"  /}</a>
 							</li>
 							<li>
 								<a href="{@pre type="content" key="merchant-header.reports.link" editable="false" /}">{@pre type="content" key="merchant-header.reports.content"  /}</a>
@@ -86,11 +85,11 @@
 
 			<div class="globalLinksHolder">
 				{! notifications flyout !}
-				{@if test="'{showNotifications}' == 'true'"}
+				{@if cond="'{showNotifications}' == 'true'"}
 					{>"bower_components/merchant-header/notifications"/}
 				{/if}
 				{! settings flyout !}
-				{@if test="'{showSettings}' == 'true'"}
+				{@if cond="'{showSettings}' == 'true'"}
 					{>"bower_components/merchant-header/settings-flyout"/}
 				{/if}
 
@@ -99,7 +98,7 @@
 						{@pre type="content" key="merchant-header.logout.content"  /}
 					</a>
 				</div>
-				<button id="hamburger-button"></button>
+				<button id="hamburger-button"></button>	
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,4 @@
+
 <div data-explore="{@pre type="content" key="setting.help" editable="false" /}" class="settingsWrapper">
 	<a role="button" aria-owns="settings" class="button secondary small" id="settingsBttn" href="#">
 		<span class="settings-icon"></span>

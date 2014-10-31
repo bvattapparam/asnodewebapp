@@ -6,7 +6,7 @@
 
 {<mainBlock}
                 <!--->
-                <div class="col-lg-12 panel-header">
+                <div class="navbar navbar-fixed-top panel-header">
                         <div><img src="images/src/asna.gif" height=70></div>
                 </div>
                 <div  id="loginPage" class="panel panel-gray loginpanel">
@@ -22,7 +22,6 @@
                                                                                 </ul>
                                                                 </div>
                                                 {/messages}
-
                                                                <!--- place for component-->
                                                                 {>"inc/form" /}
 
@@ -59,9 +58,6 @@
                                                 
                 </div>
                     <!----->
-
-
-         
 
 
 {/mainBlock}

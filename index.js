@@ -1,6 +1,4 @@
 'use strict';
-
-
 var kraken = require('kraken-js'),
         flash = require('connect-flash'),
         baseURI = require('./config/app.json').requestURI,
@@ -8,7 +6,7 @@ var kraken = require('kraken-js'),
         passport = require('passport'),
         mysqlDB = require('mysql'),
                 app = {};
-        require('./lib/helper-dateFormat');
+        require('./lib/helper-supplement');
         
 app.configure = function configure(nconf, next) {
     var connection = mysqlDB.createConnection({

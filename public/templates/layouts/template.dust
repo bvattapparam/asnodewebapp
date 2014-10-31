@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}">
 <head>
+<meta http-equiv="Cache-Control" content="no-cache" />
+ <meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+ 
 <link href="images/src/favicon.gif" rel="shortcut icon">
 <link href="images/src/favicon.gif" rel="apple-touch-icon">
-{>"bower_components/UVLPageInfo/templates/pageInfo" /}
-<title>{+pageTitle /} - {@pre type="content" key="template.browserTitle" editable="false"/}</title>
+
+  {>"layouts/metaTags"/}
+  <title>{+pageTitle /} - {@pre type="content" key="template.browserTitle" editable="false"/}</title>
 <link rel="stylesheet" href="css/app.css" />
-<script>
-        {! update the class on the page with class "js" instead of "no-js". We use that class to avoid flash of uninitialized JS !}
-        document.documentElement.className = "js";
-</script>
 </head>
 <body data-view-name="{viewName}" data-template-path="/asnodewebapp/templates/%s.js">
    

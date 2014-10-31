@@ -23,9 +23,8 @@ define([
             // validate field interactions
         },
 
-            initialize: function(){   
-                console.log("test");
-               // this.prettyPrintTrigger(); // call function for pretty print.
+            initialize: function(){
+              $('tspan').css("color","red");
 
                var  dumpValue =$('#rowjsonDump').html();
                               
@@ -36,19 +35,14 @@ define([
                                     if (typeof Morris != 'undefined') {
                                          Morris.Donut({
                                                         element: 'donutcolored',
-                                                        data: Object.keys(dumpvalue.viewModel.donutcol).map(function(key) {return dumpvalue.viewModel.donutcol[key]}),
+                                                        data: Object.keys(dumpvalue.vDonutData.donutcol).map(function(key) {return dumpvalue.vDonutData.donutcol[key]}),
                                                         labelColor: '#303641',
                                                         resize:true,
                                                         colors: ['#f26c4f', '#00a651', '#00bff3', '#0072bc']
                                                     });
                                     }
-                                
-            },
-
-
-        //close
-          
+            }
         });
 
-        return new settlementView();
+        return  settlementView;
     }); 

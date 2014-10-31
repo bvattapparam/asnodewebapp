@@ -33,7 +33,7 @@ define([
 
                 initialize: function(){   
                         console.log("VIEW: CC ADD");
-                        GlobalSpace.preFillSelectbox_ccAdd(); 
+                        GlobalSpace.preFillSelectbox(); 
                         //var formNames = ['travel_bookeddate','travel_date','travel_from','travel_to','travel_pnr','travel_mode','travel_status','travel_amount','travel_count'];
                         //ErrorDisplay.markError(formNames);
 
@@ -45,13 +45,11 @@ define([
                          */
 
                         $('#cal_cc_date').datetimepicker({pickTime: false});
-                       // this.preFillSelectbox();  // to prefill the select boxes with the selected default text
                 } ,//close init();
                 updateCCClass:function(ev){
                     var field = $(ev.target);
                     var cctype= GlobalSpace.getCreditCardType(field.val());
                     var cctype_icon;
-                    //console.log(cctype);
                     if(cctype !='credit-card'){
                         cctype_icon='cc-' + cctype;
                     }
@@ -63,14 +61,9 @@ define([
 
                     $("#cc_type_icon").removeClass();
                     $('#cc_type_icon').addClass('fa fa-'+cctype_icon);
-                    //$("#cc_type").val('');
                     $('#cc_type').val(cctype);
-
                 },
-
-        
-              
                
         });
-        return new ccAddView();
+        return  ccAddView;
 }); 

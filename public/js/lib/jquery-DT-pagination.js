@@ -12,6 +12,17 @@
 					"iTotalPages":    Math.ceil( oSettings.fnRecordsDisplay() / oSettings._iDisplayLength )
 				};
 			}
+			/* Set the defaults for DataTables initialisation */
+			$.extend(true, $.fn.dataTable.defaults, {
+				"bSort": true, 
+				"iDisplayLength": 5,   //records per page
+			                        "sPaginationType": "bootstrap",
+					   // "sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>" + "t" + "<'row'<'col-sm-6'i><'col-sm-6'p>>",
+					    "sDom": "t<'row pagination-topliner'<'col-lg-3'f><'col-lg-9 text-right'p>>", 
+					    "oLanguage": {
+					        "sLengthMenu": "_MENU_ records per page"
+					    }
+			});
 
 			/* Bootstrap style pagination control */
 			$.extend( $.fn.dataTableExt.oPagination, {

@@ -5,25 +5,17 @@ var config = require('nconf'),
         mysql=require('mysql'),
         dbConModel = require("../models/dbcon"),
         auth = require('../lib/auth'),
-        Helper = require('../lib/helper');
-
-        console.log("CC" + rootURI);
+        Helper = require('../lib/helper'),
+        helper=new Helper();
 
 var CreditCard = {
                 process: function(req,res,next){
-                              //  Dashboard.getdashboardImages(req,next);
-                              console.log("here is travel");
+                              helper.sConsole("REACHED TO TRAVEL VIEW");
                               CreditCard.getCCTransactionData(req,next);
-                                console.log("function called");
-                               
-                               // next();
                 },
                  getCCTransactionData: function(req,next){
-                    console.log("getCCTransactionData");
-                                var helper = new Helper();
                                  var dbconnection = new dbConModel();
-                                // var oTable = "tbl_travel";
-                                console.log("sessionstart" + req.session.messageType)
+                                helper.sConsole("SESSION START", req.session.messageType);
                                 var oParams = {
                                                 oTable:'tbl_cc'
                                 };
@@ -31,16 +23,27 @@ var CreditCard = {
                                 dbconnection.getRowFields(oParams,
                                 function (model) {
                                                        var  serviceResponse = (model) ? model : {};
-                                                        console.log("CC RESPONSE DATA : " + JSON.stringify(serviceResponse));
+                                                       var locality='IN',
+                                                                culture = 'en_IN',
+                                                                currency='INR';
+                                                        helper.cFormatter(locality,culture,serviceResponse,currency,'cc_amount','cc_formated_amount');
+                                                        helper.dFormatter(locality,culture,serviceResponse,currency,'cc_date','D');
+
+                                                        var total_amount = helper.cTotalAmount(serviceResponse,'cc_amount')
+                                                        var formatted_Total_Amount=helper.cFormatter(locality,culture,'NA',currency,total_amount,'NA');
+                                                        
+
+                                                        helper.sConsole("CC RESPONSE DATA", JSON.stringify(serviceResponse));
                                                     req.model = {
                                                                 viewName : "cc",
                                                                 data : {
                                                                                 viewModel:serviceResponse,
                                                                                 messageType:req.session.messageType,
-                                                                                messageContent:req.session.messageContent
+                                                                                messageContent:req.session.messageContent,
+                                                                                totalAmount:formatted_Total_Amount
                                                                 }
                                                 };
-                                                console.log("session" + req.session.messageType)
+                                                helper.sConsole("SESSION", req.session.messageType);
                                                 req.session.messageType=null;
                                                  req.session.messageContent=null;
                                               next();
@@ -52,7 +55,6 @@ var CreditCard = {
                 routes: function(server){
                                 server.get("/cc", auth.isAuthenticated(),CreditCard.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);
-                                                console.log("reached to CC");
                                 });
                                 server.post("/cc",CreditCard.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);

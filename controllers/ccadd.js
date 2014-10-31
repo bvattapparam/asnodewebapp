@@ -6,11 +6,12 @@ var config = require('nconf'),
         dbConModel = require("../models/dbcon"),
         auth = require('../lib/auth'),
         dbConModel = require("../models/dbcon"),
-        Helper = require('../lib/helper');
+        Helper = require('../lib/helper'),
+        helper=new Helper();
 
 var ccAdd = {
                 process: function(req,res,next){
-                              console.log("CONTROLLER CC ADD");
+                              helper.sConsole("CONTROLLER CC ADD MODEL");
                                req.model = {
                                                                 viewName : "ccadd",
                                                                 data : {}
@@ -20,13 +21,13 @@ var ccAdd = {
 
                 pushTravelData: function(req,res,next){
                      var dbconnection = new dbConModel();
-                                console.log("CONTROLLER TRAVEL ADD :: PUSH");
+                                helper.sConsole("CONTROLLER TRAVEL ADD :: PUSH");
                               //  var oTable = "tbl_travel";
                                 var oParams={
                                         params:ccAdd.getParam(req),
                                         oTable:'tbl_cc'
                                     }
-                                console.log ("oParams" + JSON.stringify(oParams));
+                                helper.sConsole ("oParams", JSON.stringify(oParams));
 
                                 dbconnection.getInsertFields(oParams,
                                 function (model) {
@@ -55,7 +56,9 @@ var ccAdd = {
                                                 "cc_comment":body.cc_comment,
                                                 
                             };
-                            console.log('Params' + JSON.stringify(Params));
+                            helper.sConsole('Params', JSON.stringify(Params));
+                           // var ParamsO=$('#frm').serializeArray();
+                   // console.log("Serialized" + ParamsO);
                             return Params;
 
                 },

@@ -9,123 +9,115 @@ define([
     'BaseView',
     'viewUtil',
     'common/helper',
+    'common/globalSpace',
     'datatables',
-    'dtpagination'
+    'dtpagination',
+    'bootstrap-cal'
 ],
-    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper) {
+    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper,GlobalSpace) {
         var TravelView = BaseView.extend({
-        el:"#travel",
+        el:"#cc",
                 events: {
                         // 'change #travel_mode_edit':'dropdownSpanUpdate',
-                        //  'change #travel_status_edit':'dropdownSpanUpdate',
+                          'change #cc_status_edit':GlobalSpace.dropdownSpanUpdate,
                         //  'click .editTravelCall':'travelDataShow',
                         //  'click #editTravelbtn':'editTravelData',
-                        //  'click .close':'reloadParent'
+                        'click .close':'reloadParent',
+                        'click .editCCCall':'ccDataShow',
+                        'click #editCCbtn':'editCCData',
+                        'keypress #cc_fourdigit_edit':'updateCCClass',
                        },
 
         initialize: function(){   
                 console.log("cc view loaded");
-                this.paginationSection();
+                GlobalSpace.paginationSection('#ccData');
                // this.showCalendar();
-                //this.preFillSelectbox();
-                //this.ajaxPrefilter();
+                this.ajaxPrefilter();
                 this.toolTipShow();
+
+          
         },
+        updateCCClass:function(ev){
+                    var field = $(ev.target);
+                    var cctype= GlobalSpace.getCreditCardType(field.val());
+                    var cctype_icon;
+                    if(cctype !='credit-card'){
+                        cctype_icon='cc-' + cctype;
+                    }
+                    else{
+                        cctype_icon=cctype;
+                    }
+                    $("#cc_cctype").removeClass();
+                    $('#cc_cctype').addClass('fa fa-'+cctype_icon);
+
+                    $("#cc_type_icon").removeClass();
+                    $('#cc_type_icon').addClass('fa fa-'+cctype_icon);
+                    $('#cc_type_edit').val(cctype);
+                },
         toolTipShow:function(){
             $('[data-toggle="popover"]').popover({
-                  trigger: 'hover',
-                      'placement': 'top'
+                  trigger: 'click',
+                      'placement': 'left'
               });
         },
+
         reloadParent:function(){
               window.location.reload();
         },
         showCalendar:function(){
-              $('#travel_bookeddate, #travel_bookeddate_edit, #travel_date, #travel_date_edit').datetimepicker({pickTime: false});
+              $('#cal_cc_date_edit').datetimepicker({pickTime: false});
         },
     
         openModal:function(){
-          $('#myModal').modal('show'); 
+          $('#myCCModal').modal('show'); 
         },
-              preFillSelectbox:function(){
-                   $(".selectDropdown").children("span").each(function(){
-                            var spanClass = $(this).attr('class');
-                            var selectID = spanClass;
-                            $('span.'+spanClass).html($('select#'+selectID+'>option:selected').text());
-                    });                
-               },
-                dropdownSpanUpdate:function(ev){
-                   var selectedItem = ev.target.options[ev.target.selectedIndex].text;
-                    var selectedItemID = ev.target.id;
-                    var spanClass = selectedItemID;
-                   $('span.'+spanClass).html(selectedItem);
-                },
-
-        // function to call pagination 
-        paginationSection:function(){
-          console.log("REACHED pagination function");
-                $('#ccData').dataTable( {
-                        "bSort": true,       // Disable sorting
-                        "iDisplayLength": 10,   //records per page
-                        "sPaginationType": "bootstrap",
-                        "sDom": "t<'row pagination-topliner'<'col-lg-3'f><'col-lg-9 text-right'p>>", 
-                       
-             } );
-              // making pagination more attractive using bootstrap form group and fa icon 
-            $('.pagination-topliner').find('input').addClass('form-control').attr('placeholder','search inside the report').wrap("<div class='input-group'></div>" ).before( " <div class='input-group-addon'><span class='fa fa-search'></span></div>" );
-        },
-        // this area used for ajax call
-
-          renderTravelData: function (data) {
-            var oParams = this.getTravelDataRenderParams(),
+          renderCCData: function (data) {
+            var oParams = this.getCCDataRenderParams(),
             oSelf = this;
             oParams.data = data;
             oParams.callback = function () {
-                        oSelf.preFillSelectbox();
+                        GlobalSpace.preFillSelectbox();
                         oSelf.openModal();
                              $('#loadingspan').removeClass('loadingTransp');
                              $('#loadingspan').removeClass('show');
-                              $('#travel_date_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_date_edit').val())));
-                              $('#travel_bookeddate_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_bookeddate_edit').val())));
                               oSelf.showCalendar();
             };
             Helper.simpleRender(oParams);
             
         },
-            getTravelDataRenderParams: function () {
-            var travelDataView,
+            getCCDataRenderParams: function () {
+            var ccDataView,
                   oSelf = this;
-                  travelDataView = new BaseView();
-            travelDataView.model = new Backbone.Model();
+                  ccDataView = new BaseView();
+                  ccDataView.model = new Backbone.Model();
 
             return {
-                    elementID : '#travelDataView',
-                    template :  'inc/modeledit_travel',
-                    view : travelDataView
+                    elementID : '#ccDataView',
+                    template :  'inc/modeledit_cc',
+                    view : ccDataView
                 };
         },
 
 
-         getParams: function (travelID) {
+         getParams: function (ccID) {
            var oSelf = this;
            //console.log("THIS IS TEST"); 
-           var travelD=travelD;
+           var ccID = ccID;
             return {
-                sUrl : '/asnodewebapp/travelData',
-                oForm : this.getFormData(travelID),
+                sUrl : '/asnodewebapp/ccData',
+                oForm : this.getFormData(ccID),
                callback : function (oData) {
                     if( (oData.data && oData.data.success) || undefined) {
-                        oSelf.renderTravelData(oData.data);
+                        oSelf.renderCCData(oData.data);
                     } else {
-                       oSelf.renderTravelData(oData.data);
+                       oSelf.renderCCData(oData.data);
                     }
                 }
             };
         },
-        getFormData: function (travelID) {
+        getFormData: function (ccID) {
             var oParams = {
-                //travelID: this.gettravelID(),
-                travelID: travelID,
+                ccID: ccID,
             };
             return oParams;
         },
@@ -136,12 +128,13 @@ define([
             return travelID;
         },
 
-        travelDataShow:function(ev){
-          var travelID = ev.target.id;
-            var oParams = this.getParams(travelID);
+        ccDataShow:function(ev){
+          var ccID = ev.target.id;
+            var oParams = this.getParams(ccID);
             console.log(oParams);
             this.callLoading();
             Helper.simplePost(oParams);
+            console.log("AJAX 1" + JSON.stringify(oParams));
         },
         callLoading:function(){
                 $('#loadingspan').width($('.table-responsive').width());
@@ -160,12 +153,12 @@ define([
     },
 
     // Place for edit travel data ajax section
-    editTravelData:function(){
+    editCCData:function(){
       console.log('edit ajax');
       var oParamsEdit = this.getParamsEdit();
       $("#header").addClass('loading');
       $(".show-body").addClass('hide');
-      $("#editTravelbtn").addClass('disabled');
+      $("#editCCbtn").addClass('disabled');
       Helper.simplePost(oParamsEdit);
     },
     showMessagebox:function(oData){
@@ -187,7 +180,7 @@ define([
           // console.log("THIS IS TEST"); 
           console.log("EDIT VAL" + JSON.stringify(this.getFormDataEdit()));
             return {
-                sUrl : '/asnodewebapp/travelDataEdit',
+                sUrl : '/asnodewebapp/ccDataEdit',
                 oForm : this.getFormDataEdit(),
                callback : function (oData) {
                     if( (oData.data && oData.data.success) || undefined) {
@@ -202,17 +195,15 @@ define([
           
     getFormDataEdit: function () {
             var oParams = {
-                    travelID: this.gettravelIDEdit(),
-                    travel_bookeddate: this.gettravelBookeddate(),
-                    travel_date: this.gettravelDate(),
-                    travel_from: this.gettravelFrom(),
-                    travel_to: this.gettravelTo(),
-                    travel_mode: this.gettravelMode(),
-                    travel_pnr: this.gettravelPNR(),
-                    travel_status: this.gettravelStatus(),
-                    travel_amount: this.gettravelAmount(),
-                     travel_count: this.gettravelCount(),
-                     travel_comment: this.gettravelComment()
+                    ccID: $( "#cc_id_edit").val(),
+                    cc_date: $( "#cc_date_edit").val(),
+                    cc_item: $( "#cc_item_edit").val(),
+                    cc_amount: $( "#cc_amount_edit").val(),
+                    cc_status:$( "#cc_status_edit").val(),
+                    cc_fourdigit:$( "#cc_fourdigit_edit").val(),
+                    cc_type:$( "#cc_type_edit").val(),
+                    cc_provider:$( "#cc_provider_edit").val(),
+                    cc_comment:$( "#cc_comment_edit").val(),
             };
             return oParams;
         },
@@ -272,5 +263,5 @@ define([
     // close edit travel data ajax section
 
 }); 
-        return new TravelView();
+        return  TravelView;
     }); 

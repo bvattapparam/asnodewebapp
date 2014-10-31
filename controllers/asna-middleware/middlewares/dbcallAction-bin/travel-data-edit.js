@@ -2,7 +2,9 @@
 "use strict";
 
 var async = require('async'),
-        dbConModel = require("../../../../models/dbcon");
+        dbConModel = require("../../../../models/dbcon"),
+        Helper=require("../../../../lib/helper"),
+        helper=new Helper();
 
 function getResponse(req, next) {
       var  asnaMiddleware = new dbConModel(),
@@ -28,14 +30,11 @@ function getResponse(req, next) {
                 asnaMiddleware.getUpdateDataonID(oParams,
                                 function (model, message) {
                                                        var  serviceResponse = (model) ? model : {};
-                                                        //console.log("TRAVEL RESPONSE DATA : " + JSON.stringify(serviceResponse));
                                                         req.model = {
                                                                     data: {
-                                                                            viewmd:serviceResponse,
-                                                                           // messageView:message
+                                                                            viewmd:serviceResponse
                                                                         }
                                                         };
-                                                        //console.log("ROW DATA" + JSON.stringify(req.model))
                                               next();
                 });
 }
@@ -46,7 +45,7 @@ exports.process = function (req, res) {
                 getResponse(req, cb);
             }
         ], function (err, aResult) {
-            console.log("RMODEL :" + JSON.stringify(req.model));
+            helper.sConsole("ROW MODEL", JSON.stringify(req.model));
             res.json(req.model);
         }
     );

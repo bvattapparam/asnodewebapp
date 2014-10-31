@@ -5,25 +5,18 @@ var config = require('nconf'),
         mysql=require('mysql'),
         dbConModel = require("../models/dbcon"),
         auth = require('../lib/auth'),
+        locale = require('../lib/locale'),
         Helper = require('../lib/helper');
-
-        console.log("TRAVEL" + rootURI);
+        var helper = new Helper();
 
 var Travel = {
                 process: function(req,res,next){
-                              //  Dashboard.getdashboardImages(req,next);
-                              console.log("here is travel");
                               Travel.getTravelTransactionData(req,next);
-                                console.log("function called");
-                               
-                               // next();
                 },
+              
                  getTravelTransactionData: function(req,next){
-                    console.log("getTravelTransactionData");
-                                var helper = new Helper();
-                                 var dbconnection = new dbConModel();
-                                // var oTable = "tbl_travel";
-console.log("sessionstart" + req.session.messageType)
+
+                                var dbconnection = new dbConModel();
                                 var oParams = {
                                                 oTable:'tbl_travel'
                                 };
@@ -31,16 +24,28 @@ console.log("sessionstart" + req.session.messageType)
                                 dbconnection.getRowFields(oParams,
                                 function (model) {
                                                        var  serviceResponse = (model) ? model : {};
-                                                        console.log("TRAVEL RESPONSE DATA : " + JSON.stringify(serviceResponse));
-                                                    req.model = {
-                                                                viewName : "travel",
-                                                                data : {
-                                                                                viewModel:serviceResponse,
-                                                                                messageType:req.session.messageType,
-                                                                                messageContent:req.session.messageContent
-                                                                }
-                                                };
-                                                console.log("session" + req.session.messageType)
+
+                                                       var locality='IN',
+                                                                culture = 'en_IN',
+                                                                currency='INR';
+                                                        helper.cFormatter(locality,culture,serviceResponse,currency,'travel_amount','travel_formated_amount');
+                                                        helper.dFormatter(locality,culture,serviceResponse,currency,'travel_date','D');
+                                                        helper.dFormatter(locality,culture,serviceResponse,currency,'travel_bookeddate','d');
+                                                       
+                                                        var total_amount = helper.cTotalAmount(serviceResponse,'travel_amount')
+                                                        var formatted_Total_Amount=helper.cFormatter(locality,culture,'NA',currency,total_amount,'NA');
+                                                       
+                                                        helper.sConsole("TRAVEL DATA",JSON.stringify(serviceResponse));
+                                                        req.model = {
+                                                                    viewName : "travel",
+                                                                    data : {
+                                                                                    viewModel:serviceResponse,
+                                                                                    messageType:req.session.messageType,
+                                                                                    messageContent:req.session.messageContent,
+                                                                                    totalAmount:formatted_Total_Amount
+                                                                    }
+                                                        };
+                                                helper.sConsole("SESSION",req.session.messageType);
                                                 req.session.messageType=null;
                                                  req.session.messageContent=null;
                                               next();
@@ -52,7 +57,7 @@ console.log("sessionstart" + req.session.messageType)
                 routes: function(server){
                                 server.get("/travel", auth.isAuthenticated(),Travel.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);
-                                                console.log("reached to travel");
+                                                helper.sConsole("REACHED TO TRAVEL VIEW");
                                 });
                                 server.post("/travel",Travel.process,function(req,res){
                                                 res.render(req.model.viewName,req.model);

@@ -28,6 +28,7 @@
                                                               {<formAttr} name="travelfrm"  action="/asnodewebapp/traveladd" autocomplete="off" id="frm" {/formAttr}
                                                               {<formBody}
                                                                           <div class="col-lg-4">
+                                                                         
                                                                                    {>"components/textInput/textInput" 
                                                                                                                              name="travel_bookeddate" 
                                                                                                                              type="text" 
@@ -116,8 +117,9 @@
                                                                                                                       fieldName="travel_mode"
                                                                                                                       fieldLabel=""
                                                                                                                       optionList=travelModeList
+                                                                                                                      optionSelected="Plane"
                                                                                                                       id="travel_mode" /}
-                                                                                                                          {:travelModeList}
+                                                                                                                       {:travelModeList}
                                                                                                                            {@pre type="content" key="traveladd.travelModeList" mode="paired" /}
                                                                                                                     {/provide}  
                                                                                                   </div>
@@ -162,7 +164,7 @@
                                                                                                                                     maxlength="225" 
                                                                                                                                     label="" 
                                                                                                                                     faIcon="fa-comment-o" 
-                                                                                                                                    value="{@pre type="content" key="traveladd.traveladdcomment" /}"/}
+                                                                                                                                    value="{@pre type="content" key="traveladd.travelcomment" /}"/}
 
                                                                                    <div class="form-group">
                                                                                                   <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="traveladd.submit" /}">
@@ -170,7 +172,7 @@
                                                                           </div> 
                                                                           <!-- second close here-->
                                                                           <!--  3rd open here -->
-                                                                          <div class="col-lg-4 text-right">
+                                                                          <div class="col-lg-4 hidden-xs text-right">
                                                                                       <img src="images/src/travel.gif" height="320">
                                                                           </div>
                                                                           <!-- 3rd close here -->

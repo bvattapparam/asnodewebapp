@@ -6,13 +6,14 @@
     rootURI = config.get('requestURI'),
     async = require('async'),
     passport = require('passport'),
-    LoginModel = require('../models/login');
+    LoginModel = require('../models/login'),
+    Helper=require('../lib/helper'),
+    helper=new Helper();
 
 
 module.exports = function (app) {
 
     var model = new LoginModel();
-
 
     /**
      * Display the login page. We also want to display any error messages that result from a failed login attempt.
@@ -24,14 +25,9 @@ module.exports = function (app) {
 
     app.get('/login', function (req, res) {
 
-        //Include any error messages that come from the login process.
-        { message: req.flash('loginMessage') }
         model.messages = req.flash('error');
-      model.messages1 = req.flash('message');
-
-        console.log("redirected to login");
-         console.log("LOGIN PAGE " + rootURI);
-        
+      
+        helper.sConsole("REACHED TO LOGIN VIEW");
         res.render('index', model);
     });
 
@@ -43,14 +39,11 @@ module.exports = function (app) {
      * Failed authentications will go back to the login page with a helpful error message to be displayed.
      */
     app.post('/login', function (req, res) {
-
-        //console.log("ok : " + req.session.goingTo);
         passport.authenticate('local', {
             successRedirect:   req.session.goingTo || rootURI + "/dashboard",
             failureRedirect:  rootURI+ "/login",
             failureFlash: true
         })(req, res);
-console.log("HI");
     });
 
     /**
