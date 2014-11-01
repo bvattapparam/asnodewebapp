@@ -27,18 +27,17 @@ define(["jquery"], function($){
 	});
 
 	// hide on clicking X icon on the right corner
-	$("header").find(".closeNotifications, .closeSettings").click(function(e){
-		if(this.className === "closeNotifications" ) {
+	$("header").find("#closeNotifications, #closeSettings").click(function(e){
+		if(this.id === "closeNotifications" ) {
 			$("#notificationsBox").hide();
 		}
-		else if(this.className === "closeSettings" ) {
+		else if(this.id === "closeSettings" ) {
 			$("#settingsBox").hide();
 		}
 	});
 
 	// Hamburger icon event handler
 	$("#hamburger-button").on("click", function(e){
-		alert("REACHED");
 		if(!navMenu.expanded){
 			expandMenu();
 		}

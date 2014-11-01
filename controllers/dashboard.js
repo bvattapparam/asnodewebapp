@@ -8,10 +8,13 @@ var config = require('nconf'),
     Helper=require('../lib/helper'),
     helper=new Helper();
 
+    var dbconnection = new dbConModel();
+
 var Dashboard = {
                 process: function(req,res,next){
                     Dashboard.setInitialModel(req,next);
                      Dashboard.getSum(req,next);
+                     Dashboard.getCount(req,next);
                                 Dashboard.getdashboardImages(req,next);
                                 helper.sConsole("REACHED TO DASHBOARD VIEW");
                 },
@@ -23,9 +26,18 @@ var Dashboard = {
                         };
                         next();
                 },
+                getCount:function(req,next){
+                  var oParam='tbl_travel';
+                          dbconnection.getEntryCount(oParam,function (model) {
+                                                       var  entryCount = (model) ? model : {};
+                                                   req.model.data.entryCount=entryCount;
+                                                   helper.sConsole("COUNT IN CONTROLLER", JSON.stringify(req.model));
+                                                //next(null);
+                                });
+                },
                 getSum:function(req,next){
                         var oParam='tbl_travel';
-                                 var dbconnection = new dbConModel();
+                                 
                                 dbconnection.getSum(oParam,function (model) {
                                                        var  sumTravel = (model) ? model : {};
                                                        var  donutParam={

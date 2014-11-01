@@ -1,0 +1,53 @@
+{!
+	@param showMainNav		Boolean indicating whether to show or hide utility nav
+	@param showFeedback		Boolean indicating whether to show or hide feedback link
+	@param showLegalNav		Boolean indicating whether to show or hide legal nav
+!}
+
+<footer role="navigation" class="pageFooter">
+	{@if cond="'{showMainNav}' == 'true'"}
+		<div class="utility">
+			<div class="footerNav">
+				<nav>
+					<ul class="navlinks">
+						{@provide}
+							{#optionList}
+								<li>{$elt|s}</li>
+							{/optionList}
+
+							{:optionList}
+							{@pre type="content" key="footer.navLinks" mode="paired"/}
+						{/provide}
+					</ul>
+					{@if cond="'{showFeedback}' == 'true'"}
+						<ul class="feedback">
+							<li><a href="#" target="_blank" class="helpPopup"><i class="fa fa-comment"></i>{@pre type="content" key="footer.help"/}</a></li>
+						</ul>
+					{/if}
+				</nav>
+			</div>
+		</div>
+	{/if}
+	<div class="footer">
+		<div class="footerNav">
+			<div class="legal">
+				<p class="copyright">{@pre type="content" key="footer.copyright"/}</p>
+				{@if cond="'{showLegalNav}' == 'true'"}
+					<ul>
+						{@provide}
+							{^optionList}
+								<li>{$elt|s}</li>
+							{/optionList}
+							{:optionList}
+							{@pre type="content" key="footer.legalNavLinks" mode="paired"/}
+						{/provide}
+						{@if cond="'{viewName}' == 'dashboard'"}
+							<li>{@pre type="content" key="footer.framework"/}</li>
+						{/if}
+					</ul>
+				{/if}
+			</div>
+		</div>
+	</div>
+</footer>
+

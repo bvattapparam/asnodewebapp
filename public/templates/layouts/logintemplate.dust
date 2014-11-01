@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}" id="loginbody">
 <head>
-<link href="images/src/favicon.gif" rel="shortcut icon">
-<link href="images/src/favicon.gif" rel="apple-touch-icon">
-
   {>"layouts/metaTags"/}
 <title>{+pageTitle /} - {@pre type="content" key="logintemplate.browserTitle" editable="false"/}</title>
 <link rel="stylesheet" href="css/app.css" />

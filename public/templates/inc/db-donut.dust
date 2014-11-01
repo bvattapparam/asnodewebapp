@@ -1,0 +1,6 @@
+{!Template: dashboard right pannel !}
+
+ <div id ="rowjsonDump" class="hide">{data|js}</div>
+                                                        <div class="section-box section-donutpanel">
+                                                                            <div id="donutcolored" style="height:250px"></div>
+                                                        </div>

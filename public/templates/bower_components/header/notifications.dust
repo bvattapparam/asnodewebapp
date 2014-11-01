@@ -1,15 +1,15 @@
 
 <div class="notificationWrapper">
-	<a data-toggle="modal" role="button" aria-owns="Notifications" class="button secondary small" id="notificationBttn" href="#">
-		<span class="notification-icon"></span>
+	<a data-toggle="modal" role="button" aria-owns="Notifications" class="btn btn-info btn-sm" id="notificationBttn" href="#">
+		<span class="fa fa-bell-o"></span>
 		<span class="notificationCount">{data.notificationCollection.notifications.alerts.length}</span>
 		<span class="accessAid">{@pre type="content" key="notification.header"/}</span>
 	</a>
 	<div tabindex="-1" aria-labelledby="{@pre type="content" key="notification.header" editable="false" /}" role="dialog" class="popover notificationsBox show-onload" id="notificationsBox">
-		<div class="popover-content">
+		<div class="popover-content notificationTheme">
 			<div class="popover-head">
 				<h2>{@pre type="content" key="notification.header"/}</h2>
-				<a tabindex="-1" role="button" class="closeNotifications" href="#"><span class="accessAid">{@pre type="content" key="notification.closeAlt"/}</span></a>
+				<a tabindex="-1" role="button" id="closeNotifications" class="closePopOver fa fa-close" href="#"><span class="accessAid">{@pre type="content" key="notification.closeAlt"/}</span></a>
 			</div>
 			<div class="popover-body">
 				<ul class="notificationLinks">

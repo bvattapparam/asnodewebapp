@@ -7,103 +7,28 @@
 
 
 {<header}
-    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+    {>"bower_components/header/header" showNotifications="true" showSettings="true" /}
 {/header}
 {<mainBlock}
-
-                <div id="dashBoard" class="section row">
-                                <div class="heading">
-                                                <h1>{@pre type="content" key="dashboard.pageheading" /}</h1>
-                                 </div>
-                                <div id ="rowjsonDump" class="hide">{data|js}</div>
+                <div id="dashBoard" class="row">
+                                <div class="col-xs-12">
+                                                <div class="heading">
+                                                            <h1>{@pre type="content" key="dashboard.pageheading" /}</h1>
+                                                 </div>
+                                </div>
 
                                 <div class="col-lg-3">
-                                                <div class="section section-box section-donutpanel">
-                                                                 <div id="donutcolored" style="height:250px"></div>
-                                                </div>
+                                            <div class="section"> {>"inc/db-donut" /}</div>
                                 </div>
                                 <div class="col-lg-6">
-                                                <div class="section section-box section-iconpanel">
-                                                                {#data.viewModel.gallerySection}
-                                                                                <div class="col-lg-3  col-md-2 col-sm-3 ">
-                                                                                                <a href="#" class="thumbnail"><img class="img-responsive" src="{Image}" alt=""><a/>
-                                                                                </div>
-                                                                {/data.viewModel.gallerySection}
-                                                </div>  
+                                    <div class="section">{>"inc/db-middle" /}</div>
                                 </div>
                                 <div class="col-lg-3">
-                                                <div class="section section-box section-statuspanel">
-                                                                <div class="col-lg-12">
-                                                                                <div class="panel panel-primary">
-                                                                                                <div class="panel-heading">
-                                                                                                                <div class="row">
-                                                                                                                                <div class="col-xs-3">
-                                                                                                                                                <span class="fa fa-github fa-3x"></span>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-xs-9 text-right">
-                                                                                                                                                 <p>New comments! </p>
-                                                                                                                                                <p class="huge"><a>26</a></p>
-                                                                                                                                </div>
-                                                                                                                </div>
-                                                                                                </div>
-                                                                                </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                                <div class="panel panel-green">
-                                                                                                <div class="panel-heading">
-                                                                                                                <div class="row">
-                                                                                                                                <div class="col-xs-3">
-                                                                                                                                                <span class="fa fa-github fa-3x"></span>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-xs-9 text-right">
-                                                                                                                                                <p>New comments! </p>
-                                                                                                                                                <p class="huge"><a>26</a></p>
-                                                                                                                                </div>
-                                                                                                                </div>
-                                                                                                </div>
-                                                                                </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                                <div class="panel panel-yellow">
-                                                                                                <div class="panel-heading">
-                                                                                                                <div class="row">
-                                                                                                                                <div class="col-xs-3">
-                                                                                                                                                <span class="fa fa-shopping fa-3x"></span>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-xs-9 text-right">
-                                                                                                                                                 <p>{@pre type="content" key="dashboard.shoppingstatus" /}</p>
-                                                                                                                                                <p class="huge"><a>26</a></p>
-                                                                                                                                </div>
-                                                                                                                </div>
-                                                                                                </div>
-                                                                                </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                                <div class="panel panel-yellow">
-                                                                                                <div class="panel-heading">
-                                                                                                                <div class="row">
-                                                                                                                                <div class="col-xs-3">
-                                                                                                                                                <span class="fa fa-bus fa-3x"></span>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-xs-9 text-right">
-                                                                                                                                                <p>{@pre type="content" key="dashboard.travelstatus" /}</p>
-                                                                                                                                                <p class="huge"><a>26</a></p>
-                                                                                                                                </div>
-                                                                                                                </div>
-                                                                                                </div>
-                                                                                </div>
-                                                                </div>
-                                                </div>
+                                    <div class="section">{>"inc/db-right" /}</div>
                                 </div>
                 </div>
- <span class="visible-lg">Large</span>
-<span class="visible-md">medium</span>
-<span class="visible-sm">small</span>
-<span class="visible-xs">mobile</span>
-
-
 {/mainBlock}
 
 {<footer}
-    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
 {/footer}

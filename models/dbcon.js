@@ -149,8 +149,7 @@ dbCon.prototype={
                                                 else
                                                 {
                                                                 //console.log("MySQL CONNECTED" + oParams.param);
-                                                              //var oRowFetch= connection.query('SELECT ( select SUM(travel_amount) FROM tbl_travel) as tvalue,(select sum(cc_amount) from tbl_cc) as cvalue,(select sum(shopping_amount) from tbl_shopping) as svalue', function(err,result){
-                                                                 var oRowFetch= connection.query('SELECT  SUM(travel_amount)  as tvalue, sum(cc_amount) as cvalue, sum(shopping_amount)  as svalue from tbl_travel travel, tbl_cc cc , tbl_shopping shopping', function(err,result){
+                                                              var oRowFetch= connection.query('SELECT ( select SUM(travel_amount) FROM tbl_travel) as tvalue,(select sum(cc_amount) from tbl_cc) as cvalue,(select sum(shopping_amount) from tbl_shopping) as svalue', function(err,result){
                                                                                 connection.release();
                                                                                 if(err){
                                                                                              helper.sConsole("query ERROR in SUM  : ", err);  
@@ -163,6 +162,30 @@ dbCon.prototype={
                                                                                                 };
                                                                                                
                                                                                                 helper.sConsole("SUM OF TRAVEL", JSON.stringify(result));
+                                                                                                finalCallback(result);
+                                                                                                
+                                                                                }
+                                                                });
+                                                }
+                                });
+                },
+                // method to get the sum of travel 
+                getEntryCount:function(oParam,finalCallback){
+                    this.dbConnection.getConnection(function(err,connection){
+                                                if(err){
+                                                                helper.sConsole("get Connection ERROR getEntryCount ", err);
+                                                }
+                                                else
+                                                {
+                                                                //console.log("MySQL CONNECTED" + oParams.param);
+                                                              var oRowFetch= connection.query('SELECT ( select COUNT(*) FROM tbl_travel) as t_count,(select COUNT(*) from tbl_cc) as cc_count,(select COUNT(*) from tbl_shopping) as s_count', function(err,result){
+                                                                                connection.release();
+                                                                                if(err){
+                                                                                             helper.sConsole("query ERROR in COUNT  : ", err);  
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                                helper.sConsole("COUNT OF ENTIRES", JSON.stringify(result));
                                                                                                 finalCallback(result);
                                                                                                 
                                                                                 }

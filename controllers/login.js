@@ -6,29 +6,22 @@
     rootURI = config.get('requestURI'),
     async = require('async'),
     passport = require('passport'),
-    LoginModel = require('../models/login'),
     Helper=require('../lib/helper'),
     helper=new Helper();
 
 
 module.exports = function (app) {
 
-    var model = new LoginModel();
-
-    /**
-     * Display the login page. We also want to display any error messages that result from a failed login attempt.
-     */
-
      app.get('/', function (req, res){
-        res.render('index',model);
+         req.model = {viewName : 'index',data : {}};
+        res.render(req.model.viewName, req.model);
      });
 
     app.get('/login', function (req, res) {
-
-        model.messages = req.flash('error');
-      
+         req.model = {viewName : 'index',data : {}};
+        req.model.messages = req.flash('error');
         helper.sConsole("REACHED TO LOGIN VIEW");
-        res.render('index', model);
+        res.render(req.model.viewName, req.model);
     });
 
     /**

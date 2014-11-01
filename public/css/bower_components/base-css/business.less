@@ -26,7 +26,7 @@
   border-radius: (@border-radius-base + 1px);
   .box-shadow(@shadow: 0 1px 4px rgba(.25,.25,.25,.25));
   margin-bottom: 20px;
-  min-height: 365px;
+  /*min-height: 365px;*/
   padding: 7px 15px 15px;
 
   @media print {
@@ -255,6 +255,32 @@
 		display: none;
 	}
 }
+
+#dashBoard{
+	  .section{
+		  background-color: @white;
+		  border-radius: (@border-radius-base + 1px);
+		  .box-shadow(@shadow: 0 1px 4px rgba(.25,.25,.25,.25));
+		  margin-bottom: 20px;
+		  padding:0;
+	 
+		  @media print {
+		    box-shadow: none;
+		  }
+  	}
+  	.heading {
+		    border-bottom: 1px solid #ccc;
+		    line-height: 40px;
+		    margin-bottom: 10px;
+
+		    h1 {
+		      font-size: 1.429em;
+		      font-weight: bold;
+		      line-height: 40px;
+		      margin: 0;
+		    }
+  	}
+  }
 
 
 

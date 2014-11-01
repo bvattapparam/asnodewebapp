@@ -36,7 +36,7 @@ header {
 }
 /* end apply those global classes only for mobile/tablet */
 
-.merchantHeader {
+.pageHeader {
 
 	/* Desktop version */
 	#hamburger-button {
@@ -120,10 +120,10 @@ header {
 				background: none;
 			}
 			.homeIcon a {
-				.headerSprite;
+				/*.headerSprite;*/
 				background-position: 9px -1397px;
 				height: 28px;
-				margin: 23px 11px 0 0;
+				margin: 5px 11px 0 0;
 
 				&:hover, &.selected {
 					background-position: 9px -1596px;
@@ -264,7 +264,7 @@ header {
 			}
 
 			.popover-content:before {
-				border-bottom: 11px solid #888;
+				border-bottom: 11px solid #5bc0de;
 				border-left: 10px solid rgba(0, 0, 0, 0);
 				border-right: 10px solid rgba(0, 0, 0, 0);
 				content: "";
@@ -277,7 +277,7 @@ header {
 			}
 			.popover-content {
 				background-clip: padding-box;
-				background-color: #888;
+				background-color: #5bc0de;
 				border-radius: 5px;
 				border-top: 0 none;
 				box-shadow: 0 4px 20px #999;
@@ -287,7 +287,22 @@ header {
 				position: relative;
 				text-align: left;
 			}
-
+			.settingTheme{
+				background-color:#eea236;
+			}
+			.settingTheme:before{
+				border-bottom: 11px solid #eea236;
+				border-left: 10px solid rgba(0, 0, 0, 0);
+				border-right: 10px solid rgba(0, 0, 0, 0);
+			}
+			.notificationTheme{
+				background-color:#5bc0de;
+			}
+			.notificationTheme:before{
+				border-bottom: 11px solid #5bc0de;
+				border-left: 10px solid rgba(0, 0, 0, 0);
+				border-right: 10px solid rgba(0, 0, 0, 0);
+			}
 			.popover-head {
 				border-radius: 10px;
 				height: 100%;
@@ -304,8 +319,8 @@ header {
 				}
 
 				.closeSettings,
-				.closeNotifications {
-					.headerSprite;
+				.closeNotifications, .closePopOver {
+					/*.headerSprite;*/
 					background-position: 11px -392px;
 					height: 30px;
 					padding: 7px;
@@ -314,9 +329,11 @@ header {
 					top: 5px;
 					width: 30px;
 					z-index: 3;
+					color:#fff;
 
 					&:hover, &:focus {
 						background-position: right -392px;
+						color:#ccc;
 					}
 				}
 			}

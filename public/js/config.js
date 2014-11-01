@@ -22,11 +22,8 @@ requirejs.config({
         "popUp":                    "lib/popUp",
         "cookie":                   "lib/jquery.cookie",
         "viewUtil":                 "util/view",
-        "footer":                   "bower_components/merchant-footer/merchant-footer",
-        "header":                   "bower_components/merchant-header/merchant-header",
-        "opinionLabComponent":      "bower_components/merchant-opinion-lab/opinionLabComponent",
-        "onlineOpinionPopup":       "bower_components/merchant-opinion-lab/onlineOpinionPopup",
-        "opinionLab":               "bower_components/merchant-opinion-lab/opinionLab",
+        "footer":                   "bower_components/footer/footer",
+        "header":                   "bower_components/header/header",
         "textField":                'components/textInput/textField',
 
         //Widgets

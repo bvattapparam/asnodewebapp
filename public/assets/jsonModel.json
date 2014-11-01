@@ -62,25 +62,6 @@
                                                                                                 "description":"Me, Amma and Pappa. Taken during our Pondicherry trip.",
                                                                                                 "filterShow":"annaprasam"
                                                                                 }
-    		                                  ],
-                                                "donutcol" :  {
-                                                                      "d1" : {
-                                                                            "label" : "Travel",
-                                                                            "value" : "45"
-                                                                             },
-                                                                      "d2" : {
-                                                                            "label" : "Shopping",
-                                                                            "value" : "20"
-                                                                              },
-                                                                      "d3" : {
-                                                                            "label" : "Rent",
-                                                                            "value" : "15"
-                                                                             },
-                                                                      "d4" : {
-                                                                            "label" : "Credit Card",
-                                                                            "value" : "6"
-                                                                             }   
-                                                                    }
-                                             
+    		                                  ]
             }
         }

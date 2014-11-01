@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}">
 <head>
-<meta http-equiv="Cache-Control" content="no-cache" />
- <meta http-equiv="Cache-Control" content="no-store" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
- 
-<link href="images/src/favicon.gif" rel="shortcut icon">
-<link href="images/src/favicon.gif" rel="apple-touch-icon">
-
   {>"layouts/metaTags"/}
   <title>{+pageTitle /} - {@pre type="content" key="template.browserTitle" editable="false"/}</title>
 <link rel="stylesheet" href="css/app.css" />

@@ -1,0 +1,66 @@
+{!Template: dashboard right pannel !}
+{#data.entryCount}
+<div class=" section-box section-statuspanel">
+                                                                 <div class="col-lg-12">
+                                                                                <div class="panel panel-default">
+                                                                                                <div class="panel-heading">
+                                                                                                                <div class="row">
+                                                                                                                                <div class="col-xs-3">
+                                                                                                                                                <span class="fa fa-plane fa-3x"></span>
+                                                                                                                                </div>
+                                                                                                                                <div class="col-xs-9 text-right">
+                                                                                                                                                <p>{@pre type="content" key="travelEntries" /} </p>
+                                                                                                                                                <p class="huge">{t_count}</p>
+                                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                </div>
+                                                                                </div>
+                                                                </div>
+                                                                 <div class="col-lg-12">
+                                                                                <div class="panel panel-success">
+                                                                                                <div class="panel-heading">
+                                                                                                                <div class="row">
+                                                                                                                                <div class="col-xs-3">
+                                                                                                                                                <span class="fa fa-credit-card fa-3x"></span>
+                                                                                                                                </div>
+                                                                                                                                <div class="col-xs-9 text-right">
+                                                                                                                                                <p>{@pre type="content" key="ccEntries" /} </p>
+                                                                                                                                                <p class="huge">{cc_count}</p>
+                                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                </div>
+                                                                                </div>
+                                                                </div>
+                                                                 <div class="col-lg-12">
+                                                                                <div class="panel panel-warning">
+                                                                                                <div class="panel-heading">
+                                                                                                                <div class="row">
+                                                                                                                                <div class="col-xs-3">
+                                                                                                                                                <span class="fa fa-shopping-cart fa-3x"></span>
+                                                                                                                                </div>
+                                                                                                                                <div class="col-xs-9 text-right">
+                                                                                                                                                 <p>{@pre type="content" key="shoppingEntries" /}</p>
+                                                                                                                                                <p class="huge">{s_count}</p>
+                                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                </div>
+                                                                                </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                                <div class="panel panel-info">
+                                                                                                <div class="panel-heading">
+                                                                                                                <div class="row">
+                                                                                                                                <div class="col-xs-3">
+                                                                                                                                                <span class="fa fa-money fa-3x"></span>
+                                                                                                                                </div>
+                                                                                                                                <div class="col-xs-9 text-right">
+                                                                                                                                                <p>{@pre type="content" key="rentEntries" /}</p>
+                                                                                                                                                <p class="huge">26</p>
+                                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                </div>
+                                                                                </div>
+                                                                </div>
+                                                </div>
+
+{/data.entryCount}

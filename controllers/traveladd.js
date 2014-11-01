@@ -8,31 +8,7 @@ var config = require('nconf'),
         dbConModel = require("../models/dbcon"),
         Helper = require('../lib/helper'),
         helper=new Helper();
-/*
-        var nodemailer = require("nodemailer");
 
-        var smtpTransport = nodemailer.createTransport("SMTP",{
-   service: "Gmail",
-   auth: {
-       user: "bijeshkumar1979@gmail.com",
-       pass: "Gateway123$"
-   }
-});
-
-        smtpTransport.sendMail({
-   from: "My Name <bijeshkumar1979@gmail.com>", // sender address
-   to: "Your Name <bijesh@example.com>", // comma separated list of receivers
-   subject: "Hello ✔", // Subject line
-   text: "Hello world ✔" // plaintext body
-}, function(error, response){
-   if(error){
-       console.log(error);
-   }else{
-       console.log("Message sent: " + response.message);
-   }
-});
-
-*/
 var travelAdd = {
                 process: function(req,res,next){
                               helper.sConsole("CONTROLLER TRAVEL ADD");

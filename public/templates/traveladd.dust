@@ -5,7 +5,7 @@
 {/pageTitle}
 
 {<header}
-    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+    {>"bower_components/header/header" showNotifications="true" showSettings="true" /}
 {/header}
 {<mainBlock}
                 <div id="travelAdd" class="section row">
@@ -172,7 +172,7 @@
                                                                           </div> 
                                                                           <!-- second close here-->
                                                                           <!--  3rd open here -->
-                                                                          <div class="col-lg-4 hidden-xs text-right">
+                                                                          <div class="col-lg-4 visible-lg text-right">
                                                                                       <img src="images/src/travel.gif" height="320">
                                                                           </div>
                                                                           <!-- 3rd close here -->
@@ -183,5 +183,5 @@
 {/mainBlock}
 
 {<footer}
-    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
 {/footer}

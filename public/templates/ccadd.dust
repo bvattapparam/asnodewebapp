@@ -5,7 +5,7 @@
 {/pageTitle}
 
 {<header}
-    {>"bower_components/merchant-header/merchant-header" showNotifications="true" showSettings="true" /}
+    {>"bower_components/header/header" showNotifications="true" showSettings="true" /}
 {/header}
 {<mainBlock}
                 <div id="ccAdd" class="section row">
@@ -144,5 +144,5 @@
 {/mainBlock}
 
 {<footer}
-    {>"bower_components/merchant-footer/merchant-footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
 {/footer}
