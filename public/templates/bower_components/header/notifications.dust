@@ -1,8 +1,8 @@
 
-<div class="notificationWrapper">
+<div class="notificationWrapper animated bounce">
 	<a data-toggle="modal" role="button" aria-owns="Notifications" class="btn btn-info btn-sm" id="notificationBttn" href="#">
 		<span class="fa fa-bell-o"></span>
-		<span class="notificationCount">{data.notificationCollection.notifications.alerts.length}</span>
+		<span class="notificationCount">{data.toDoList.length}</span>
 		<span class="accessAid">{@pre type="content" key="notification.header"/}</span>
 	</a>
 	<div tabindex="-1" aria-labelledby="{@pre type="content" key="notification.header" editable="false" /}" role="dialog" class="popover notificationsBox show-onload" id="notificationsBox">
@@ -13,22 +13,9 @@
 			</div>
 			<div class="popover-body">
 				<ul class="notificationLinks">
-					
-						<li class="alertItem
-							{@if test="'{category}' == '0' && '{alertType}' == '0'"} alert-restriction {/if}
-							{@if test="'{category}' == '0' && '{alertType}' == '1'"} alert-warning {/if}
-						">
-							{?commandUrl}
-								<a href="{commandUrl}" class="alertDesc">{message|s}</a>
-							{:else}
-								{message|s}
-							{/commandUrl}
-							{?dismissable}
-								<a data-dismiss="alert" id="{alertId}|{alertName}" class="dismiss close-individual" href="#">
-									<span class="accessAid">{@pre type="content" key="notification.dismissAlt"/}</span>
-								</a>
-							{/dismissable}
-						</li>
+					{#data.toDoList}
+						<li class="todoItem"><i class="fa fa-bullseye"></i> {todo} <span style="float:right" class="align-right label label-{@if cond="'{todo_category}'=='personal'"}danger{/if}{@if cond="'{todo_category}'=='office'"}success{/if}">{todo_category}</span></li>
+					{/data.toDoList}
 				</ul>
 			</div>
 		</div>

@@ -5,7 +5,6 @@ var config = require('nconf'),
         mysql=require('mysql'),
         dbConModel = require("../models/dbcon"),
         auth = require('../lib/auth'),
-        dbConModel = require("../models/dbcon"),
         Helper = require('../lib/helper'),
         helper=new Helper();
 

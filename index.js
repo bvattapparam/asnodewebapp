@@ -4,17 +4,15 @@ var kraken = require('kraken-js'),
         baseURI = require('./config/app.json').requestURI,
         auth = require('./lib/auth'),
         passport = require('passport'),
+        dbConModel = require("./models/dbcon"),
         mysqlDB = require('mysql'),
+        Helper=require('./lib/helper'),
+        helper=new Helper(),
                 app = {};
         require('./lib/helper-supplement');
         
 app.configure = function configure(nconf, next) {
-    var connection = mysqlDB.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'testuser',
-  database:"as_nodeapp"
-});
+    
     passport.use(auth.localStrategy());
     //Give passport a way to serialize and deserialize a user. In this case, by the user's id.
     passport.serializeUser(function (user, done) {
@@ -22,9 +20,21 @@ app.configure = function configure(nconf, next) {
     });
 
     passport.deserializeUser(function (userid, done) {
-     connection.query("select * from tbl_user where userid = "+ userid, function(err, rows){
-            done(err, rows[0]);
-        });
+        
+        var dbConnection=helper.dbConfigSet();
+        dbConnection.getConnection(function(err,connection){
+                                                if(err){
+                                                                helper.sConsole("get Connection ERROR on Passport : ", err);
+                                                }
+                                                else
+                                                {
+                                                               var oRowFetch= connection.query('SELECT * FROM tbl_user where userid='+userid, function(err,result){
+                                                                                connection.release();
+                                                                                 done(err, result[0]);
+                                                                });
+                                                }
+                                });
+      
     });
     // Async method run on startup.
     next(null);

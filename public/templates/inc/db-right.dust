@@ -1,8 +1,8 @@
-{!Template: dashboard right pannel !}
+
 {#data.entryCount}
-<div class=" section-box section-statuspanel">
-                                                                 <div class="col-lg-12">
-                                                                                <div class="panel panel-default">
+
+                                                                
+                                                                                <div class="panel panel-default  animated swing">
                                                                                                 <div class="panel-heading">
                                                                                                                 <div class="row">
                                                                                                                                 <div class="col-xs-3">
@@ -15,9 +15,8 @@
                                                                                                                 </div>
                                                                                                 </div>
                                                                                 </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                                <div class="panel panel-success">
+                                                                
+                                                                                <div class="panel panel-success animated bounce">
                                                                                                 <div class="panel-heading">
                                                                                                                 <div class="row">
                                                                                                                                 <div class="col-xs-3">
@@ -30,9 +29,8 @@
                                                                                                                 </div>
                                                                                                 </div>
                                                                                 </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                                <div class="panel panel-warning">
+                                                              
+                                                                                <div class="panel panel-warning animated shake">
                                                                                                 <div class="panel-heading">
                                                                                                                 <div class="row">
                                                                                                                                 <div class="col-xs-3">
@@ -45,9 +43,8 @@
                                                                                                                 </div>
                                                                                                 </div>
                                                                                 </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                                <div class="panel panel-info">
+                                                                
+                                                                                <div class="panel panel-info animated wobble no-bottom-margin">
                                                                                                 <div class="panel-heading">
                                                                                                                 <div class="row">
                                                                                                                                 <div class="col-xs-3">
@@ -60,7 +57,7 @@
                                                                                                                 </div>
                                                                                                 </div>
                                                                                 </div>
-                                                                </div>
-                                                </div>
+                                                             
+                                               
 
 {/data.entryCount}

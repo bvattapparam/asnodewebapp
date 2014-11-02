@@ -21,7 +21,7 @@
 					</ul>
 					{@if cond="'{showFeedback}' == 'true'"}
 						<ul class="feedback">
-							<li><a href="#" target="_blank" class="helpPopup"><i class="fa fa-comment"></i>{@pre type="content" key="footer.help"/}</a></li>
+							<li><a href="#" target="_blank" class="helpPopup"><i class="fa fa-comment"></i> {@pre type="content" key="footer.help"/}</a></li>
 						</ul>
 					{/if}
 				</nav>

@@ -18,6 +18,7 @@ header {
 }
 /* apply those global classes only for mobile tablet's portrait */
 @media only screen and (max-width: @maxPortableWidth) {
+
 	.hovered {
 		color: #0077C1;
 	}
@@ -45,11 +46,11 @@ header {
 	/* notifications and todos count gradient */
 	.alertsCountGradients(@startColor: #adadad, @midColor: #888, @colorStop: 40%, @endColor: #666) {
 		background-color: mix(@midColor, @endColor, 80%);
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+		/*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
 		background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
 		background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop*100%, @endColor);
 		background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
-		background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+		background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);*/
 		background-repeat: no-repeat;
 		border-radius: 10px;
 		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
@@ -109,7 +110,7 @@ header {
 		.logo {
 			float: left;
 			//margin: 18px 7px 0 10px;
-			margin: 8px 7px 0 10px;
+			margin: 8px 7px 0 10px
 		}
 
 		.primaryNav {
@@ -383,6 +384,10 @@ header {
 						display: block;
 						padding: 16px 0 16px 30px;
 					}
+					.todoItem {
+						display: block;
+						padding: 5px 0;
+					}
 
 					.alert-restriction {
 						.headerSprite;
@@ -514,10 +519,9 @@ header {
 						position: relative;
 
 						a {
-							.headerSprite;
 							display: block;
 							min-height: 30px;
-							padding: 5px 0 0 40px;
+							padding: 5px 0 0 0;
 							font-size: 14px;
 						}
 
@@ -591,6 +595,20 @@ header {
 
 	/* Mobile and tablet's portrait version */
 	@media only screen and (max-width: @maxMobileWidth), (max-width: @maxPortableWidth){
+		
+			.popover {
+				background-color:red;
+				border: none;
+				box-shadow: none;
+				display: block;
+				left: auto;
+				position: absolute;
+				right: -60px;
+				top: 35px;
+				width: 300px;
+				z-index: 1010;
+			}
+
 		.contentWrapper { // reset its min-width
 			min-width: 320px;
 		}
@@ -670,10 +688,10 @@ header {
 		#hamburger-button {
 			border: none;
 			border-radius: 0;
-    		box-shadow: none;
-    		display: inline-block;
+	    		box-shadow: none;
+	    		display: inline-block;
 			outline: none;
-			margin: 7px 18px 0 8px;
+			margin: 7px -40px 0 8px;
 			width: 18px;
 			height: 16px;
 			background: url("https://www.paypalobjects.com/webstatic/i/ex_me2/icon/brger_menu.png") no-repeat scroll 0 0 transparent;

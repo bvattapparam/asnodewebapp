@@ -5,7 +5,7 @@
 {/pageTitle}
 
 {<header}
-    {>"bower_components/header/header" showNotifications="true" showSettings="true" /}
+    {>"bower_components/header/header" showNotifications="false" showSettings="true" /}
 {/header}
 {<mainBlock}
                 <div id="ccAdd" class="section row">

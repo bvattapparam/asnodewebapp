@@ -27,7 +27,7 @@ define([
                var  dumpValue =$('#rowjsonDump').html();
                               
                                         var dumpvalue = JSON.parse( dumpValue);
-                                    //$('#structuredjsonDump').html(this.prettyPrint(dumpvalue));
+                                   // $('#structuredjsonDump').html(this.prettyPrint(dumpvalue));
                                    console.log("dump value is here" + JSON.stringify(dumpvalue));
 
                                     if (typeof Morris != 'undefined') {

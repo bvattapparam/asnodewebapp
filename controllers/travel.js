@@ -8,10 +8,12 @@ var config = require('nconf'),
         locale = require('../lib/locale'),
         Helper = require('../lib/helper');
         var helper = new Helper();
-
+        // add below line to get the todo items
+   
 var Travel = {
                 process: function(req,res,next){
                               Travel.getTravelTransactionData(req,next);
+                            
                 },
               
                  getTravelTransactionData: function(req,next){

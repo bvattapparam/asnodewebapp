@@ -6,9 +6,7 @@
 
 {<mainBlock}
                 <!--->
-                <div class="navbar navbar-fixed-top panel-header">
-                        <div><img src="images/src/asna.gif" height=70></div>
-                </div>
+               
                 <div  id="loginPage" class="panel panel-gray loginpanel">
                                 <div class="login-head">
                                                 <span class="fa fa-user fa-5x"></span>

@@ -1,22 +1,24 @@
 'use strict';
 var config = require('nconf'),
-    requestURI = config.get('requestURI'),
-    async = require('async'),
-      auth = require('../lib/auth'),
-    dashboardData = require('../models/dashboard-data'),
-      dbConModel = require("../models/dbcon"),
-    Helper=require('../lib/helper'),
-    helper=new Helper();
+        requestURI = config.get('requestURI'),
+        async = require('async'),
+        auth = require('../lib/auth'),
+        dashboardData = require('../models/dashboard-data'),
+        dbConModel = require("../models/dbcon"),
+        Helper=require('../lib/helper'),
+        helper=new Helper(),
+        dbconnection = new dbConModel();
+        
+        var toDo_List=new (require('../lib/todo'));
 
-    var dbconnection = new dbConModel();
 
 var Dashboard = {
                 process: function(req,res,next){
-                    Dashboard.setInitialModel(req,next);
-                     Dashboard.getSum(req,next);
-                     Dashboard.getCount(req,next);
-                                Dashboard.getdashboardImages(req,next);
-                                helper.sConsole("REACHED TO DASHBOARD VIEW");
+                                  Dashboard.setInitialModel(req,next);
+                                  Dashboard.getSum(req,next);
+                                  Dashboard.getCount(req,next);
+                                  helper.sConsole("REACHED TO DASHBOARD VIEW");
+                                  toDo_List.getTodoList(req,next); // call this function to get the todo item
                 },
 
                 setInitialModel:function(req, next) {

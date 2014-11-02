@@ -192,7 +192,29 @@ dbCon.prototype={
                                                                 });
                                                 }
                                 });
-                }
+                },
+                getTodo:function(oParams,finalCallback){
+                                this.dbConnection.getConnection(function(err,connection){
+                                                if(err){
+                                                                helper.sConsole("get Connection ERROR on Passport : ", err);
+                                                }
+                                                else
+                                                {
+                                                               var oRowFetch= connection.query('SELECT * FROM tbl_todo', function(err,result){
+                                                                                connection.release();
+                                                                                if(err){
+                                                                                             helper.sConsole("query ERROR in TODO SELECT : ", err);  
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                                helper.sConsole("ROW DATA in getTodo", JSON.stringify(result));
+                                                                                                finalCallback(result);
+                                                                                }
+                                                                });
+                                                }
+                                });
+                },
+
 };
 module.exports = dbCon;
 

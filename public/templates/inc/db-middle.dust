@@ -1,9 +1,1 @@
-{!Template: dashboard right pannel !}
-
-  <div>
-                                                                {#data.viewModel.gallerySection}
-                                                                                <div class="col-lg-3  col-md-2 col-sm-3 ">
-                                                                                                <a href="#" class="thumbnail"><img class="img-responsive" src="{Image}" alt=""></a>
-                                                                                </div>
-                                                                {/data.viewModel.gallerySection}
-                                                </div>
+<img  src="images/dboard/dbbanner.jpg" style="border-radius:7px;width:100%" class="animated flash">
