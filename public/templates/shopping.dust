@@ -1,0 +1,72 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    	{@pre type="content" key="shopping.title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/header/header" showNotifications="false" showSettings="true"  /}
+{/header}
+{<mainBlock}
+                <div id="shopping" class="section row">
+                                <div class="heading col-lg-12 padding-left-none padding-right-none">
+                                                <div class="col-lg-6 padding-left-none"><h1>{@pre type="content" key="shopping.title" /} </h1></div>
+                                                <div class="col-lg-6 padding-right-none align-right totalamount">{@pre type="content" key="shopping.totalamount" /} {data.totalAmount}</div>
+                                 </div>
+                                 <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li class="active">Shopping</li>
+                                 </ul>
+                                 {?data.messageType}
+                                            <div class="bs-example">
+                                                      <div class="alert alert-{data.messageType}"><div class="{data.messageType}"></div><div class="alert-box-content">{data.messageContent}</div></div>
+                                          </div>
+                                {/data.messageType}
+                                 <span id="loadingspan" class="hide"></span>
+                              	<div class="table-responsive">
+	  		<table  id="shoppingData" class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th>Shopping Date</th>
+						<th>Shopping Cart</th>
+						<th>Shopping  Item</th>
+						<th>Shopping Amount</th>
+						<th>Shopping Status</th>
+						<th>Shopping Comment</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{#data.viewModel}
+						<tr  class="{@if cond="'{shopping_status}' === 'OPEN'"}warning{:else}{/if}">
+							<td>{shopping_date}</td>
+							<td>{shopping_cart}</td>
+							<td>{shopping_item}</td>
+							<td>{shopping_formated_amount}</td>
+							<td>{shopping_status}</td>
+							<td>{shopping_comment}</td>
+							<td>
+								<span  class="fa fa-edit editShoppingCall spanasanchor" data-toggle="modal" id="{shopping_id}"></span> | 
+								<a href="/asnodewebapp/shoppingDataDelete/{shopping_id}"><span class="fa fa-remove"></span></a> 
+							</td>
+						</tr>
+					{/data.viewModel}
+				</tbody>
+			</table> 
+		</div>
+		<div class="row">
+		<div class="col-lg-12">
+		<a href="/asnodewebapp/shoppingadd"><span class="fa fa-database fa-1x"></span><strong> &nbsp;{@pre type="content" key="shopping.addnewtravel" /}</strong></a>
+		</div>
+		</div>
+		<div class="moduleContent" id="shoppingDataView"> <!--- where ajax call-->
+			<input type="hidden" name="_csrf" value="{_csrf}" />
+	    		{>"inc/modeledit_shopping"/}
+		</div>
+                </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}

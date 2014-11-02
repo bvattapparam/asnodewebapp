@@ -17,8 +17,9 @@ define(['jquery', 'validation', 'backbone'], function($, Validation, Backbone) {
              */
             showError: function (event) {
                 var $targetElement = $(event.target),
+
                     $targetParent = $targetElement.parents('.textInput');
-                 
+                 // alert($targetParent.value);
                    // console.log($targetParent);
 
                 if ($targetParent.hasClass('hasError')) {

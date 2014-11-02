@@ -1,0 +1,88 @@
+{!
+	@param showNotifications		Boolean indicating whether to show or hide utility nav
+	@param showSettings				Boolean indicating whether to show or hide feedback link
+!}
+
+<header>
+	<div class="pageHeader">
+		<div class="contentWrapper">
+			<a href="#contents" class="skip">{@pre type="content" key="header.skipToMain"/}</a>
+
+			<a href="/" class="logo">
+				<img alt="{@pre type="content" key="header.logoIconAlt" editable="false" /}" src="images/src/asna.gif" height=50>
+			</a>
+
+			<nav role="navigation" id="navMenu">
+				<ul class="primaryNav">
+					<li class="homeIcon hidden-sm" data-explore="{@pre type="content" key="header.helpHome" editable="false" /}">
+						<a href="{@pre type="content" key="header.home.link" editable="false" /}" class="{@if cond="'{viewName}' == 'dashboard'"}selected{/if}"><i class="fa fa-home fa-2x"></i>
+							<span class="accessAid">{@pre type="content" key="header.homeIconAlt"  /}</span>
+						</a>
+					</li>
+					<li>
+						<a href="{@pre type="content" key="header.money.link" editable="false" /}" class="{@if cond="'{viewName}' == 'money/index'"}selected{/if}">
+							{@pre type="content" key="header.money.content"  /}
+						</a>
+					</li>
+					<li>
+						<a href="{@pre type="content" key="header.travel.link" editable="false" /}" class="{@if cond="'{viewName}' == 'travel'"}selected{/if}">
+							{@pre type="content" key="header.travel.content"  /}
+						</a>
+					</li>
+					<li>
+						<a href="{@pre type="content" key="header.cc.link" editable="false" /}" class="{@if cond="'{viewName}' == 'cc'"}selected{/if}">
+							{@pre type="content" key="header.cc.content"  /}
+						</a>
+					</li>
+					<li class="hidden-sm">
+						<a href="{@pre type="content" key="header.shopping.link" editable="false" /}" class="{@if cond="'{viewName}' == 'shopping'"}selected{/if}">{@pre type="content" key="header.shopping.content"  /}</a>
+					</li>
+					<li class="moreMenu">
+						<a href="#" class="moreLink">{@pre type="content" key="header.more"  /}</a>
+						<ul>
+							<li class="visible-sm">
+								<a href="{@pre type="content" key="header.tools.link" editable="false" /}" class="{@if cond="'{viewName}' == 'merchant/tools'"}selected{/if}">{@pre type="content" key="header.tools.content"  /}</a>
+							</li>
+							<li>
+								<a href="{@pre type="content" key="header.reports.link" editable="false" /}">{@pre type="content" key="header.reports.content"  /}</a>
+							</li>
+							<li>
+								<a href="{@pre type="content" key="header.resCenter.link" editable="false" /}">{@pre type="content" key="header.resCenter.content"  /}</a>
+								<span class="divider"></span>
+							</li>
+							
+							<li>
+								<a href="{@pre type="content" key="header.whatsNew.link" editable="false" /}">{@pre type="content" key="header.whatsNew.content"/}</a>
+							</li>
+							<li>
+								<a href="{@pre type="content" key="header.ccReport.link" editable="false" /}">{@pre type="content" key="header.ccReport.content"/}</a>
+							</li>
+							<li>
+								<a href="{@pre type="content" key="header.rentReport.link" editable="false" /}">{@pre type="content" key="header.rentReport.content"/}</a>
+							</li>
+							<li class="visible-xs">
+								<a href="{@pre type="content" key="header.logout.link" editable="false" /}">{@pre type="content" key="header.logout.content"  /}</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="globalLinksHolder">
+				{! notifications flyout !}
+				{@if cond="'{showNotifications}' == 'true'"}
+					{>"bower_components/header/notifications"/}
+				{/if}
+				{! settings flyout !}
+				{@if cond="'{showSettings}' == 'true'"}
+					{>"bower_components/header/settings"/}
+				{/if}
+				<div class="settingsWrapper">
+					<a role="button" aria-owns="settings" class="btn btn-primary btn-sm visible-lg visible-md"  href="{@pre type="content" key="header.logout.link" editable="false" /}"><span class="fa fa-lock"></span></a>
+				</div>
+				<button id="hamburger-button"></button>	
+			</div>
+		</div>
+	</div>
+</header>
+

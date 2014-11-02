@@ -1,0 +1,22 @@
+
+<div class="settingsWrapper">
+	<a data-toggle="modal" role="button" aria-owns="Settings" class="btn btn-warning btn-sm" id="settingsBttn" href="#">
+		<span class="fa fa-cogs"></span>
+		<span class="notificationCount">{data.notificationCollection.notifications.alerts.length}</span>
+		<span class="accessAid">{@pre type="content" key="settings.header"/}</span>
+	</a>
+	<div tabindex="-1" aria-labelledby="{@pre type="content" key="settings.header" editable="false" /}" role="dialog" class="popover settingsBox show-onload" id="settingsBox">
+		<div class="popover-content settingTheme">
+			<div class="popover-head">
+				<h2>{@pre type="content" key="settings.header"/}</h2>
+				<a tabindex="-1" role="button" id="closeSettings" class="closePopOver fa fa-close" href="#"><span class="accessAid">{@pre type="content" key="settings.closeAlt"/}</span></a>
+			</div>
+			<div class="popover-body">
+				<ul class="topNavLinks">
+					<li><a href="{@pre type="content" key="settings.businessSetup.link" editable="false" /}"><i class="fa fa-suitcase"></i> {@pre type="content" key="settings.profile"  /}</a></li>
+					<li><a class="settingsIcon" href="{@pre type="content" key="settings.settings.link" editable="false" /}"><i class="fa fa-lock"></i> {@pre type="content" key="settings.password"  /}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

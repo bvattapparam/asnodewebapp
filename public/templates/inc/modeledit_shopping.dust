@@ -1,0 +1,122 @@
+<!-- Modal -->
+        <div class="modal fade shopping_edit_model" id="myShoppingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            {>"inc/form" /}
+   			{<formAttr} name="shoppingfrm"  action="" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <span class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
+                                    <h4 class="modal-title">{@pre type="content" key="modaledit.shoppingheading" /}</h4>
+                                  </div>
+                                  <div class="modal-body" id="model-body">
+                                   <div class="header" id="header">
+                                                                          <div class="row">
+                                                                          <div id="updateMessageShowView" class="col-lg-12 hide">
+                                                                              {>"inc/message" /}
+                                                                          </div>
+                                                                          <div class="show-body">
+                                                                                        <div class="loader"></div>
+                                                                                                {#viewmd}
+                                                                                                <div class="col-lg-6">
+                                                                                                            {>"components/textInput/textInput" 
+                                                                                                                                             name="shopping_date_edit" 
+                                                                                                                                             type="text" 
+                                                                                                                                             id="shopping_date_edit" 
+                                                                                                                                             divId="shopping_date_editdiv" 
+                                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingdate"/}" 
+                                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingDateEmpty"/}" 
+                                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingDateInvalid"/}" 
+                                                                                                                                             errorMessageId="shopping_date_editErrorMessage" 
+                                                                                                                                             faIcon="" 
+                                                                                                                                             spanID="" 
+                                                                                                                                             value="{shopping_date}" 
+                                                                                                                                             fieldTypeCalID="cal_shopping_date_edit" 
+                                                                                                                                             format="YYYY/MM/DD" /}
+                                                                                                            {>"components/textInput/textInput"
+                                                                                                                                             name="shopping_amount_edit" 
+                                                                                                                                             type="text" 
+                                                                                                                                             id="shopping_amount_edit" 
+                                                                                                                                             divId="shopping_amount_editdiv" 
+                                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingamount"/}" 
+                                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingAmountEmpty"/}" 
+                                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingAmountInvalid"/}" 
+                                                                                                                                             errorMessageId="shopping_amount_editErrorMessage" 
+                                                                                                                                             faIcon="fa-money" 
+                                                                                                                                             value="{shopping_amount}" 
+                                                                                                                                             spanID="" /}
+
+                                                                                                            {>"components/textInput/textInput"
+                                                                                                                                             name="shopping_item_edit" 
+                                                                                                                                             type="text" 
+                                                                                                                                             id="shopping_item_edit" 
+                                                                                                                                             divId="shopping_item_editdiv" 
+                                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingitem"/}" 
+                                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingItemEmpty"/}" 
+                                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingItemInvalid"/}" 
+                                                                                                                                             errorMessageId="shopping_item_editErrorMessage" 
+                                                                                                                                             faIcon="fa-shopping-cart" 
+                                                                                                                                             value="{shopping_item}" 
+                                                                                                                                             spanID="" /}
+
+                                                                                                           {>"components/textInput/textInput" 
+                                                                                                                                             name="shopping_cart_edit" 
+                                                                                                                                             type="text" 
+                                                                                                                                             id="shopping_cart_edit" 
+                                                                                                                                             divId="shopping_cart_editdiv" 
+                                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingcart"/}" 
+                                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingCartEmpty"/}" 
+                                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingCartInvalid"/}" 
+                                                                                                                                             errorMessageId="shopping_cart_editErrorMessage" 
+                                                                                                                                             faIcon="fa-bank" 
+                                                                                                                                             value="{shopping_cart}" 
+                                                                                                                                             spanID="" /}                                                                                           
+                                                                                                             
+                                                                                                 </div>
+                                                                                                 <div class="col-lg-6">
+                                                                                                                
+                                                                                                                <div id="shopping_status_editdiv" class="textInput">
+                                                                                                                                <div class="input-group fieldWrapper">
+                                                                                                                                                <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
+                                                                                                                                                 {@provide}
+                                                                                                                                                    {>"components/Dropdown/dropdown"
+                                                                                                                                                    fieldName="shopping_status_edit"
+                                                                                                                                                    fieldLabel=""
+                                                                                                                                                    optionList=shoppingStatusList 
+                                                                                                                                                    optionSelected="{shopping_status}"  
+                                                                                                                                                    id="shopping_status_edit" /}
+                                                                                                                                                        {:shoppingStatusList}
+                                                                                                                                                         {@pre type="content" key="shoppingadd.shoppingStatusList" mode="paired" /}
+                                                                                                                                                  {/provide}  
+                                                                                                                                </div>
+                                                                                                                                <div id="shopping_statusErrorMessage" class="errorMessage caret">
+                                                                                                                                                <p class="emptyError hide">{@pre type="content" key="shoppingadd.shoppingStatusEmpty" /}</p>
+                                                                                                                                                <p class="invalidError hide">{@pre type="content" key="shoppingadd.shoppingStatusInvalid" /}</p>
+                                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                              {>"components/textArea/textArea" 
+                                                                                                                                                divId="shopping_comment_editdiv" 
+                                                                                                                                                id="shopping_comment_edit" 
+                                                                                                                                                maxlength="225" 
+                                                                                                                                                label="" 
+                                                                                                                                                faIcon="fa-comment-o" 
+                                                                                                                                                value="{shopping_comment}"/}
+                                                                                                 </div>       
+                                                                                                {/viewmd}
+                                                                                      </div>
+                                                                        </div> 
+
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                   <input type="hidden" id="shopping_id_edit" value="{#viewmd}{shopping_id}{/viewmd}" name="shopping_id_edit" />
+                                  <input type="hidden" name="_csrf" value="{_csrf}" />
+                                   <span class="btn btn-primary modal-btn"  id="editShoppingbtn" >Save</span>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                                {/formBody}
+        </div><!-- /.modal -->
+
+
+                                                           

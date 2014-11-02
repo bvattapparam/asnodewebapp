@@ -1,0 +1,148 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    {@pre type="content" key="ccadd.title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/header/header" showNotifications="false" showSettings="true" /}
+{/header}
+{<mainBlock}
+                <div id="ccAdd" class="section row">
+                                <div class="heading">
+                                                <h1>{@pre type="content" key="ccadd.pageheading" /}</h1>
+                                 </div>
+                                     <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li><a href="/asnodewebapp/cc">Credit Card</a> </li>
+                                                <li class="active">Credit Card add</li>
+                                      </ul>
+
+                                  <!--- place for component-->
+                                                                  {?data.viewModel.message}
+                                                                            <div class="bs-example">
+                                                                                      <div class="alert alert-{data.viewModel.message.messagetype}"><div class="{data.viewModel.message.messagetype}"></div><div class="alert-box-content">{data.viewModel.message.messagecontent}</div></div>
+                                                                          </div>
+                                                                {/data.viewModel.message}
+                                                                {>"inc/form" /}
+                                                              {<formAttr} name="ccfrm"  action="/asnodewebapp/ccadd" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                                                                        <div class="col-lg-4">
+                                                                                        <div class="col-lg-12">
+                                                                                              {>"components/textInput/textInput" 
+                                                                                                                             name="cc_date" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_date" 
+                                                                                                                             divId="cc_datediv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccdate"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="ccadd.ccDateEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="ccadd.ccDateInvalid"/}" 
+                                                                                                                             errorMessageId="cc_dateErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_cc_date" 
+                                                                                                                             format="YYYY/MM/DD" /}
+                                                                                            {>"components/textInput/textInput"
+                                                                                                                             name="cc_amount" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_amount" 
+                                                                                                                             divId="cc_amountdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccamount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="ccadd.ccAmountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="ccadd.ccAmountInvalid"/}" 
+                                                                                                                             errorMessageId="cc_amountErrorMessage" 
+                                                                                                                             faIcon="fa-money" 
+                                                                                                                             spanID="" /}
+
+                                                                                            {>"components/textInput/textInput"
+                                                                                                                             name="cc_item" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_item" 
+                                                                                                                             divId="cc_itemdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccitem"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="ccadd.ccItemEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="ccadd.ccItemInvalid"/}" 
+                                                                                                                             errorMessageId="cc_itemErrorMessage" 
+                                                                                                                             faIcon="fa-shopping-cart" 
+                                                                                                                             spanID="" /}
+
+                                                                                           {>"components/textInput/textInput" 
+                                                                                                                             name="cc_fourdigit" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_fourdigit" 
+                                                                                                                             divId="cc_fourdigitdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccfourdigit"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="ccadd.ccFourdigitEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="ccadd.ccFourdigitInvalid"/}" 
+                                                                                                                             errorMessageId="cc_fourdigitErrorMessage" 
+                                                                                                                             faIcon="fa-credit-card" 
+                                                                                                                             spanID="cc_cctype" /}
+
+                                                                                           {>"components/textInput/textInput" 
+                                                                                                                             name="cc_provider" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_provider" 
+                                                                                                                             divId="cc_providerdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.ccprovider"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="ccadd.ccProviderEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="ccadd.ccProviderInvalid"/}" 
+                                                                                                                             errorMessageId="cc_providerErrorMessage" 
+                                                                                                                             faIcon="fa-bank" 
+                                                                                                                             spanID="" /}
+                                                                                                                             
+                                                                                      </div> 
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                                      <div class="col-lg-12">
+                                                                                                    {>"components/textInput/textInput" 
+                                                                                                                             name="cc_type" 
+                                                                                                                             type="text" 
+                                                                                                                             id="cc_type" 
+                                                                                                                             divId="cc_typediv" 
+                                                                                                                             placeholder="{@pre type="content" key="ccadd.cctype"/}" 
+                                                                                                                             faIcon="fa-credit-card" 
+                                                                                                                             spanID="cc_type_icon"  
+                                                                                                                             readonly="true" 
+                                                                                                                             value="" 
+                                                                                                                             /}
+                                                                                                    <div id="cc_statusdiv" class="textInput">
+                                                                                                                    <div class="input-group fieldWrapper">
+                                                                                                                                    <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
+                                                                                                                                     {@provide}
+                                                                                                                                        {>"components/Dropdown/dropdown"
+                                                                                                                                        fieldName="cc_status"
+                                                                                                                                        fieldLabel=""
+                                                                                                                                        optionList=ccStatusList
+                                                                                                                                        id="cc_status" /}
+                                                                                                                                            {:ccStatusList}
+                                                                                                                                             {@pre type="content" key="ccadd.ccStatusList" mode="paired" /}
+                                                                                                                                      {/provide}  
+                                                                                                                    </div>
+                                                                                                                    <div id="cc_statusErrorMessage" class="errorMessage caret">
+                                                                                                                                    <p class="emptyError hide">{@pre type="content" key="ccadd.ccStatusEmpty" /}</p>
+                                                                                                                                    <p class="invalidError hide">{@pre type="content" key="ccadd.ccStatusInvalid" /}</p>
+                                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                  {>"components/textArea/textArea" 
+                                                                                                                                    divId="cc_commentdiv" 
+                                                                                                                                    id="cc_comment" 
+                                                                                                                                    maxlength="225" 
+                                                                                                                                    label="" 
+                                                                                                                                    faIcon="fa-comment-o" 
+                                                                                                                                    value="{@pre type="content" key="ccadd.cccomment" /}"/}
+                                                                                                <div class="form-group">
+                                                                                                         <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="ccadd.submit" /}">
+                                                                                              </div>
+                                                                                   
+                                                                                      </div> 
+                                                                        </div>
+                                                                        <div class="col-lg-4"></div>
+                                                                {/formBody}
+                                                               <!-- close here -->
+                                       
+ </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}

@@ -1,0 +1,700 @@
+/* variables and mixins, prepend them with a prefix if you get conflicts */
+@maxMobileWidth: 568px;
+@maxPortableWidth: 768px;
+.headerSprite{background: transparent url(../images/sprite/sprite_headerfooter-1x_107.png) no-repeat 0 0;}
+@headerBgColor: #f5f5f5;
+@anchorColor: #0077c1;
+@gray-dark: #333;
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1001;
+
+	@media print {
+		display: none;
+	}
+}
+/* apply those global classes only for mobile tablet's portrait */
+@media only screen and (max-width: @maxPortableWidth) {
+
+	.hovered {
+		color: #0077C1;
+	}
+	.content-overlay {
+		background-color: #fff;
+		pointer-events: none;
+		opacity: 0.20;
+	}
+	.disable-select {
+		-webkit-touch-callout:none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+}
+/* end apply those global classes only for mobile/tablet */
+
+.pageHeader {
+
+	/* Desktop version */
+	#hamburger-button {
+		display: none;
+	}
+	/* notifications and todos count gradient */
+	.alertsCountGradients(@startColor: #adadad, @midColor: #888, @colorStop: 40%, @endColor: #666) {
+		background-color: mix(@midColor, @endColor, 80%);
+		/*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+		background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+		background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop*100%, @endColor);
+		background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+		background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);*/
+		background-repeat: no-repeat;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
+		color: #fff;
+		font-size: 11px;
+		font-weight: bold;
+		line-height: 18px;
+		min-width: 18px;
+		position: absolute;
+		text-align: center;
+		text-shadow: 0 1px 0 rgba(7, 0, 0, .9);
+		top: -5px;
+	}
+
+	/* button gradients */
+	.bttnGradients(@primaryColor: #bfbfbf, @secondaryColor: #e0e0e0, @textColor: #333, @textShadow: 0 1px #e0e0e0, @boxShadow: 0 1px #ececec inset, @borderColor: #cbcbcb #b2b2b2 #8b8b8b) {
+		color: @textColor;
+		text-shadow: @textShadow;
+
+		background-color: @secondaryColor;
+		background: -moz-linear-gradient(center bottom,@primaryColor 0%, @primaryColor 20%, @secondaryColor 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,@primaryColor), color-stop(20%,@primaryColor), color-stop(100%,@secondaryColor)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(bottom, @primaryColor 0%, @primaryColor 20%, @secondaryColor 100%); /* Chrome10+,Safari5.1+ */
+		background: -ms-linear-gradient(bottom, @primaryColor 0%, @primaryColor 20%, @secondaryColor 100%); /* IE10+ */
+		background: -o-linear-gradient(bottom, @primaryColor 0%, @primaryColor 20%, @secondaryColor 100%); /* Opera 11.10+ */
+		background: linear-gradient(bottom, @primaryColor 0%, @primaryColor 20%, @secondaryColor 100%); /* W3C */
+		border-color: @borderColor;
+		box-shadow: @boxShadow;
+	}
+
+	background-color: @headerBgColor;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #a7a7a7;
+	box-shadow: 0 1px 5px 2px rgba(0, 0, 0, .25);
+	height: 75px;
+
+	.contentWrapper {
+		margin: 0 auto;
+		//min-width: 960px;
+		max-width: 1170px; //TODO - revert back to 1170px once all pages migrated to node
+
+		a.skip {
+			background: transparent;
+			font-size: 12px;
+			left: 0;
+			padding: .5em;
+			position: absolute;
+			top: -999em;
+		}
+
+		a.skip:focus {
+			background: #eee;
+			left: 0;
+			top: 0;
+		}
+
+		.logo {
+			float: left;
+			//margin: 18px 7px 0 10px;
+			margin: 8px 7px 0 10px
+		}
+
+		.primaryNav {
+			list-style: none;
+			margin: 0;
+
+			.homeIcon {
+				background: none;
+			}
+			.homeIcon a {
+				/*.headerSprite;*/
+				background-position: 9px -1397px;
+				height: 28px;
+				margin: 5px 11px 0 0;
+
+				&:hover, &.selected {
+					background-position: 9px -1596px;
+				}
+			}
+
+			li {
+				.headerSprite;
+				float: left;
+				line-height: 72px;
+
+				a {
+					color: #555;
+					display: block;
+					font-size: 14px;
+					font-weight: bold;
+					padding: 0 11px 0 19px;
+
+					&:hover, &:focus, &.selected {
+						color: @anchorColor;
+						text-decoration: none;
+					}
+				}
+
+				&.moreMenu {
+					position: relative;
+
+					a {
+						.headerSprite;
+						background-position: right 0;
+						left: 3px;
+						padding: 0 40px 0 17px;
+						position: relative;
+						z-index: 4;
+					}
+
+					&:hover, &:focus, &.showMenu {
+						.headerSprite;
+						background-position: -1px -200px;
+
+						a, &:focus {
+							background-position: right -200px;
+						}
+
+						ul {
+							display: block;
+
+							li {
+								a {
+									left: 0;
+									background: none;
+								}
+							}
+						}
+					}
+
+					ul {
+						background: #fff;
+						border: 1px solid #d6d6d6;
+						border-radius: 0 5px 5px;
+						box-shadow: 0 1px 2px #ccc;
+						display: none;
+						left: 2px;
+						list-style: none;
+						padding: 5px 0;
+						position: absolute;
+						top: 49px;
+						z-index: 3;
+
+						li {
+							background: none;
+							line-height: 40px;
+							min-width: 160px;
+							max-width: 200px;
+							&.RU {
+								min-width: 190px;
+							}
+
+							.divider {
+								background: #ddd;
+								display: block;
+								height: 1px;
+								margin: 0 10px;
+							}
+							a {
+								font-weight: normal;
+								font-size: 13px;
+								line-height: 18px;
+								padding: 12px 20px;
+								z-index: 3;
+
+								&:hover, &:focus {
+									background-color: @headerBgColor;
+									color: @anchorColor;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.globalLinksHolder {
+
+			float: right;
+			margin: 22px 0 0;
+			position: relative;
+
+			.notification-icon, .settings-icon {
+				.headerSprite;
+				background-position: 2px -600px;
+				float: left;
+				position: relative;
+				height: 18px;
+				margin: 0;
+				width: 18px;
+			}
+
+			.notificationCount {
+				.alertsCountGradients(@startColor: #EE9B9F, @midColor: #E1262F, @colorStop: 40%, @endColor: #AF0002);
+			}
+
+			.settings-icon {
+				background-position: 1px -999px;
+			}
+
+			.popover {
+				background: none;
+				border: none;
+				box-shadow: none;
+				display: block;
+				left: auto;
+				position: absolute;
+				right: 0;
+				top: 35px;
+				width: 300px;
+				z-index: 1010;
+			}
+
+			.popover-content:before {
+				border-bottom: 11px solid #5bc0de;
+				border-left: 10px solid rgba(0, 0, 0, 0);
+				border-right: 10px solid rgba(0, 0, 0, 0);
+				content: "";
+				display: inline-block;
+				height: 0;
+				position: absolute;
+				right: 10px;
+				top: -9px;
+				width: 0;
+			}
+			.popover-content {
+				background-clip: padding-box;
+				background-color: #5bc0de;
+				border-radius: 5px;
+				border-top: 0 none;
+				box-shadow: 0 4px 20px #999;
+				color: #fff;
+				min-width: 230px;
+				padding: 0 0 2px;
+				position: relative;
+				text-align: left;
+			}
+			.settingTheme{
+				background-color:#eea236;
+			}
+			.settingTheme:before{
+				border-bottom: 11px solid #eea236;
+				border-left: 10px solid rgba(0, 0, 0, 0);
+				border-right: 10px solid rgba(0, 0, 0, 0);
+			}
+			.notificationTheme{
+				background-color:#5bc0de;
+			}
+			.notificationTheme:before{
+				border-bottom: 11px solid #5bc0de;
+				border-left: 10px solid rgba(0, 0, 0, 0);
+				border-right: 10px solid rgba(0, 0, 0, 0);
+			}
+			.popover-head {
+				border-radius: 10px;
+				height: 100%;
+				min-height: 6px;
+				padding-top: 4px;
+				text-align: center;
+
+				h2 {
+					color: #fff;
+					font-size: 18px;
+					line-height: 20px;
+					margin: 5px 0 10px 15px;
+					width: 82%;
+				}
+
+				.closeSettings,
+				.closeNotifications, .closePopOver {
+					/*.headerSprite;*/
+					background-position: 11px -392px;
+					height: 30px;
+					padding: 7px;
+					position: absolute;
+					right: 10px;
+					top: 5px;
+					width: 30px;
+					z-index: 3;
+					color:#fff;
+
+					&:hover, &:focus {
+						background-position: right -392px;
+						color:#ccc;
+					}
+				}
+			}
+
+			.popover-body {
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				color: #999;
+				margin: 0 6px 5px;
+				max-height: 340px;
+				overflow: auto;
+				padding: 0 5px;
+			}
+
+			.notificationWrapper {
+				float: left;
+				position: relative;
+
+				.notificationsBox {
+					display: none;
+				}
+
+				ul.notificationLinks {
+					background-color: #fff;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					li {
+						border-bottom: 1px solid #ddd;
+						margin: 0 10px;
+						padding: 10px 5px 5px;
+						position: relative;
+
+						a {
+							font-size: 14px;
+							width: 90%;
+						}
+
+						&:last-child {
+							border-bottom: none;
+						}
+					}
+
+					.alertItem {
+						display: block;
+						padding: 16px 0 16px 30px;
+					}
+					.todoItem {
+						display: block;
+						padding: 5px 0;
+					}
+
+					.alert-restriction {
+						.headerSprite;
+						background-position: left -780px;
+					}
+
+					.alert-warning {
+						background: none;
+					}
+
+					.close-notification-box,
+					.dismiss {
+						.headerSprite;
+						background-position: 10px -387px;
+						color: transparent;
+						display: block;
+						height: 30px;
+						overflow: hidden;
+						padding: 7px;
+						position: absolute;
+						right: 0;
+						top: 0;
+						width: 30px;
+						z-index: 3;
+					}
+
+					.close-notification-box:hover,
+					.close-notification-box:focus {
+						background-position: right -387px;
+						right: 17px;
+					}
+
+					.dismiss {
+						opacity: .6;
+						padding: 0;
+						top: 5px;
+						right: -10px;
+					}
+
+					.dismiss:focus,
+					.dismiss:hover {
+						opacity: 1;
+					}
+				}
+			}
+
+			.settingsWrapper {
+				float: left;
+				margin: 0 15px;
+				position: relative;
+				.settingsBox {
+					display: none;
+				}
+				.settingsBox.popover .popover-body {
+					background-color: #f1f1f1;
+					padding: 0;
+					max-height: 375px;
+				}
+
+				.todosTopCount {
+					.alertsCountGradients();
+				}
+
+				h2 a {
+					color: #fff;
+					font-size: 18px;
+					text-decoration: none;
+				}
+
+				h3 {
+					color: #686868;
+					font-size: 14px;
+					font-weight: bold;
+					line-height: 20px;
+					margin: 5px;
+					text-align: center;
+
+					.todosCount {
+						background-color: #999;
+						border-radius: 10px;
+						color: #fff;
+						display: inline-block;
+						font-size: 12px;
+						font-weight: bold;
+						height: 19px;
+						width: 19px;
+					}
+				}
+
+				.merchantInfo {
+					color: #424242;
+					margin: 8px 15px;
+
+					h3 {
+						font-size: 16px;
+						margin: 0 0 5px;
+						text-align: left;
+
+						a {
+							font-size: 16px;
+						}
+					}
+					.businessInfo {
+						font-size: 13px;
+
+						.businessLabel {
+							display: block;
+							float: left;
+							height: 28px;
+							margin-right: 8px
+						}
+
+						a {
+							font-size: 13px;
+						}
+					}
+				}
+
+				.topNavLinks {
+					background-color: #fff;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					li {
+						border-bottom: 1px solid #ddd;
+						padding: 10px 5px 5px;
+						margin: 0 10px;
+						position: relative;
+
+						a {
+							display: block;
+							min-height: 30px;
+							padding: 5px 0 0 0;
+							font-size: 14px;
+						}
+
+						.businiessSetupIcon {
+							background-position: 4px -2196px;
+						}
+						.settingsIcon {
+							background-position: 4px -2397px;
+						}
+
+						&:last-child {
+							border-bottom: none;
+						}
+					}
+				}
+
+				.subMenuWrapper {
+					max-height: 170px;
+					overflow: auto;
+					overflow-x: hidden;
+
+					.toDosList {
+						background-color: #fff;
+						list-style: none;
+						margin: 0;
+						padding: 0;
+
+						li {
+							border-bottom: 1px solid #ddd;
+							padding: 15px 0 16px 10px;
+							margin: 0 10px;
+
+							a {
+								color: @anchorColor;
+								display: list-item;
+								font-size: 14px;
+							}
+
+							&:last-child {
+								border-bottom: none;
+							}
+						}
+					}
+				}
+			}
+
+			.logoutWrapper {
+				float: right;
+				margin-right: 10px;
+			}
+
+			.button {
+				.bttnGradients();
+				border-radius: 5px;
+				border-style: solid;
+				border-width: 1px;
+				display: inline-block;
+				font-weight: bold;
+				font-size: 12px;
+				line-height: 18px;
+				padding: 4px 10px;
+				text-decoration: none;
+
+				&:hover,
+				&:focus {
+					.bttnGradients(#a5a5a5, #e0e0e0, #333, 0 1px #e0e0e0, 0 1px #ebe9ec inset, #cbcbcb #b2b2b2 #8d8d8d);
+				}
+			}
+		}
+	}
+
+	/* Mobile and tablet's portrait version */
+	@media only screen and (max-width: @maxMobileWidth), (max-width: @maxPortableWidth){
+		
+			.popover {
+				background-color:red;
+				border: none;
+				box-shadow: none;
+				display: block;
+				left: auto;
+				position: absolute;
+				right: -60px;
+				top: 35px;
+				width: 300px;
+				z-index: 1010;
+			}
+
+		.contentWrapper { // reset its min-width
+			min-width: 320px;
+		}
+		.logo {
+			img { // hide the desktop logo for mobile devices
+				display: none;
+			}
+			width: 32px;
+			height: 32px;
+			background: url("../images/src/asna_sm.png") no-repeat scroll 0 0 transparent;
+		}
+		#navMenu { // most of the rules bellow just override the desktop version
+			background-color: #fff;
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+			display: none;
+			.homeIcon{
+				display: none !important;
+			}
+			&.expanded {
+				position: absolute;
+				width: 100%;
+				top: 74px;
+				z-index: -1;
+				padding-top: 10px;
+			}
+			.primaryNav {
+				margin: 0;
+				display: table;
+				border-collapse: collapse;
+				width: 100%;
+				li {
+					border-bottom: 1px solid #ddd;
+					background: none;
+					float: none;
+					font-weight: normal;
+					font-size: 13px;
+					line-height: 40px;
+				}
+				a {
+					font-weight: normal;
+					font-size: 13px;
+					background: transparent url(https://www.paypalobjects.com/webstatic/i/ex_ce2/sprite/sprite_ui.png) no-repeat 90% -1289px;
+				}
+				.moreMenu {
+					.divider {
+						display: none;
+					}
+					border-bottom: none !important; // hide last bottom border;
+					> a { // hide the "more" item
+						display: none;
+					}
+					a {
+						padding: 11px 19px;
+						left: 0px;
+					}
+					ul {
+						box-shadow: none;
+						border: none;
+						border-bottom: 1px solid #D6D6D6;
+						position: static;
+						display: table;
+						width: 100%;
+						margin: 0;
+						float: left;
+						list-style-type: none;
+						li {
+							line-height: 40px;
+							max-width: inherit;
+						}
+					}
+					.visible-xs {
+						display: block !important;
+					}
+				}
+			}
+		}
+		#hamburger-button {
+			border: none;
+			border-radius: 0;
+	    		box-shadow: none;
+	    		display: inline-block;
+			outline: none;
+			margin: 7px -40px 0 8px;
+			width: 18px;
+			height: 16px;
+			background: url("https://www.paypalobjects.com/webstatic/i/ex_me2/icon/brger_menu.png") no-repeat scroll 0 0 transparent;
+		}
+	}
+}

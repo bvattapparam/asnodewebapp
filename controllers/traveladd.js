@@ -6,38 +6,47 @@ var config = require('nconf'),
         dbConModel = require("../models/dbcon"),
         auth = require('../lib/auth'),
         dbConModel = require("../models/dbcon"),
-        Helper = require('../lib/helper');
+        Helper = require('../lib/helper'),
+        helper=new Helper();
 
 var travelAdd = {
                 process: function(req,res,next){
-                              console.log("CONTROLLER TRAVEL ADD");
+                              helper.sConsole("CONTROLLER TRAVEL ADD");
                                req.model = {
                                                                 viewName : "traveladd",
-                                                                data : {}
+                                                                data : {
+                                                                  viewModel:{
+                                                                    "droplist": {
+                                                                                                                                    "optionList" : [
+                                                                                                                                        {optionValue : "Credit Card", optionId : "CC"},
+                                                                                                                                        {optionValue : "PayPal EC Checkout", optionId : "PECC"}
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                              }
+                                                                }
                                                 };
                                next();
                 },
 
                 pushTravelData: function(req,res,next){
                      var dbconnection = new dbConModel();
-                                console.log("CONTROLLER TRAVEL ADD :: PUSH");
-                              //  var oTable = "tbl_travel";
+                                helper.sConsole("CONTROLLER TRAVEL ADD :: PUSH");
                                 var oParams={
                                         params:travelAdd.getParam(req),
                                         oTable:'tbl_travel'
                                     }
-                                console.log ("oParams" + JSON.stringify(oParams));
+                                    helper.sConsole("oPARAM", JSON.stringify(oParams));
 
                                 dbconnection.getInsertFields(oParams,
-                                function (model,message) {
+                                function (model) {
                                                 var  serviceResponse = (model) ? model : {};
                                                 req.model = {
                                                                 viewName : "traveladd",
                                                                 data : {
-                                                                                viewModel:serviceResponse,
-                                                                                message:message
+                                                                                viewModel:serviceResponse
                                                                 }
                                                 };
+                                                console.log(req.model.data);
                                               next();
                                 });
                 },
@@ -45,15 +54,16 @@ var travelAdd = {
                 getParam:function(req){
                     var body    =   req.body,
                             Params={
-                                    "travel_bookeddate":body.travel_bookeddate,
-                                    "travel_date":body.travel_date,
-                                    "travel_from":body.travel_from,
-                                    "travel_to":body.travel_to,
-                                    "travel_mode":body.travel_mode,
-                                    "travel_status":body.travel_status,
-                                    "travel_pnr":body.travel_pnr,
-                                    "travel_amount":body.travel_amount
-                                    //"travel_count":body.travel_count
+                                                "travel_bookeddate":body.travel_bookeddate,
+                                                "travel_date":body.travel_date,
+                                                "travel_from":body.travel_from,
+                                                "travel_to":body.travel_to,
+                                                "travel_mode":body.travel_mode,
+                                                "travel_status":body.travel_status,
+                                                "travel_pnr":body.travel_pnr,
+                                                "travel_amount":body.travel_amount,
+                                                "travel_count":body.travel_count,
+                                                "travel_comment":body.travel_comment
                             };
                             return Params;
 

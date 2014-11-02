@@ -8,9 +8,13 @@ define([
     'backbone',
     'BaseView',
     'viewUtil',
-    'common/helper'
+    'common/helper',
+     'common/globalSpace',
+    'datatables',
+    'dtpagination',
+    'bootstrap-cal'
 ],
-    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper) {
+    function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper, globalSpace) {
         var TravelView = BaseView.extend({
         el:"#travel",
                 events: {
@@ -23,16 +27,23 @@ define([
 
         initialize: function(){   
                 console.log("travel view loaded");
+                globalSpace.paginationSection('#travelData');
                 this.showCalendar();
-                this.paginationSection();
                 this.preFillSelectbox();
                 this.ajaxPrefilter();
+                this.toolTipShow();
+        },
+        toolTipShow:function(){
+            $('[data-toggle="popover"]').popover({
+                  trigger: 'hover',
+                      'placement': 'left'
+              });
         },
         reloadParent:function(){
               window.location.reload();
         },
         showCalendar:function(){
-              $('#travel_bookeddate, #travel_bookeddate_edit, #travel_date, #travel_date_edit').datetimepicker({pickTime: false});
+              $('#cal_travel_bookeddate_edit, #cal_travel_date_edit').datetimepicker({pickTime: false});
         },
     
         openModal:function(){
@@ -52,20 +63,7 @@ define([
                    $('span.'+spanClass).html(selectedItem);
                 },
 
-        // function to call pagination 
-        paginationSection:function(){
-          console.log("REACHED pagination function");
-                $('#travelData').dataTable( {
-                        "bSort": false,       // Disable sorting
-                        "iDisplayLength": 10,   //records per page
-                        "sDom": "t<'row pagination-topliner'<'col-lg-3'f><'col-lg-9 text-right'p>>", // will create search and pagination sections
-                        "sPaginationType": "bootstrap"
-             } );
-              // making pagination more attractive using bootstrap form group and fa icon 
-            $('.pagination-topliner').find('input').addClass('form-control').attr('placeholder','search inside the report').wrap("<div class='input-group'></div>" ).before( " <div class='input-group-addon'><span class='fa fa-search'></span></div>" );
-        },
-        // this area used for ajax call
-
+      
           renderTravelData: function (data) {
             var oParams = this.getTravelDataRenderParams(),
             oSelf = this;
@@ -75,8 +73,8 @@ define([
                         oSelf.openModal();
                              $('#loadingspan').removeClass('loadingTransp');
                              $('#loadingspan').removeClass('show');
-                              $('#travel_date_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_date_edit').val())));
-                              $('#travel_bookeddate_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_bookeddate_edit').val())));
+                              //$('#travel_date_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_date_edit').val())));
+                              //$('#travel_bookeddate_edit').val($.datepicker.formatDate('yy/mm/dd', new Date($('#travel_bookeddate_edit').val())));
                               oSelf.showCalendar();
             };
             Helper.simpleRender(oParams);
@@ -100,6 +98,7 @@ define([
            var oSelf = this;
            //console.log("THIS IS TEST"); 
            var travelD=travelD;
+           //alert(travelID);
             return {
                 sUrl : '/asnodewebapp/travelData',
                 oForm : this.getFormData(travelID),
@@ -162,7 +161,7 @@ define([
         $("#header").removeClass('loading');
       $("#updateMessageShowView").addClass('show');
       
-      $("#updateMessageShowView #alert").addClass('alert-'+oData.data.messageView.messagetype);
+      $("#updateMessageShowView #alert").addClass('alert-'+oData.data.viewmd.message.messagetype);
           if($("#updateMessageShowView #alert").hasClass('alert-success')){
              $("#updateMessageShowView #alert #alertcontentsuccess").addClass('show');
              $("#updateMessageShowView #alert #alertcontentwarning").removeClass('show');
@@ -200,7 +199,9 @@ define([
                     travel_mode: this.gettravelMode(),
                     travel_pnr: this.gettravelPNR(),
                     travel_status: this.gettravelStatus(),
-                    travel_amount: this.gettravelAmount()
+                    travel_amount: this.gettravelAmount(),
+                     travel_count: this.gettravelCount(),
+                     travel_comment: this.gettravelComment()
             };
             return oParams;
         },
@@ -246,11 +247,19 @@ define([
         },
         gettravelAmount: function () {
             var travelAmount = $( "#travel_amount_edit").val();
-           
             return travelAmount;
+        },
+
+        gettravelCount: function () {
+            var travelCount = $( "#travel_count_edit").val();
+            return travelCount;
+        },
+        gettravelComment: function () {
+            var travelComment = $( "#travel_comment_edit").val();
+            return travelComment;
         },
     // close edit travel data ajax section
 
 }); 
-        return new TravelView();
+        return TravelView;
     }); 

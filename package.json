@@ -20,13 +20,15 @@
     "makara": "^0.3.4",
     "less": "~1.4.2",
     "mysql": "~2.5.0",
-    "dusthelpers-supplement": "*",
     "async": "~0.2.9",
     "passport": "~0.2.1",
     "passport-local": "~1.0.0",
     "connect-flash": "~0.1.1",
     "bcrypt": "~0.8.0",
-    "moment": "~2.8.3"
+    "moment": "~2.8.3",
+    "nodemailer": "~0.7.1",
+    "locale": "0.0.20",
+    "dusthelpers-supplement": "0.0.10"
   },
   "devDependencies": {
     "mocha": "~1",

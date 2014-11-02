@@ -3,15 +3,6 @@
         "type": "console",
         "format": "pretty"
     },
-
-    "topos": {
-        "host": "live.qa.paypal.com"
-    },
-
-    "auth": {
-        "cookieEncryptionKey": "1h1P/y6F/kg6OlM7oeTms2Yr6Lw=",
-        "cookieMacKey": "SF4HNI/A1U3xPww2eylPqJNQIvU="
-    },
     "appsec": {
         "csrf": false,
         "csp": false

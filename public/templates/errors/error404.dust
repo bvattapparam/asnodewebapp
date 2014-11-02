@@ -1,0 +1,24 @@
+{! Temporary dust template until we get design from UED !}
+{>"layouts/template" /}
+
+{<pageTitle}
+	{@pre type="content" key="error404.pageTitle"/}
+{/pageTitle}
+
+{<header}
+	{>"bower_components/header/header" showNotifications="true" showSettings="true" /}
+{/header}
+
+{<mainBlock}
+    <div class="row error404">
+        <div class="content-wrapper">
+            <h2>{@pre type="content" key="error404.headline"/}</h2>
+
+            <p>{@pre type="content" key="error404.errorBodyText"/}</p>
+        </div>
+    </div>
+{/mainBlock}
+
+{<footer}
+	{>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="false" /}
+{/footer}

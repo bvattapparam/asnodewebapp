@@ -3,7 +3,6 @@
     "dust": {
       "settings": {
         "helpers": [
-          "dusthelpers-supplement"
         ]
       }
     }

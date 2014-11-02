@@ -1,0 +1,124 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    {@pre type="content" key="shoppingadd.title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/header/header" showNotifications="false" showSettings="true" /}
+{/header}
+{<mainBlock}
+                <div id="shoppingAdd" class="section row">
+                                <div class="heading">
+                                                <h1>{@pre type="content" key="shoppingadd.pageheading" /}</h1>
+                                 </div>
+                                     <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li><a href="/asnodewebapp/shopping">Shopping</a> </li>
+                                                <li class="active">Shopping  add</li>
+                                      </ul>
+
+                                  <!--- place for component-->
+                                                                  {?data.viewModel.message}
+                                                                            <div class="bs-example">
+                                                                                      <div class="alert alert-{data.viewModel.message.messagetype}"><div class="{data.viewModel.message.messagetype}"></div><div class="alert-box-content">{data.viewModel.message.messagecontent}</div></div>
+                                                                          </div>
+                                                                {/data.viewModel.message}
+                                                                {>"inc/form" /}
+                                                              {<formAttr} name="shoppingfrm"  action="/asnodewebapp/shoppingadd" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                                                                        <div class="col-lg-4">
+                                                                                        <div class="col-lg-12">
+                                                                                              {>"components/textInput/textInput" 
+                                                                                                                             name="shopping_date" 
+                                                                                                                             type="text" 
+                                                                                                                             id="shopping_date" 
+                                                                                                                             divId="shopping_datediv" 
+                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingdate"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingDateEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingDateInvalid"/}" 
+                                                                                                                             errorMessageId="shopping_dateErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_shopping_date" 
+                                                                                                                             format="YYYY/MM/DD" /}
+                                                                                            
+                                                                                            {>"components/textInput/textInput"
+                                                                                                                             name="shopping_item" 
+                                                                                                                             type="text" 
+                                                                                                                             id="shopping_item" 
+                                                                                                                             divId="shopping_itemdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingitem"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingItemEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingItemInvalid"/}" 
+                                                                                                                             errorMessageId="shopping_itemErrorMessage" 
+                                                                                                                             faIcon="fa-list-alt" 
+                                                                                                                             spanID="" /}
+                                                                                                {>"components/textInput/textInput"
+                                                                                                                             name="shopping_amount" 
+                                                                                                                             type="text" 
+                                                                                                                             id="shopping_amount" 
+                                                                                                                             divId="shopping_amountdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingamount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingAmountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingAmountInvalid"/}" 
+                                                                                                                             errorMessageId="shopping_amountErrorMessage" 
+                                                                                                                             faIcon="fa-money" 
+                                                                                                                             spanID="" /}  
+                                                                                                {>"components/textInput/textInput" 
+                                                                                                                             name="shopping_cart" 
+                                                                                                                             type="text" 
+                                                                                                                             id="shopping_cart" 
+                                                                                                                             divId="shopping_cartdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="shoppingadd.shoppingcart"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="shoppingadd.shoppingCartEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="shoppingadd.shoppingCartInvalid"/}" 
+                                                                                                                             errorMessageId="shopping_cartErrorMessage" 
+                                                                                                                             faIcon="fa-shopping-cart" 
+                                                                                                                             spanID="" /}                                                                                                                           
+                                                                                      </div> 
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                                      <div class="col-lg-12">
+                                                                                                    
+                                                                                                    <div id="shopping_statusdiv" class="textInput">
+                                                                                                                    <div class="input-group fieldWrapper">
+                                                                                                                                    <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
+                                                                                                                                     {@provide}
+                                                                                                                                        {>"components/Dropdown/dropdown"
+                                                                                                                                        fieldName="shopping_status"
+                                                                                                                                        fieldLabel=""
+                                                                                                                                        optionList=shoppingStatusList
+                                                                                                                                        id="shopping_status" /}
+                                                                                                                                            {:shoppingStatusList}
+                                                                                                                                             {@pre type="content" key="shoppingadd.shoppingStatusList" mode="paired" /}
+                                                                                                                                      {/provide}  
+                                                                                                                    </div>
+                                                                                                                    <div id="shopping_statusErrorMessage" class="errorMessage caret">
+                                                                                                                                    <p class="emptyError hide">{@pre type="content" key="shoppingadd.shoppingStatusEmpty" /}</p>
+                                                                                                                                    <p class="invalidError hide">{@pre type="content" key="shoppingadd.shoppingStatusInvalid" /}</p>
+                                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                  {>"components/textArea/textArea" 
+                                                                                                                                    divId="shopping_commentdiv" 
+                                                                                                                                    id="shopping_comment" 
+                                                                                                                                    maxlength="225" 
+                                                                                                                                    label="" 
+                                                                                                                                    faIcon="fa-comment-o" 
+                                                                                                                                    value="{@pre type="content" key="shoppingadd.shoppingcomment" /}"/}
+                                                                                                <div class="form-group">
+                                                                                                         <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="shoppingadd.submit" /}">
+                                                                                              </div>
+                                                                                   
+                                                                                      </div> 
+                                                                        </div>
+                                                                        <div class="col-lg-4"></div>
+                                                                {/formBody}
+                                                               <!-- close here -->
+                                       
+ </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}
