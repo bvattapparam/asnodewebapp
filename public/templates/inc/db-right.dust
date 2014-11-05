@@ -52,7 +52,7 @@
                                                                                                                                 </div>
                                                                                                                                 <div class="col-xs-9 text-right">
                                                                                                                                                 <p>{@pre type="content" key="rentEntries" /}</p>
-                                                                                                                                                <p class="huge">26</p>
+                                                                                                                                                <p class="huge">{r_count}</p>
                                                                                                                                 </div>
                                                                                                                 </div>
                                                                                                 </div>

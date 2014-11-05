@@ -20,13 +20,9 @@ define(["jquery"], function($){
 		$("#notificationsBox, #settingsBox").hide();
 		if(this.id === "notificationBttn" ) {
 			$("#notificationsBox").show();
-			$("#notificationsBox").addClass('animated zoomIn');
-			$("#settingsBox").removeClass('animated zoomIn');
 		}
 		else if(this.id === "settingsBttn" ) {
 			$("#settingsBox").show();
-			$("#settingsBox").addClass('animated zoomIn');
-			$("#notificationsBox").removeClass('animated zoomIn');
 		}
 	});
 

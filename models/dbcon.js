@@ -149,7 +149,7 @@ dbCon.prototype={
                                                 else
                                                 {
                                                                 //console.log("MySQL CONNECTED" + oParams.param);
-                                                              var oRowFetch= connection.query('SELECT ( select SUM(travel_amount) FROM tbl_travel) as tvalue,(select sum(cc_amount) from tbl_cc) as cvalue,(select sum(shopping_amount) from tbl_shopping) as svalue', function(err,result){
+                                                              var oRowFetch= connection.query('SELECT ( select SUM(travel_amount) FROM tbl_travel) as tvalue,(select sum(cc_amount) from tbl_cc) as cvalue,(select sum(shopping_amount) from tbl_shopping) as svalue,(select sum(rent_amount) from tbl_rent) as rvalue', function(err,result){
                                                                                 connection.release();
                                                                                 if(err){
                                                                                              helper.sConsole("query ERROR in SUM  : ", err);  
@@ -178,7 +178,7 @@ dbCon.prototype={
                                                 else
                                                 {
                                                                 //console.log("MySQL CONNECTED" + oParams.param);
-                                                              var oRowFetch= connection.query('SELECT ( select COUNT(*) FROM tbl_travel) as t_count,(select COUNT(*) from tbl_cc) as cc_count,(select COUNT(*) from tbl_shopping) as s_count', function(err,result){
+                                                              var oRowFetch= connection.query('SELECT ( select COUNT(*) FROM tbl_travel) as t_count,(select COUNT(*) from tbl_cc) as cc_count,(select COUNT(*) from tbl_shopping) as s_count, (select COUNT(*) from tbl_rent) as r_count', function(err,result){
                                                                                 connection.release();
                                                                                 if(err){
                                                                                              helper.sConsole("query ERROR in COUNT  : ", err);  

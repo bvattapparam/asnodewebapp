@@ -7,6 +7,8 @@ var ccDataSection = require('./middlewares/dbcallAction-bin/cc-data');
 var ccDataEditSection = require('./middlewares/dbcallAction-bin/cc-data-edit');
 var ccDataDeleteSection = require('./middlewares/dbcallAction-bin/cc-data-delete');
 var shoppingDataDeleteSection = require('./middlewares/dbcallAction-bin/shopping-data-delete');
+var todoDataDeleteSection = require('./middlewares/dbcallAction-bin/todo-data-delete');
+var rentDataDeleteSection = require('./middlewares/dbcallAction-bin/rent-data-delete');
 
 var shoppingDataSection = require('./middlewares/dbcallAction-bin/shopping-data');
 var shoppingDataEditSection = require('./middlewares/dbcallAction-bin/shopping-data-edit');
@@ -41,4 +43,11 @@ exports.shoppingDataEdit = function (req, res) {
 };
 exports.shoppingDataDelete = function (req, res) {
 	shoppingDataDeleteSection.process(req, res);
+};
+exports.todoDataDelete = function (req, res) {
+	todoDataDeleteSection.process(req, res);
+};
+
+exports.rentDataDelete = function (req, res) {
+	rentDataDeleteSection.process(req, res);
 };

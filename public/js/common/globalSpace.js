@@ -6,7 +6,9 @@ define([
     'jquery',
     'backbone',
     'BaseView',
-    'viewUtil'
+    'viewUtil',
+    'datatables',
+     'dtpagination'
 ],
 function (nougat, _, $, Backbone, BaseView, ViewUtil) {
 

@@ -46,7 +46,8 @@ var Dashboard = {
                                                                 donutcol:{
                                                                          d1:{'label':'Travel','value':sumTravel[0].tvalue},
                                                                          d2:{'label':'Credit Card','value':sumTravel[0].cvalue},
-                                                                         d3:{'label':'Shopping','value':sumTravel[0].svalue}
+                                                                         d3:{'label':'Shopping','value':sumTravel[0].svalue},
+                                                                         d4:{'label':'Rent','value':sumTravel[0].rvalue}
                                                                 }
                                                             };
                                                    req.model.data.vDonutData=donutParam;

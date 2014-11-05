@@ -19,4 +19,6 @@ module.exports = function (server) {
 	server.get("/travelDataDelete/:id", AsnaMiddleWare.travelDataDelete); 
 	server.get("/ccDataDelete/:id", AsnaMiddleWare.ccDataDelete); 
 	server.get("/shoppingDataDelete/:id", AsnaMiddleWare.shoppingDataDelete); 
+	server.get("/todoDataDelete/:id", AsnaMiddleWare.todoDataDelete); 
+	server.get("/rentDataDelete/:id", AsnaMiddleWare.rentDataDelete); 
 };

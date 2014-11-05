@@ -13,7 +13,7 @@
 module.exports = function (app) {
 
      app.get('/', function (req, res){
-         req.model = {viewName : 'index',data : {}};
+         req.model = {viewName : 'login',data : {}};
         res.render(req.model.viewName, req.model);
      });
 

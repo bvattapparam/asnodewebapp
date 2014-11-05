@@ -71,7 +71,7 @@ confidential{/confidential}{?restricted} restricted{/restricted}" {?divId}id="{d
 		{/fieldTypeCalID}
 		</div>
 
-		<div class="errorMessage"{?errorMessageId}id="{errorMessageId}"{/errorMessageId}>
+		<div class="errorMessage caret"{?errorMessageId}id="{errorMessageId}"{/errorMessageId}>
 		    {?emptyErrorMessage}<p class="emptyError hide">{emptyErrorMessage}</p>{/emptyErrorMessage}
             			{?invalidErrorMessage}<p class="invalidError hide">{invalidErrorMessage}</p>{/invalidErrorMessage}
 		</div>

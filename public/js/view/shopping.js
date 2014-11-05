@@ -10,8 +10,6 @@ define([
     'viewUtil',
     'common/helper',
     'common/globalSpace',
-    'datatables',
-    'dtpagination',
     'bootstrap-cal'
 ],
     function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper,GlobalSpace) {

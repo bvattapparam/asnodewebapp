@@ -20,8 +20,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="{@pre type="content" key="header.money.link" editable="false" /}" class="{@if cond="'{viewName}' == 'money/index'"}selected{/if}">
-							{@pre type="content" key="header.money.content"  /}
+						<a href="{@pre type="content" key="header.rent.link" editable="false" /}" class="{@if cond="'{viewName}' == 'rent'"}selected{/if}">
+							{@pre type="content" key="header.rent.content"  /}
 						</a>
 					</li>
 					<li>

@@ -10,18 +10,13 @@ define([
     'viewUtil',
     'common/helper',
     'common/globalSpace',
-    'datatables',
-    'dtpagination',
     'bootstrap-cal'
 ],
     function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper,GlobalSpace) {
         var TravelView = BaseView.extend({
         el:"#cc",
                 events: {
-                        // 'change #travel_mode_edit':'dropdownSpanUpdate',
                           'change #cc_status_edit':GlobalSpace.dropdownSpanUpdate,
-                        //  'click .editTravelCall':'travelDataShow',
-                        //  'click #editTravelbtn':'editTravelData',
                         'click .close':'reloadParent',
                         'click .editCCCall':'ccDataShow',
                         'click #editCCbtn':'editCCData',
@@ -263,5 +258,5 @@ define([
     // close edit travel data ajax section
 
 }); 
-        return  TravelView;
+        return  new TravelView();
     }); 

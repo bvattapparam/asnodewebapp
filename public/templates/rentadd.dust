@@ -1,0 +1,95 @@
+{>"layouts/template" /}
+
+{<pageTitle}
+    {@pre type="content" key="title" /}
+{/pageTitle}
+
+{<header}
+    {>"bower_components/header/header" showNotifications="false" showSettings="true" /}
+{/header}
+{<mainBlock}
+                <div id="rentAdd" class="section row">
+                                <div class="heading">
+                                                <h1>{@pre type="content" key="pageheading" /}</h1>
+                                 </div>
+                                     <ul class="breadcrumb">
+                                                <li><a href="/asnodewebapp/dashboard">Dashboard</a> </li>
+                                                <li><a href="/asnodewebapp/rent">Rent</a> </li>
+                                                <li class="active">Rent add</li>
+                                      </ul>
+
+                                  <!--- place for component-->
+                                                                  {?data.viewModel.message}
+                                                                            <div>
+                                                                                      <div class="alert alert-{data.viewModel.message.messagetype}"><div class="{data.viewModel.message.messagetype}"></div><div class="alert-box-content">{data.viewModel.message.messagecontent}</div></div>
+                                                                          </div>
+                                                                {/data.viewModel.message}
+                                                                {>"inc/form" /}
+                                                              {<formAttr} name="ccfrm"  action="/asnodewebapp/rentadd" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                                                                        <div class="col-lg-4">
+                                                                                        <div class="col-lg-12">
+                                                                                              {>"components/textInput/textInput" 
+                                                                                                                             name="rent_month" 
+                                                                                                                             type="text" 
+                                                                                                                             id="rent_month" 
+                                                                                                                             divId="rent_monthdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="rentmonth"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="rentMonthEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="rentMonthInvalid"/}" 
+                                                                                                                             errorMessageId="rent_monthErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_rent_month" 
+                                                                                                                             format="YYYY/MM/DD" /}
+                                                                                            {>"components/textInput/textInput"
+                                                                                                                             name="rent_amount" 
+                                                                                                                             type="text" 
+                                                                                                                             id="rent_amount" 
+                                                                                                                             divId="rent_amountdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="rentamount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="rentAmountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="rentAmountInvalid"/}" 
+                                                                                                                             errorMessageId="rent_amountErrorMessage" 
+                                                                                                                             faIcon="fa-money" 
+                                                                                                                             spanID="" /}
+                                                                                            <div id="rent_ownerdiv" class="textInput">
+                                                                                                                    <div class="input-group fieldWrapper">
+                                                                                                                                    <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
+                                                                                                                                     {@provide}
+                                                                                                                                        {>"components/Dropdown/dropdown"
+                                                                                                                                        fieldName="rent_owner"
+                                                                                                                                        fieldLabel=""
+                                                                                                                                        optionList=rentOwnerList
+                                                                                                                                        id="rent_owner" /}
+                                                                                                                                            {:rentOwnerList}
+                                                                                                                                             {@pre type="content" key="rentOwnerList" mode="paired" /}
+                                                                                                                                      {/provide}  
+                                                                                                                    </div>
+                                                                                                                    <div id="rentOwnerListErrorMessage" class="errorMessage caret">
+                                                                                                                                    <p class="emptyError hide">{@pre type="content" key="rentOwnerEmpty" /}</p>
+                                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                  {>"components/textArea/textArea" 
+                                                                                                                                    divId="rent_commentdiv" 
+                                                                                                                                    id="rent_comment" 
+                                                                                                                                    maxlength="225" 
+                                                                                                                                    label="" 
+                                                                                                                                    faIcon="fa-comment-o" 
+                                                                                                                                    value="{@pre type="content" key="rentcomment" /}"/}
+                                                                                                                             
+                                                                                      <div class="form-group">
+                                                                                                         <input type="submit" class="btn btn-primary"  id="btn-login" value="{@pre type="content" key="submit" /}">
+                                                                                              </div>
+                                                                                      </div> 
+                                                                        </div>
+                                                                        <div class="col-lg-4"></div>
+                                                                {/formBody}
+                                                               <!-- close here -->
+                                       
+ </div>
+{/mainBlock}
+
+{<footer}
+    {>"bower_components/footer/footer" showMainNav="true" showLegalNav="true" showFeedback="true" /}
+{/footer}

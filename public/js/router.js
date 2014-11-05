@@ -10,6 +10,8 @@ define([ 'nougat',
         'businessHelper',
         'raphael',
         'morris',
+        'datatables',
+        'dtpagination',
         'header',
         'footer',
         'login'

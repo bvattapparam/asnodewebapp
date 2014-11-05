@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}" id="loginbody">
+<html lang="{context.locality.language}" class="no-js" data-device-type="{meta.device.type}" id="popupbody">
 <head>
   {>"layouts/metaTags"/}
-<title>{+pageTitle /} - {@pre type="content" key="logintemplate.browserTitle" editable="false"/}</title>
+<title>{+pageTitle /} - {@pre type="content" key="browserTitle" editable="false"/}</title>
 <link rel="stylesheet" href="css/app.css" />
 <script>
         {! update the class on the page with class "js" instead of "no-js". We use that class to avoid flash of uninitialized JS !}
@@ -10,13 +10,13 @@
 </script>
 
 </head>
-<body data-view-name="{viewName}" data-template-path="/asnodewebapp/templates/%s.js" id="loginpage" >
+<body data-view-name="{viewName}" data-template-path="/asnodewebapp/templates/%s.js" id="popuppage" >
     <noscript>
         <p class="nonjsAlert" role="alert">
-            {@pre type="content" key="template.nonJSNote"  /}
+            {@pre type="content" key="nonJSNote"  /}
         </p>
     </noscript>
-    <div class="container contents" role="main" id="loginsection">
+    <div class="container contents" role="main" id="popupsection">
         {+mainBlock /}
     </div>
 

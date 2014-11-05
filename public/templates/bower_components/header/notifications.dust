@@ -1,8 +1,8 @@
 
-<div class="notificationWrapper animated bounce">
+<div class="notificationWrapper">
 	<a data-toggle="modal" role="button" aria-owns="Notifications" class="btn btn-info btn-sm" id="notificationBttn" href="#">
 		<span class="fa fa-bell-o"></span>
-		<span class="notificationCount">{data.toDoList.length}</span>
+		<span class="notificationCount">{@if cond="'{data.toDoList}'.length>0"}{data.toDoList.length}{/if}</span>
 		<span class="accessAid">{@pre type="content" key="notification.header"/}</span>
 	</a>
 	<div tabindex="-1" aria-labelledby="{@pre type="content" key="notification.header" editable="false" /}" role="dialog" class="popover notificationsBox show-onload" id="notificationsBox">
@@ -12,11 +12,13 @@
 				<a tabindex="-1" role="button" id="closeNotifications" class="closePopOver fa fa-close" href="#"><span class="accessAid">{@pre type="content" key="notification.closeAlt"/}</span></a>
 			</div>
 			<div class="popover-body">
-				<ul class="notificationLinks">
+				
+				<table class="table table-hover table-condensed no-bottom-margin">
 					{#data.toDoList}
-						<li class="todoItem"><i class="fa fa-bullseye"></i> {todo} <span style="float:right" class="align-right label label-{@if cond="'{todo_category}'=='personal'"}danger{/if}{@if cond="'{todo_category}'=='office'"}success{/if}">{todo_category}</span></li>
+					<tr><td><i class="fa fa-bell"></i></td><td>{@Truncate data="{todo}" length="20"/} ...</td><td><span style="float:right" class="align-right label label-{@if cond="'{todo_category}'=='personal'"}danger{/if}{@if cond="'{todo_category}'=='office'"}success{/if}">{todo_category}</span></td></tr>
 					{/data.toDoList}
-				</ul>
+					</table>
+				
 			</div>
 		</div>
 	</div>
