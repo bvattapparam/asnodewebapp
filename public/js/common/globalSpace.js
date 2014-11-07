@@ -49,7 +49,7 @@ function (nougat, _, $, Backbone, BaseView, ViewUtil) {
 	                      	return result;
                 	},
                 	paginationSection:function(oTable){
-		          //console.log("REACHED pagination function" + oTable);
+		          console.log("REACHED pagination function" + oTable);
 		          $(oTable).dataTable();
 		          $('.pagination-topliner').find('input').addClass('form-control').attr('placeholder','search inside the report').wrap("<div class='input-group'></div>" ).before( " <div class='input-group-addon'><span class='fa fa-search'></span></div>" );
 		},

@@ -14,16 +14,15 @@ define([
 ],
     function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper,GlobalSpace) {
         var RentView = BaseView.extend({
-        el:"#cc",
+        el:"#rent",
                 events: {
                         // 'change #travel_mode_edit':'dropdownSpanUpdate',
-                          'change #cc_status_edit':GlobalSpace.dropdownSpanUpdate,
+                          'change #rent_owner_edit':GlobalSpace.dropdownSpanUpdate,
                         //  'click .editTravelCall':'travelDataShow',
                         //  'click #editTravelbtn':'editTravelData',
                         'click .close':'reloadParent',
-                        'click .editCCCall':'ccDataShow',
-                        'click #editCCbtn':'editCCData',
-                        'keypress #cc_fourdigit_edit':'updateCCClass',
+                        'click .editRentCall':'rentDataShow',
+                        'click #editRentbtn':'editRentData'
                        },
 
         initialize: function(){   
@@ -31,7 +30,6 @@ define([
                 GlobalSpace.paginationSection('#rentData');
                // this.showCalendar();
                 this.ajaxPrefilter();
-                this.toolTipShow();
 
           
         },
@@ -39,14 +37,14 @@ define([
               window.location.reload();
         },
         showCalendar:function(){
-              $('#cal_cc_date_edit').datetimepicker({pickTime: false});
+              $('#cal_rent_month_edit').datetimepicker({pickTime: false});
         },
     
         openModal:function(){
-          $('#myCCModal').modal('show'); 
+          $('#myRentModal').modal('show'); 
         },
-          renderCCData: function (data) {
-            var oParams = this.getCCDataRenderParams(),
+          renderRentData: function (data) {
+            var oParams = this.getRentDataRenderParams(),
             oSelf = this;
             oParams.data = data;
             oParams.callback = function () {
@@ -59,39 +57,39 @@ define([
             Helper.simpleRender(oParams);
             
         },
-            getCCDataRenderParams: function () {
-            var ccDataView,
+            getRentDataRenderParams: function () {
+            var rentDataView,
                   oSelf = this;
-                  ccDataView = new BaseView();
-                  ccDataView.model = new Backbone.Model();
+                  rentDataView = new BaseView();
+                  rentDataView.model = new Backbone.Model();
 
             return {
-                    elementID : '#ccDataView',
-                    template :  'inc/modeledit_cc',
-                    view : ccDataView
+                    elementID : '#rentDataView',
+                    template :  'inc/modeledit_rent',
+                    view : rentDataView
                 };
         },
 
 
-         getParams: function (ccID) {
+         getParams: function (rentID) {
            var oSelf = this;
            //console.log("THIS IS TEST"); 
-           var ccID = ccID;
+           var rentID = rentID;
             return {
-                sUrl : '/asnodewebapp/ccData',
-                oForm : this.getFormData(ccID),
+                sUrl : '/asnodewebapp/rentData',
+                oForm : this.getFormData(rentID),
                callback : function (oData) {
                     if( (oData.data && oData.data.success) || undefined) {
-                        oSelf.renderCCData(oData.data);
+                        oSelf.renderRentData(oData.data);
                     } else {
-                       oSelf.renderCCData(oData.data);
+                       oSelf.renderRentData(oData.data);
                     }
                 }
             };
         },
-        getFormData: function (ccID) {
+        getFormData: function (rentID) {
             var oParams = {
-                ccID: ccID,
+                rentID: rentID,
             };
             return oParams;
         },
@@ -102,9 +100,9 @@ define([
             return travelID;
         },
 
-        ccDataShow:function(ev){
-          var ccID = ev.target.id;
-            var oParams = this.getParams(ccID);
+        rentDataShow:function(ev){
+          var rentID = ev.target.id;
+            var oParams = this.getParams(rentID);
             console.log(oParams);
             this.callLoading();
             Helper.simplePost(oParams);
@@ -127,12 +125,12 @@ define([
     },
 
     // Place for edit travel data ajax section
-    editCCData:function(){
+    editRentData:function(){
       console.log('edit ajax');
       var oParamsEdit = this.getParamsEdit();
       $("#header").addClass('loading');
       $(".show-body").addClass('hide');
-      $("#editCCbtn").addClass('disabled');
+      $("#editRentbtn").addClass('disabled');
       Helper.simplePost(oParamsEdit);
     },
     showMessagebox:function(oData){
@@ -154,7 +152,7 @@ define([
           // console.log("THIS IS TEST"); 
           console.log("EDIT VAL" + JSON.stringify(this.getFormDataEdit()));
             return {
-                sUrl : '/asnodewebapp/ccDataEdit',
+                sUrl : '/asnodewebapp/rentDataEdit',
                 oForm : this.getFormDataEdit(),
                callback : function (oData) {
                     if( (oData.data && oData.data.success) || undefined) {
@@ -169,66 +167,13 @@ define([
           
     getFormDataEdit: function () {
             var oParams = {
-                    ccID: $( "#cc_id_edit").val(),
-                    cc_date: $( "#cc_date_edit").val(),
-                    cc_item: $( "#cc_item_edit").val(),
-                    cc_amount: $( "#cc_amount_edit").val(),
-                    cc_status:$( "#cc_status_edit").val(),
-                    cc_fourdigit:$( "#cc_fourdigit_edit").val(),
-                    cc_type:$( "#cc_type_edit").val(),
-                    cc_provider:$( "#cc_provider_edit").val(),
-                    cc_comment:$( "#cc_comment_edit").val(),
+                    rentID: $( "#rent_id_edit").val(),
+                    rent_month: $( "#rent_month_edit").val(),
+                    rent_amount: $( "#rent_amount_edit").val(),
+                    rent_owner:$( "#rent_owner_edit").val(),
+                    rent_comment:$( "#rent_comment_edit").val(),
             };
             return oParams;
-        },
-        gettravelIDEdit: function () {
-            var travelID = $( "#travel_id_edit").val();
-         
-            return travelID;
-        },
-        gettravelBookeddate: function () {
-            var travelBookeddate = $( "#travel_bookeddate_edit").val();
-            //console.log(travelID);
-            return travelBookeddate;
-        },
-        gettravelDate: function () {
-            var travelDate = $( "#travel_date_edit").val();
-          
-            return travelDate;
-        },
-        gettravelFrom: function () {
-            var travelFrom = $( "#travel_from_edit").val();
-          
-            return travelFrom;
-        },
-        gettravelTo: function () {
-            var travelTo = $( "#travel_to_edit").val();
-           
-            return travelTo;
-        },
-        gettravelMode: function () {
-            var travelMode = $( "#travel_mode_edit").val();
-       
-            return travelMode;
-        },
-        gettravelPNR: function () {
-            var travelPNR = $( "#travel_pnr_edit").val();
-        
-            return travelPNR;
-        },
-        gettravelStatus: function () {
-            var travelStatus = $( "#travel_status_edit").val();
-     
-            return travelStatus;
-        },
-        gettravelAmount: function () {
-            var travelAmount = $( "#travel_amount_edit").val();
-            return travelAmount;
-        },
-
-        gettravelCount: function () {
-            var travelCount = $( "#travel_count_edit").val();
-            return travelCount;
         }
     // close edit travel data ajax section
 

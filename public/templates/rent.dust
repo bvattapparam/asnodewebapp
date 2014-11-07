@@ -58,7 +58,7 @@
 		</div>
 		<div class="moduleContent" id="rentDataView"> <!--- where ajax call-->
 			<input type="hidden" name="_csrf" value="{_csrf}" />
-	    		{>"inc/modeledit_cc"/}
+	    		{>"inc/modeledit_rent"/}
 		</div>
                 </div>
 {/mainBlock}

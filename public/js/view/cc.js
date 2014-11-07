@@ -13,7 +13,7 @@ define([
     'bootstrap-cal'
 ],
     function (nougat, _, $, ui, Backbone, BaseView, ViewUtil, Helper,GlobalSpace) {
-        var TravelView = BaseView.extend({
+        var CCView = BaseView.extend({
         el:"#cc",
                 events: {
                           'change #cc_status_edit':GlobalSpace.dropdownSpanUpdate,
@@ -201,62 +201,9 @@ define([
                     cc_comment:$( "#cc_comment_edit").val(),
             };
             return oParams;
-        },
-        gettravelIDEdit: function () {
-            var travelID = $( "#travel_id_edit").val();
-         
-            return travelID;
-        },
-        gettravelBookeddate: function () {
-            var travelBookeddate = $( "#travel_bookeddate_edit").val();
-            //console.log(travelID);
-            return travelBookeddate;
-        },
-        gettravelDate: function () {
-            var travelDate = $( "#travel_date_edit").val();
-          
-            return travelDate;
-        },
-        gettravelFrom: function () {
-            var travelFrom = $( "#travel_from_edit").val();
-          
-            return travelFrom;
-        },
-        gettravelTo: function () {
-            var travelTo = $( "#travel_to_edit").val();
-           
-            return travelTo;
-        },
-        gettravelMode: function () {
-            var travelMode = $( "#travel_mode_edit").val();
-       
-            return travelMode;
-        },
-        gettravelPNR: function () {
-            var travelPNR = $( "#travel_pnr_edit").val();
-        
-            return travelPNR;
-        },
-        gettravelStatus: function () {
-            var travelStatus = $( "#travel_status_edit").val();
-     
-            return travelStatus;
-        },
-        gettravelAmount: function () {
-            var travelAmount = $( "#travel_amount_edit").val();
-            return travelAmount;
-        },
-
-        gettravelCount: function () {
-            var travelCount = $( "#travel_count_edit").val();
-            return travelCount;
-        },
-        gettravelComment: function () {
-            var travelComment = $( "#travel_comment_edit").val();
-            return travelComment;
-        },
+        }
     // close edit travel data ajax section
 
 }); 
-        return  new TravelView();
+        return  CCView;
     }); 

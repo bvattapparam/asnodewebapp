@@ -15,6 +15,9 @@ module.exports = function (server) {
 	server.post("/shoppingData", AsnaMiddleWare.shoppingData); 
 	server.post("/shoppingDataEdit", AsnaMiddleWare.shoppingDataEdit); 
 
+	server.post("/rentData", AsnaMiddleWare.rentData); 
+	server.post("/rentDataEdit", AsnaMiddleWare.rentDataEdit);
+
 	// PARAM call node
 	server.get("/travelDataDelete/:id", AsnaMiddleWare.travelDataDelete); 
 	server.get("/ccDataDelete/:id", AsnaMiddleWare.ccDataDelete); 

@@ -1,0 +1,92 @@
+<!-- Modal -->
+        <div class="modal fade rent_edit_model" id="myRentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            {>"inc/form" /}
+   			{<formAttr} name="rentfrm"  action="" autocomplete="off" id="frm" {/formAttr}
+                                                              {<formBody}
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <span class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
+                                    <h4 class="modal-title">{@pre type="content" key="heading" /}</h4>
+                                  </div>
+                                  <div class="modal-body" id="model-body">
+                                   <div class="header" id="header">
+                                                                          <div class="row">
+                                                                          <div id="updateMessageShowView" class="col-lg-12 hide">
+                                                                              {>"inc/message" /}
+                                                                          </div>
+                                                                          <div class="show-body">
+                                                                                        <div class="loader"></div>
+                                                                                                {#viewmd}
+                                                                                                <div class="col-lg-6">
+                                                                                                {>"components/textInput/textInput" 
+                                                                                                                             name="rent_month_edit" 
+                                                                                                                             type="text" 
+                                                                                                                             value="{rent_month}" 
+                                                                                                                             id="rent_month_edit" 
+                                                                                                                             divId="rent_month_editdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="rentmonth"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="rentMonthEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="rentMonthInvalid"/}" 
+                                                                                                                             errorMessageId="rent_month_editErrorMessage" 
+                                                                                                                             faIcon="" 
+                                                                                                                             spanID="" 
+                                                                                                                             fieldTypeCalID="cal_rent_month_edit" 
+                                                                                                                             format="YYYY/MM/DD" /}
+                                                                                            {>"components/textInput/textInput"
+                                                                                                                             name="rent_amount_edit" 
+                                                                                                                             type="text" 
+                                                                                                                             value="{rent_amount}" 
+                                                                                                                             id="rent_amount_edit" 
+                                                                                                                             divId="rent_amount_editdiv" 
+                                                                                                                             placeholder="{@pre type="content" key="rentamount"/}" 
+                                                                                                                             emptyErrorMessage="{@pre type="content" key="rentAmountEmpty"/}" 
+                                                                                                                             invalidErrorMessage="{@pre type="content" key="rentAmountInvalid"/}" 
+                                                                                                                             errorMessageId="rent_amount_editErrorMessage" 
+                                                                                                                             faIcon="fa-money" 
+                                                                                                                             spanID="" /}
+                                                                                            <div id="rent_owner_editdiv" class="textInput">
+                                                                                                                    <div class="input-group fieldWrapper">
+                                                                                                                                    <span class="input-group-addon"><span class="fa fa-list-ul"></span></span>   
+                                                                                                                                     {@provide}
+                                                                                                                                        {>"components/Dropdown/dropdown"
+                                                                                                                                        fieldName="rent_owner_edit"
+                                                                                                                                        fieldLabel=""
+                                                                                                                                        optionList=rentOwnerList 
+                                                                                                                                        optionSelected="{rent_owner}"   
+                                                                                                                                        id="rent_owner_edit" /}
+                                                                                                                                            {:rentOwnerList}
+                                                                                                                                             {@pre type="content" key="rentOwnerList" mode="paired" /}
+                                                                                                                                      {/provide}  
+                                                                                                                    </div>
+                                                                                                                    <div id="rentOwnerListErrorMessage" class="errorMessage caret">
+                                                                                                                                    <p class="emptyError hide">{@pre type="content" key="rentOwnerEmpty" /}</p>
+                                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                  {>"components/textArea/textArea" 
+                                                                                                                                    divId="rent_comment_editdiv" 
+                                                                                                                                    id="rent_comment_edit" 
+                                                                                                                                    maxlength="225" 
+                                                                                                                                    label="" 
+                                                                                                                                    faIcon="fa-comment-o" 
+                                                                                                                                    value="{rent_comment}" /}
+
+                                                                                                 </div>       
+                                                                                                {/viewmd}
+                                                                                      </div>
+                                                                        </div> 
+
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                   <input type="hidden" id="rent_id_edit" value="{#viewmd}{rent_id}{/viewmd}" name="rent_id_edit" />
+                                  <input type="hidden" name="_csrf" value="{_csrf}" />
+                                   <span class="btn btn-primary modal-btn"  id="editRentbtn" >Save</span>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                                {/formBody}
+        </div><!-- /.modal -->
+
+
+                                                           

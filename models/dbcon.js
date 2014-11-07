@@ -102,10 +102,12 @@ dbCon.prototype={
                                                                                 connection.release();
                                                                                 if(err){
                                                                                              helper.sConsole("query ERROR in SELECT : ", err);  
+                                                                                             helper.sConsole("ROW DATA in getDataon ID", oRowFetch.sql);
                                                                                 }
                                                                                 else
                                                                                 {
                                                                                                 helper.sConsole("ROW DATA in getDataon ID", JSON.stringify(result));
+                                                                                                 helper.sConsole("ROW DATA in getDataon ID", oRowFetch.sql);
                                                                                                 finalCallback(result);
                                                                                 }
                                                                 });

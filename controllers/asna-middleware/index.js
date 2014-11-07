@@ -9,6 +9,8 @@ var ccDataDeleteSection = require('./middlewares/dbcallAction-bin/cc-data-delete
 var shoppingDataDeleteSection = require('./middlewares/dbcallAction-bin/shopping-data-delete');
 var todoDataDeleteSection = require('./middlewares/dbcallAction-bin/todo-data-delete');
 var rentDataDeleteSection = require('./middlewares/dbcallAction-bin/rent-data-delete');
+var rentDataSection = require('./middlewares/dbcallAction-bin/rent-data');
+var rentDataEditSection = require('./middlewares/dbcallAction-bin/rent-data-edit');
 
 var shoppingDataSection = require('./middlewares/dbcallAction-bin/shopping-data');
 var shoppingDataEditSection = require('./middlewares/dbcallAction-bin/shopping-data-edit');
@@ -16,14 +18,13 @@ var shoppingDataEditSection = require('./middlewares/dbcallAction-bin/shopping-d
 exports.travelData = function (req, res) {
 	travelDataSection.process(req, res);
 };
-
 exports.travelDataEdit = function (req, res) {
 	travelDataEditSection.process(req, res);
 };
-
 exports.travelDataDelete = function (req, res) {
 	travelDataDeleteSection.process(req, res);
 };
+
 
 exports.ccData = function (req, res) {
 	ccDataSection.process(req, res);
@@ -48,6 +49,13 @@ exports.todoDataDelete = function (req, res) {
 	todoDataDeleteSection.process(req, res);
 };
 
+
+exports.rentData = function (req, res) {
+	rentDataSection.process(req, res);
+};
+exports.rentDataEdit = function (req, res) {
+	rentDataEditSection.process(req, res);
+};
 exports.rentDataDelete = function (req, res) {
 	rentDataDeleteSection.process(req, res);
 };
